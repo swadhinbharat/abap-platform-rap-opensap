@@ -62,7 +62,7 @@ CLASS lhc_Travel IMPLEMENTATION.
     " The key of this business object is a UUID, calculated by the framework.
 
     " check if TravelID is already filled
-    READ ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+    READ ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
       ENTITY Travel
         FIELDS ( TravelID ) WITH CORRESPONDING #( keys )
       RESULT DATA(travels).
@@ -75,12 +75,12 @@ CLASS lhc_Travel IMPLEMENTATION.
 
     " Select max travel ID
     SELECT SINGLE
-        FROM  zrap_atrav_####
+        FROM  zrap_atrav_8001
         FIELDS MAX( travel_id ) AS travelID
         INTO @DATA(max_travelid).
 
     " Set the travel ID
-    MODIFY ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+    MODIFY ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
     ENTITY Travel
       UPDATE
         FROM VALUE #( FOR travel IN travels INDEX INTO i (
@@ -95,7 +95,7 @@ CLASS lhc_Travel IMPLEMENTATION.
 
   METHOD setInitialStatus.
     " Read relevant travel instance data
-    READ ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+    READ ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
       ENTITY Travel
         FIELDS ( TravelStatus ) WITH CORRESPONDING #( keys )
       RESULT DATA(travels).
@@ -105,7 +105,7 @@ CLASS lhc_Travel IMPLEMENTATION.
     CHECK travels IS NOT INITIAL.
 
     " Set default travel status
-    MODIFY ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+    MODIFY ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
     ENTITY Travel
       UPDATE
         FIELDS ( TravelStatus )
@@ -120,7 +120,7 @@ CLASS lhc_Travel IMPLEMENTATION.
 
   METHOD validateAgency.
     " Read relevant travel instance data
-    READ ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+    READ ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
       ENTITY Travel
         FIELDS ( AgencyID ) WITH CORRESPONDING #( keys )
       RESULT DATA(travels).
@@ -151,9 +151,9 @@ CLASS lhc_Travel IMPLEMENTATION.
 
         APPEND VALUE #( %tky        = travel-%tky
                         %state_area = 'VALIDATE_AGENCY'
-                        %msg        = NEW zcm_rap_####(
+                        %msg        = NEW zcm_rap_8001(
                                           severity = if_abap_behv_message=>severity-error
-                                          textid   = zcm_rap_####=>agency_unknown
+                                          textid   = zcm_rap_8001=>agency_unknown
                                           agencyid = travel-AgencyID )
                         %element-AgencyID = if_abap_behv=>mk-on )
           TO reported-travel.
@@ -164,7 +164,7 @@ CLASS lhc_Travel IMPLEMENTATION.
 
   METHOD validatecustomer.
     " Read relevant travel instance data
-    READ ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+    READ ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
       ENTITY Travel
         FIELDS ( CustomerID ) WITH CORRESPONDING #( keys )
       RESULT DATA(travels).
@@ -194,9 +194,9 @@ CLASS lhc_Travel IMPLEMENTATION.
 
         APPEND VALUE #(  %tky        = travel-%tky
                          %state_area = 'VALIDATE_CUSTOMER'
-                         %msg        = NEW zcm_rap_####(
+                         %msg        = NEW zcm_rap_8001(
                                            severity   = if_abap_behv_message=>severity-error
-                                           textid     = zcm_rap_####=>customer_unknown
+                                           textid     = zcm_rap_8001=>customer_unknown
                                            customerid = travel-CustomerID )
                          %element-CustomerID = if_abap_behv=>mk-on )
           TO reported-travel.
@@ -206,7 +206,7 @@ CLASS lhc_Travel IMPLEMENTATION.
 
 
   METHOD validateDates.
-    READ ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+    READ ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
       ENTITY Travel
         FIELDS ( TravelID BeginDate EndDate ) WITH CORRESPONDING #( keys )
       RESULT DATA(travels).
@@ -221,9 +221,9 @@ CLASS lhc_Travel IMPLEMENTATION.
         APPEND VALUE #( %tky = travel-%tky ) TO failed-travel.
         APPEND VALUE #( %tky               = travel-%tky
                         %state_area        = 'VALIDATE_DATES'
-                        %msg               = NEW zcm_rap_####(
+                        %msg               = NEW zcm_rap_8001(
                                                  severity  = if_abap_behv_message=>severity-error
-                                                 textid    = zcm_rap_####=>date_interval
+                                                 textid    = zcm_rap_8001=>date_interval
                                                  begindate = travel-BeginDate
                                                  enddate   = travel-EndDate
                                                  travelid  = travel-TravelID )
@@ -234,9 +234,9 @@ CLASS lhc_Travel IMPLEMENTATION.
         APPEND VALUE #( %tky               = travel-%tky ) TO failed-travel.
         APPEND VALUE #( %tky               = travel-%tky
                         %state_area        = 'VALIDATE_DATES'
-                        %msg               = NEW zcm_rap_####(
+                        %msg               = NEW zcm_rap_8001(
                                                  severity  = if_abap_behv_message=>severity-error
-                                                 textid    = zcm_rap_####=>begin_date_before_system_date
+                                                 textid    = zcm_rap_8001=>begin_date_before_system_date
                                                  begindate = travel-BeginDate )
                         %element-BeginDate = if_abap_behv=>mk-on ) TO reported-travel.
       ENDIF.
@@ -246,7 +246,7 @@ CLASS lhc_Travel IMPLEMENTATION.
 
   METHOD acceptTravel.
     " Set the new overall status
-    MODIFY ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+    MODIFY ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
       ENTITY Travel
          UPDATE
            FIELDS ( TravelStatus )
@@ -257,7 +257,7 @@ CLASS lhc_Travel IMPLEMENTATION.
       REPORTED reported.
 
     " Fill the response table
-    READ ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+    READ ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
       ENTITY Travel
         ALL FIELDS WITH CORRESPONDING #( keys )
       RESULT DATA(travels).
@@ -270,7 +270,7 @@ CLASS lhc_Travel IMPLEMENTATION.
 
   METHOD rejectTravel.
     " Set the new overall status
-    MODIFY ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+    MODIFY ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
       ENTITY Travel
          UPDATE
            FIELDS ( TravelStatus )
@@ -281,7 +281,7 @@ CLASS lhc_Travel IMPLEMENTATION.
       REPORTED reported.
 
     " Fill the response table
-    READ ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+    READ ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
       ENTITY Travel
         ALL FIELDS WITH CORRESPONDING #( keys )
       RESULT DATA(travels).
@@ -294,7 +294,7 @@ CLASS lhc_Travel IMPLEMENTATION.
 
   METHOD get_features.
     " Read the travel status of the existing travels
-    READ ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+    READ ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
       ENTITY Travel
         FIELDS ( TravelStatus ) WITH CORRESPONDING #( keys )
       RESULT DATA(travels)
@@ -327,7 +327,7 @@ CLASS lhc_Travel IMPLEMENTATION.
     DATA: failed_travel LIKE LINE OF failed-travel.
 
     " Read the existing travels
-    READ ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+    READ ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
       ENTITY Travel
         FIELDS ( TravelStatus ) WITH CORRESPONDING #( keys )
       RESULT DATA(travels)
@@ -337,7 +337,7 @@ CLASS lhc_Travel IMPLEMENTATION.
 
 *   In this example the authorization is defined based on the Activity + Travel Status
 *   For the Travel Status we need the before-image from the database. We perform this for active (is_draft=00) as well as for drafts (is_draft=01) as we can't distinguish between edit or new drafts
-    SELECT FROM zrap_atrav_####
+    SELECT FROM zrap_atrav_8001
       FIELDS travel_uuid,overall_status
       FOR ALL ENTRIES IN @travels
       WHERE travel_uuid EQ @travels-TravelUUID
@@ -368,8 +368,8 @@ CLASS lhc_Travel IMPLEMENTATION.
           update_granted = is_update_granted( has_before_image = has_before_image  overall_status = travel_before_image-overall_status ).
           IF update_granted = abap_false.
             APPEND VALUE #( %tky        = travel-%tky
-                            %msg        = NEW zcm_rap_####( severity = if_abap_behv_message=>severity-error
-                                                            textid   = zcm_rap_####=>unauthorized )
+                            %msg        = NEW zcm_rap_8001( severity = if_abap_behv_message=>severity-error
+                                                            textid   = zcm_rap_8001=>unauthorized )
                           ) TO reported-travel.
           ENDIF.
           " Creation of a new record -> check create authorization
@@ -377,8 +377,8 @@ CLASS lhc_Travel IMPLEMENTATION.
           update_granted = is_create_granted( ).
           IF update_granted = abap_false.
             APPEND VALUE #( %tky        = travel-%tky
-                            %msg        = NEW zcm_rap_####( severity = if_abap_behv_message=>severity-error
-                                                            textid   = zcm_rap_####=>unauthorized )
+                            %msg        = NEW zcm_rap_8001( severity = if_abap_behv_message=>severity-error
+                                                            textid   = zcm_rap_8001=>unauthorized )
                           ) TO reported-travel.
           ENDIF.
         ENDIF.
@@ -388,8 +388,8 @@ CLASS lhc_Travel IMPLEMENTATION.
         delete_granted = is_delete_granted( has_before_image = has_before_image  overall_status = travel_before_image-overall_status ).
         IF delete_granted = abap_false.
           APPEND VALUE #( %tky        = travel-%tky
-                          %msg        = NEW zcm_rap_####( severity = if_abap_behv_message=>severity-error
-                                                          textid   = zcm_rap_####=>unauthorized )
+                          %msg        = NEW zcm_rap_8001( severity = if_abap_behv_message=>severity-error
+                                                          textid   = zcm_rap_8001=>unauthorized )
                         ) TO reported-travel.
         ENDIF.
       ENDIF.
@@ -412,12 +412,12 @@ CLASS lhc_Travel IMPLEMENTATION.
 
   METHOD is_update_granted.
     IF has_before_image = abap_true.
-      AUTHORITY-CHECK OBJECT 'ZOSTAT####'
-        ID 'ZOSTAT####' FIELD travel_status
+      AUTHORITY-CHECK OBJECT 'ZOSTAT8001'
+        ID 'ZOSTAT8001' FIELD travel_status
         ID 'ACTVT' FIELD '02'.
     ELSE.
-      AUTHORITY-CHECK OBJECT 'ZOSTAT####'
-        ID 'ZOSTAT####' DUMMY
+      AUTHORITY-CHECK OBJECT 'ZOSTAT8001'
+        ID 'ZOSTAT8001' DUMMY
         ID 'ACTVT' FIELD '02'.
     ENDIF.
     update_granted = COND #( WHEN sy-subrc = 0 THEN abap_true ELSE abap_false ).
@@ -428,12 +428,12 @@ CLASS lhc_Travel IMPLEMENTATION.
 
   METHOD is_delete_granted.
     IF has_before_image = abap_true.
-      AUTHORITY-CHECK OBJECT 'ZOSTAT####'
-        ID 'ZOSTAT####' FIELD travel_status
+      AUTHORITY-CHECK OBJECT 'ZOSTAT8001'
+        ID 'ZOSTAT8001' FIELD travel_status
         ID 'ACTVT' FIELD '06'.
     ELSE.
-      AUTHORITY-CHECK OBJECT 'ZOSTAT####'
-        ID 'ZOSTAT####' DUMMY
+      AUTHORITY-CHECK OBJECT 'ZOSTAT8001'
+        ID 'ZOSTAT8001' DUMMY
         ID 'ACTVT' FIELD '06'.
     ENDIF.
     delete_granted = COND #( WHEN sy-subrc = 0 THEN abap_true ELSE abap_false ).
@@ -443,8 +443,8 @@ CLASS lhc_Travel IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD is_create_granted.
-    AUTHORITY-CHECK OBJECT 'ZOSTAT####'
-      ID 'ZOSTAT####' DUMMY
+    AUTHORITY-CHECK OBJECT 'ZOSTAT8001'
+      ID 'ZOSTAT8001' DUMMY
       ID 'ACTVT' FIELD '01'.
     create_granted = COND #( WHEN sy-subrc = 0 THEN abap_true ELSE abap_false ).
 
@@ -462,7 +462,7 @@ CLASS lhc_Travel IMPLEMENTATION.
     DATA: amount_per_currencycode TYPE STANDARD TABLE OF ty_amount_per_currencycode.
 
     " Read all relevant travel instances.
-    READ ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+    READ ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
          ENTITY Travel
             FIELDS ( BookingFee CurrencyCode )
             WITH CORRESPONDING #( keys )
@@ -476,7 +476,7 @@ CLASS lhc_Travel IMPLEMENTATION.
                                            currency_code = <travel>-CurrencyCode ) ).
 
       " Read all associated bookings and add them to the total price.
-      READ ENTITIES OF ZI_RAP_Travel_#### IN LOCAL MODE
+      READ ENTITIES OF ZI_RAP_Travel_8001 IN LOCAL MODE
         ENTITY Travel BY \_Booking
           FIELDS ( FlightPrice CurrencyCode )
         WITH VALUE #( ( %tky = <travel>-%tky ) )
@@ -508,7 +508,7 @@ CLASS lhc_Travel IMPLEMENTATION.
     ENDLOOP.
 
     " write back the modified total_price of travels
-    MODIFY ENTITIES OF ZI_RAP_Travel_#### IN LOCAL MODE
+    MODIFY ENTITIES OF ZI_RAP_Travel_8001 IN LOCAL MODE
       ENTITY travel
         UPDATE FIELDS ( TotalPrice )
         WITH CORRESPONDING #( travels ).
@@ -517,7 +517,7 @@ CLASS lhc_Travel IMPLEMENTATION.
 
   METHOD calculateTotalPrice.
 
-    MODIFY ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+    MODIFY ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
       ENTITY travel
         EXECUTE recalcTotalPrice
         FROM CORRESPONDING #( keys )

@@ -19,7 +19,7 @@ You can watch [unit 4 of week 5: Creating the Implementation Class](https://open
 >
 > A great overview on ADT shortcuts can be found here: [Useful ADT Shortcuts](https://blogs.sap.com/2013/11/21/useful-keyboard-shortcuts-for-abap-in-eclipse/)
 >
-> Please note that the placeholder **`####`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
+> Please note that the placeholder **`8001`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
 > The screenshots in this document have been taken with the suffix `1234` and system `D20`. Your system id will be `TRL`.
 
 > Please note that the ADT dialogs and views may change in the future due to software updates - i.e. new and/or optimized feature
@@ -28,14 +28,14 @@ Follow the instructions below.
     
 ## Creating the implementation
 
-1. Open the class **ZCL_CE_RAP_AGENCY_####** in the source code editor.
+1. Open the class **ZCL_CE_RAP_AGENCY_8001** in the source code editor.
 
-   - Expand your package  **ZRAP_TRAVEL_E_#### > Source Code Library > Classes** and double click on `ZCL_CE_RAP_AGENCY_####`
+   - Expand your package  **ZRAP_TRAVEL_E_8001 > Source Code Library > Classes** and double click on `ZCL_CE_RAP_AGENCY_8001`
 
      ![Open class](images/w5u4_01_01.png)
 
 
-2. Add interface **`IF_RAP_QUERY_PROVIDER`** to the query implementation class **ZCL_CE_RAP_AGENCY_####**
+2. Add interface **`IF_RAP_QUERY_PROVIDER`** to the query implementation class **ZCL_CE_RAP_AGENCY_8001**
  
     - Add the following statement in the public section  
       <pre>INTERFACES if_rap_query_provider. <pre>   
@@ -125,9 +125,9 @@ so that you will have implemented a side-by-side extension scenario.
 Find the source code for the implementation class of our custom entity in the week5/sources folder:
 [Sources](sources) or use the following link.
 
-- [W5U4_CLAS_zcl_ce_rap_agency_####.txt](/week5/sources/W5U4_CLAS_zcl_ce_rap_agency_%23%23%23%23.txt)
+- [W5U4_CLAS_zcl_ce_rap_agency_8001.txt](/week5/sources/W5U4_CLAS_zcl_ce_rap_agency_%23%23%23%23.txt)
 
-Do not forget to replace all the occurrences of #### with your chosen suffix in the copied source code.
+Do not forget to replace all the occurrences of 8001 with your chosen suffix in the copied source code.
 
 
  

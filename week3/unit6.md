@@ -14,7 +14,7 @@ You can watch [week 3 unit 6: Implementing the Business Object Behavior]( https:
 >
 > A great overview of ADT shortcuts can be found here: [Useful ADT Shortcuts](https://blogs.sap.com/2013/11/21/useful-keyboard-shortcuts-for-abap-in-eclipse/)
 >
-> Please note that the placeholder **`####`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
+> Please note that the placeholder **`8001`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
 > The screenshots in this document have been taken with the suffix `1234` and system `D20`. Your system id will be `TRL`.
 
 > Please note that the ADT dialogs and views may change in the future due to software updates.
@@ -23,7 +23,7 @@ Follow the instructions below.
 
 ## Step 1. Create the message class 
 In the behavior implementations, you will make use of your own _T100_ messages, raised by an own exception class. 
-Therefore, you will first create the message class **`ZRAP_MSG_####`** to define your own `T100` messages and the exception class **`ZCM_RAP_####`**, where **`####`** is your chosen suffix.
+Therefore, you will first create the message class **`ZRAP_MSG_8001`** to define your own `T100` messages and the exception class **`ZCM_RAP_8001`**, where **`8001`** is your chosen suffix.
 
 1.	Right-click on your package and choose _**New > Other ABAP Repository Object**_.
     ![Create the Message Class](images/w3u6_01_01.png)
@@ -33,7 +33,7 @@ Therefore, you will first create the message class **`ZRAP_MSG_####`** to define
     
     ![Create the Message Class](images/w3u6_01_02.png)
         
-3.	Maintain **`ZRAP_MSG_####`** as **name**, where **`####`** is your chosen suffix, and a meaningful **description** (e.g. **`RAP messages`**) and choose **Next >**.
+3.	Maintain **`ZRAP_MSG_8001`** as **name**, where **`8001`** is your chosen suffix, and a meaningful **description** (e.g. **`RAP messages`**) and choose **Next >**.
      
     ![Create the Message Class](images/w3u6_01_03.png)
     
@@ -63,13 +63,13 @@ Therefore, you will first create the message class **`ZRAP_MSG_####`** to define
 6.	Save ![save icon](images/adt_save.png) the new message class to activate it.
     
 ## Step 2. Create the exception class.
-Now, you will create the exception class **`ZCM_RAP_####`**, where **`####`** is your chosen suffix.
+Now, you will create the exception class **`ZCM_RAP_8001`**, where **`8001`** is your chosen suffix.
     
-1.	Right-click on your package **`ZRAP_TRAVEL_####`** and choose _**New > ABAP Class**_.
+1.	Right-click on your package **`ZRAP_TRAVEL_8001`** and choose _**New > ABAP Class**_.
     
     ![Create the Exception Class](images/w3u6_02_01.png)
     
-2.	Maintain **`ZCM_RAP_####`** as **name** and a meaningful **description** (e.g. **`RAP Messages`**).
+2.	Maintain **`ZCM_RAP_8001`** as **name** and a meaningful **description** (e.g. **`RAP Messages`**).
     
     Maintain **`CX_STATIC_CHECK`** as **Superclass** and then add **`IF_ABAP_BEHV_MESSAGE`** under **Interfaces**.
     
@@ -88,12 +88,12 @@ Now, you will create the exception class **`ZCM_RAP_####`**, where **`####`** is
 4.	Define the constants for all 5 messages defined in the previously created message class in the **`PUBLIC SECTION`**.  
     
     For this, use the code snippet provided below for the purpose.
-    Do not forget to replace the occurrences of the placeholder **`####`** with your chosen suffix.
+    Do not forget to replace the occurrences of the placeholder **`8001`** with your chosen suffix.
     
     <pre>
         CONSTANTS:
           BEGIN OF date_interval,
-            msgid TYPE symsgid VALUE 'ZRAP_MSG_####',
+            msgid TYPE symsgid VALUE 'ZRAP_MSG_8001',
             msgno TYPE symsgno VALUE '001',
             attr1 TYPE scx_attrname VALUE 'BEGINDATE',
             attr2 TYPE scx_attrname VALUE 'ENDDATE',
@@ -102,7 +102,7 @@ Now, you will create the exception class **`ZCM_RAP_####`**, where **`####`** is
           END OF date_interval .
         CONSTANTS:
           BEGIN OF begin_date_before_system_date,
-            msgid TYPE symsgid VALUE 'ZRAP_MSG_####',
+            msgid TYPE symsgid VALUE 'ZRAP_MSG_8001',
             msgno TYPE symsgno VALUE '002',
             attr1 TYPE scx_attrname VALUE 'BEGINDATE',
             attr2 TYPE scx_attrname VALUE '',
@@ -111,7 +111,7 @@ Now, you will create the exception class **`ZCM_RAP_####`**, where **`####`** is
           END OF begin_date_before_system_date .
         CONSTANTS:
           BEGIN OF customer_unknown,
-            msgid TYPE symsgid VALUE 'ZRAP_MSG_####',
+            msgid TYPE symsgid VALUE 'ZRAP_MSG_8001',
             msgno TYPE symsgno VALUE '003',
             attr1 TYPE scx_attrname VALUE 'CUSTOMERID',
             attr2 TYPE scx_attrname VALUE '',
@@ -120,7 +120,7 @@ Now, you will create the exception class **`ZCM_RAP_####`**, where **`####`** is
           END OF customer_unknown .
         CONSTANTS:
           BEGIN OF agency_unknown,
-            msgid TYPE symsgid VALUE 'ZRAP_MSG_####',
+            msgid TYPE symsgid VALUE 'ZRAP_MSG_8001',
             msgno TYPE symsgno VALUE '004',
             attr1 TYPE scx_attrname VALUE 'AGENCYID',
             attr2 TYPE scx_attrname VALUE '',
@@ -129,7 +129,7 @@ Now, you will create the exception class **`ZCM_RAP_####`**, where **`####`** is
           END OF agency_unknown .
         CONSTANTS:
           BEGIN OF unauthorized,
-            msgid TYPE symsgid VALUE 'ZRAP_MSG_####',
+            msgid TYPE symsgid VALUE 'ZRAP_MSG_8001',
             msgno TYPE symsgno VALUE '005',
             attr1 TYPE scx_attrname VALUE '',
             attr2 TYPE scx_attrname VALUE '',
@@ -196,13 +196,13 @@ Now, you will create the exception class **`ZCM_RAP_####`**, where **`####`** is
 8.	Save ![save icon](images/adt_save.png) and activate ![activate icon](images/adt_activate.png) the ABAP class.
     
 ## Step 3. Implement the behavior pool for the _Travel_ entity
-You will now create and develop the behavior implementation (aka _behavior pool_) of the _travel_ entity **` ZI_RAP_Travel_####`**, where **`####`** is your chosen suffix.
+You will now create and develop the behavior implementation (aka _behavior pool_) of the _travel_ entity **` ZI_RAP_Travel_8001`**, where **`8001`** is your chosen suffix.
     
-1.	Open the base _behavior definition_ **`ZI_RAP_Travel_####`** of your business object in the _Project Explorer_.
+1.	Open the base _behavior definition_ **`ZI_RAP_Travel_8001`** of your business object in the _Project Explorer_.
     
     ![Implement the Behavior Pool – Travel Entity](images/w3u6_03_01.png)
     
-2.	Set the cursor on the behavior implementation class name **`zbp_i_rap_travel_####`**,   
+2.	Set the cursor on the behavior implementation class name **`zbp_i_rap_travel_8001`**,   
 start the Quick Fix dialog using the shortcut **Ctrl+1**, and choose **`create…`** to generate the behavior implementation for the Travel entity. 
     
     ![Implement the Behavior Pool – Travel Entity](images/w3u6_03_02.png)
@@ -242,13 +242,13 @@ _Project_, _Package_ and _Behavior Definition_ have been automatically assigned.
 6.	Now, implement is the method **`acceptTravel`** which sets the overall status of _travel_ instances to _accepted_.
     
     For this insert the code snippet provided below into the method **` acceptTravel`**.  
-    Do not forget to replace the placeholder **`####`** with your chosen suffix.
+    Do not forget to replace the placeholder **`8001`** with your chosen suffix.
     
     First, set the _travel status_ of the _travel_ instances for all provided travel keys using an EML _modify_ statement.
     
     <pre>
         " Set the new overall status
-        MODIFY ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+        MODIFY ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
           ENTITY Travel
              UPDATE
                FIELDS ( TravelStatus )
@@ -266,7 +266,7 @@ _Project_, _Package_ and _Behavior Definition_ have been automatically assigned.
     
     <pre>
         " Fill the response table
-        READ ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+        READ ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
           ENTITY Travel
             ALL FIELDS WITH CORRESPONDING #( keys )
           RESULT DATA(travels).
@@ -291,12 +291,12 @@ _Project_, _Package_ and _Behavior Definition_ have been automatically assigned.
 7.	The implementation of the action **`rejectTravel`** action is very similar to the **`acceptTravel`** action. It sets the travel status to _rejected_.
     
     For this, insert the code snippet provided below into the method **`rejectTravel`**.  
-    Do not forget to replace the placeholder **`####`** with your chosen suffix.  
+    Do not forget to replace the placeholder **`8001`** with your chosen suffix.  
     You can make use of the _Source Code Formatter_ (**Ctrl+F1**) to format you code.  
     
     <pre>
         " Set the new overall status
-        MODIFY ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+        MODIFY ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
           ENTITY Travel
              UPDATE
                FIELDS ( TravelStatus )
@@ -307,7 +307,7 @@ _Project_, _Package_ and _Behavior Definition_ have been automatically assigned.
           REPORTED reported.
 
         " Fill the response table
-        READ ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+        READ ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
           ENTITY Travel
             ALL FIELDS WITH CORRESPONDING #( keys )
           RESULT DATA(travels).
@@ -324,7 +324,7 @@ _Project_, _Package_ and _Behavior Definition_ have been automatically assigned.
 8.	You are now going to implement the validation **`validateAgency`** which checks the provided **`AgencyID`** on _save_ – when it is either modified in an existing instance or a new instance is created.  
     
     For this, insert the provided code snippet below into the method **`validateAgency`**.
-    Do not forget to replace the placeholder **`####`** with your chosen suffix.
+    Do not forget to replace the placeholder **`8001`** with your chosen suffix.
     
     Validation implementations typically start with reading the required data using EML.
     
@@ -332,7 +332,7 @@ _Project_, _Package_ and _Behavior Definition_ have been automatically assigned.
     
     <pre>
         " Read relevant travel instance data
-        READ ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+        READ ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
           ENTITY Travel
             FIELDS ( AgencyID ) WITH CORRESPONDING #( keys )
           RESULT DATA(travels).
@@ -377,9 +377,9 @@ _Project_, _Package_ and _Behavior Definition_ have been automatically assigned.
 
             APPEND VALUE #( %tky        = travel-%tky
                             %state_area = 'VALIDATE_AGENCY'
-                            %msg        = NEW zcm_rap_####(
+                            %msg        = NEW zcm_rap_8001(
                                               severity = if_abap_behv_message=>severity-error
-                                              textid   = zcm_rap_####=>agency_unknown
+                                              textid   = zcm_rap_8001=>agency_unknown
                                               agencyid = travel-AgencyID )
                             %element-AgencyID = if_abap_behv=>mk-on )
               TO reported-travel.
@@ -398,11 +398,11 @@ _Project_, _Package_ and _Behavior Definition_ have been automatically assigned.
     You will read the **`CustomerID`**, check its existence on the database table and raise state messages if an invalid value was provided.  
       
     For this, insert the code snippet provided below into the method **`validateCustomer`**.  
-    Do not forget to replace the placeholder **`####`** with your chosen suffix.  
+    Do not forget to replace the placeholder **`8001`** with your chosen suffix.  
       
     <pre>
        " Read relevant travel instance data
-        READ ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+        READ ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
           ENTITY Travel
             FIELDS ( CustomerID ) WITH CORRESPONDING #( keys )
           RESULT DATA(travels).
@@ -432,9 +432,9 @@ _Project_, _Package_ and _Behavior Definition_ have been automatically assigned.
 
             APPEND VALUE #(  %tky        = travel-%tky
                              %state_area = 'VALIDATE_CUSTOMER'
-                             %msg        = NEW zcm_rap_####(
+                             %msg        = NEW zcm_rap_8001(
                                                severity   = if_abap_behv_message=>severity-error
-                                               textid     = zcm_rap_####=>customer_unknown
+                                               textid     = zcm_rap_8001=>customer_unknown
                                                customerid = travel-CustomerID )
                              %element-CustomerID = if_abap_behv=>mk-on )
               TO reported-travel.
@@ -451,11 +451,11 @@ _Project_, _Package_ and _Behavior Definition_ have been automatically assigned.
     The implementation of the corresponding method **`validateDates`** follows a very similar approach as for the other two methods  **`validateAgency`** and  **`validateCustomer`**.  
     
     For this, insert the code snippet provided below into the method **`validateDates`**.  
-    Do not forget to replace the placeholder **`####`** with your chosen suffix.  
+    Do not forget to replace the placeholder **`8001`** with your chosen suffix.  
     
     <pre>
        " Read relevant travel instance data
-        READ ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+        READ ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
           ENTITY Travel
             FIELDS ( TravelID BeginDate EndDate ) WITH CORRESPONDING #( keys )
           RESULT DATA(travels).
@@ -470,9 +470,9 @@ _Project_, _Package_ and _Behavior Definition_ have been automatically assigned.
             APPEND VALUE #( %tky = travel-%tky ) TO failed-travel.
             APPEND VALUE #( %tky               = travel-%tky
                             %state_area        = 'VALIDATE_DATES'
-                            %msg               = NEW zcm_rap_####(
+                            %msg               = NEW zcm_rap_8001(
                                                      severity  = if_abap_behv_message=>severity-error
-                                                     textid    = zcm_rap_####=>date_interval
+                                                     textid    = zcm_rap_8001=>date_interval
                                                      begindate = travel-BeginDate
                                                      enddate   = travel-EndDate
                                                      travelid  = travel-TravelID )
@@ -483,9 +483,9 @@ _Project_, _Package_ and _Behavior Definition_ have been automatically assigned.
             APPEND VALUE #( %tky               = travel-%tky ) TO failed-travel.
             APPEND VALUE #( %tky               = travel-%tky
                             %state_area        = 'VALIDATE_DATES'
-                            %msg               = NEW zcm_rap_####(
+                            %msg               = NEW zcm_rap_8001(
                                                      severity  = if_abap_behv_message=>severity-error
-                                                     textid    = zcm_rap_####=>begin_date_before_system_date
+                                                     textid    = zcm_rap_8001=>begin_date_before_system_date
                                                      begindate = travel-BeginDate )
                             %element-BeginDate = if_abap_behv=>mk-on ) TO reported-travel.
           ENDIF.
@@ -504,11 +504,11 @@ _Project_, _Package_ and _Behavior Definition_ have been automatically assigned.
     > Determinations need to be idempotent – which means the result may not differ even if they are executed multiple times for the same key.
       
     For this, insert the code snippet provided below into the method **`setInitialStatus`**.  
-    Do not forget to replace the placeholder **`####`** with your chosen suffix.  
+    Do not forget to replace the placeholder **`8001`** with your chosen suffix.  
     
     <pre>
         " Read relevant travel instance data
-        READ ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+        READ ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
           ENTITY Travel
             FIELDS ( TravelStatus ) WITH CORRESPONDING #( keys )
           RESULT DATA(travels).
@@ -518,7 +518,7 @@ _Project_, _Package_ and _Behavior Definition_ have been automatically assigned.
         CHECK travels IS NOT INITIAL.
 
         " Set default travel status
-        MODIFY ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+        MODIFY ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
         ENTITY Travel
           UPDATE
             FIELDS ( TravelStatus )
@@ -540,7 +540,7 @@ _Project_, _Package_ and _Behavior Definition_ have been automatically assigned.
     Please note that this approach does not ensure gap free or unique IDs.  
         
     For this, insert the code snippet provided below into the method **`calculateTravelID`**.  
-    Do not forget to replace the placeholder **`####`** with your chosen suffix.  
+    Do not forget to replace the placeholder **`8001`** with your chosen suffix.  
     
     <pre>
         " Please note that this is just an example for calculating a field during _onSave_.
@@ -548,7 +548,7 @@ _Project_, _Package_ and _Behavior Definition_ have been automatically assigned.
         " The key of this business object is a UUID, calculated by the framework.
 
         " check if TravelID is already filled
-        READ ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+        READ ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
           ENTITY Travel
             FIELDS ( TravelID ) WITH CORRESPONDING #( keys )
           RESULT DATA(travels).
@@ -561,12 +561,12 @@ _Project_, _Package_ and _Behavior Definition_ have been automatically assigned.
 
         " Select max travel ID
         SELECT SINGLE
-            FROM  zrap_atrav_####
+            FROM  zrap_atrav_8001
             FIELDS MAX( travel_id ) AS travelID
             INTO @DATA(max_travelid).
 
         " Set the travel ID
-        MODIFY ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+        MODIFY ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
         ENTITY Travel
           UPDATE
             FROM VALUE #( FOR travel IN travels INDEX INTO i (
@@ -587,10 +587,10 @@ _Project_, _Package_ and _Behavior Definition_ have been automatically assigned.
     The implementation will call the internal action **`recalcTotalPrice`** for all provided travel keys.  
     
     For this, insert the code snippet provided below into the method **`calculateTotalPrice`**.  
-    Do not forget to replace the placeholder **`####`** with your chosen suffix.  
+    Do not forget to replace the placeholder **`8001`** with your chosen suffix.  
     
     <pre>
-      MODIFY ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+      MODIFY ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
           ENTITY travel
             EXECUTE recalcTotalPrice
             FROM CORRESPONDING #( keys )
@@ -606,7 +606,7 @@ _Project_, _Package_ and _Behavior Definition_ have been automatically assigned.
     The implementation uses the ABAP statement **`collect`** to build an internal table with all occurring currency codes while summing up values for already existing ones. This is done for all _booking_ instances belonging to a _travel_ instance. This internal table is then added to the **`TotalPrice`**, using an AMDP (ABAP Managed Database Procedure) to convert amounts with different currency codes. Finally, the calculated **`TotalPrice`** is updated using EML.  
     
     For this, insert the code snippet provided below into the method **`recalcTotalPrice`**.  
-    Do not forget to replace the placeholder **`####`** with your chosen suffix.  
+    Do not forget to replace the placeholder **`8001`** with your chosen suffix.  
     
     <pre>
         TYPES: BEGIN OF ty_amount_per_currencycode,
@@ -617,7 +617,7 @@ _Project_, _Package_ and _Behavior Definition_ have been automatically assigned.
        DATA: amount_per_currencycode TYPE STANDARD TABLE OF ty_amount_per_currencycode.
 
        " Read all relevant travel instances.
-       READ ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+       READ ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
              ENTITY Travel
                 FIELDS ( BookingFee CurrencyCode )
                 WITH CORRESPONDING #( keys )
@@ -630,7 +630,7 @@ _Project_, _Package_ and _Behavior Definition_ have been automatically assigned.
           amount_per_currencycode = VALUE #( ( amount        = &lttravel&gt-BookingFee
                                                currency_code = &lttravel&gt-CurrencyCode ) ).
         " Read all associated bookings and add them to the total price.
-        READ ENTITIES OF ZI_RAP_Travel_#### IN LOCAL MODE
+        READ ENTITIES OF ZI_RAP_Travel_8001 IN LOCAL MODE
            ENTITY Travel BY \_Booking
               FIELDS ( FlightPrice CurrencyCode )
             WITH VALUE #( ( %tky = &lttravel&gt-%tky ) )
@@ -661,7 +661,7 @@ _Project_, _Package_ and _Behavior Definition_ have been automatically assigned.
         ENDLOOP.
 
        " write back the modified total_price of travels
-        MODIFY ENTITIES OF ZI_RAP_Travel_#### IN LOCAL MODE
+        MODIFY ENTITIES OF ZI_RAP_Travel_8001 IN LOCAL MODE
           ENTITY travel
             UPDATE FIELDS ( TotalPrice )
             WITH CORRESPONDING #( travels ).
@@ -676,11 +676,11 @@ _Project_, _Package_ and _Behavior Definition_ have been automatically assigned.
     In the present case the **`acceptTravel`** and **`rejectTravel`** actions are toggled based on the current status.  
 
     For this, insert the code snippet provided below into the method **`get_features`**.  
-    Do not forget to replace the placeholder **`####`** with your chosen suffix.  
+    Do not forget to replace the placeholder **`8001`** with your chosen suffix.  
     
     <pre>
         " Read the travel status of the existing travels
-        READ ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+        READ ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
           ENTITY Travel
             FIELDS ( TravelStatus ) WITH CORRESPONDING #( keys )
           RESULT DATA(travels)
@@ -709,10 +709,10 @@ _Project_, _Package_ and _Behavior Definition_ have been automatically assigned.
 15.	Save ![save icon](images/adt_save.png) and activate ![activate icon](images/adt_activate.png) the behavior implementation.
     
 ## Step 4. Implement the behavior pool for the _Booking_ entity
-You will now create and develop the behavior implementation (aka _behavior pool_) of the _booking_ entity **`ZCL_I_RAP_Booking_####`**, where **`####`** is your chosen suffix.  
+You will now create and develop the behavior implementation (aka _behavior pool_) of the _booking_ entity **`ZCL_I_RAP_Booking_8001`**, where **`8001`** is your chosen suffix.  
     
-1.	Go back to the base _behavior definition_ **`ZI_RAP_Travel_####`** of your business object in the _Project Explorer_.    
-    Set the cursor on the behavior implementation class name **`zcl_i_rap_booking_####`**,   
+1.	Go back to the base _behavior definition_ **`ZI_RAP_Travel_8001`** of your business object in the _Project Explorer_.    
+    Set the cursor on the behavior implementation class name **`zcl_i_rap_booking_8001`**,   
     start the _Quick Fix_ dialog using the shortcut **Ctrl+1**, and choose **`create…`** to generate the behavior implementation for the Travel entity.  
     
     ![Implement the Behavior Pool – Booking Entity](images/w3u6_04_01.png)
@@ -731,15 +731,15 @@ You will now create and develop the behavior implementation (aka _behavior pool_
     
 4.	First implement the determination **`calculateBookingID`** which is performed on _Modify_ when a new instance is created.
     For this, insert the code snippet provided below into the method **`calculateBookingID`**.  
-    Do not forget to replace the placeholder **`####`** with your chosen suffix.  
+    Do not forget to replace the placeholder **`8001`** with your chosen suffix.  
         
     <pre>
         DATA max_bookingid TYPE /dmo/booking_id.
-        DATA update TYPE TABLE FOR UPDATE ZI_RAP_Travel_####\\Booking.
+        DATA update TYPE TABLE FOR UPDATE ZI_RAP_Travel_8001\\Booking.
 
         " Read all travels for the requested bookings.
         " If multiple bookings of the same travel are requested, the travel is returned only once.
-        READ ENTITIES OF ZI_RAP_Travel_#### IN LOCAL MODE
+        READ ENTITIES OF ZI_RAP_Travel_8001 IN LOCAL MODE
         ENTITY Booking BY \_Travel
           FIELDS ( TravelUUID )
           WITH CORRESPONDING #( keys )
@@ -747,7 +747,7 @@ You will now create and develop the behavior implementation (aka _behavior pool_
 
         " Process all affected Travels. Read respective bookings, determine the max-id and update the bookings without ID.
         LOOP AT travels INTO DATA(travel).
-          READ ENTITIES OF ZI_RAP_Travel_#### IN LOCAL MODE
+          READ ENTITIES OF ZI_RAP_Travel_8001 IN LOCAL MODE
             ENTITY Travel BY \_Booking
               FIELDS ( BookingID )
             WITH VALUE #( ( %tky = travel-%tky ) )
@@ -771,7 +771,7 @@ You will now create and develop the behavior implementation (aka _behavior pool_
         ENDLOOP.
 
         " Update the Booking ID of all relevant bookings
-        MODIFY ENTITIES OF ZI_RAP_Travel_#### IN LOCAL MODE
+        MODIFY ENTITIES OF ZI_RAP_Travel_8001 IN LOCAL MODE
         ENTITY Booking
           UPDATE FIELDS ( BookingID ) WITH update
         REPORTED DATA(update_reported).
@@ -788,12 +788,12 @@ You will now create and develop the behavior implementation (aka _behavior pool_
 5.	The **`calculateTotalPrice`** determination calls the internal action **`recalcTotalPrice`** which we defined and implemented on root level.  
     
     For this, insert the code snippet provided below into the method **`calculateTotalPrice`**.  
-    Do not forget to replace the placeholder **`####`** with your chosen suffix.  
+    Do not forget to replace the placeholder **`8001`** with your chosen suffix.  
     
     <pre>
         " Read all travels for the requested bookings.
         " If multiple bookings of the same travel are requested, the travel is returned only once.
-        READ ENTITIES OF ZI_RAP_Travel_#### IN LOCAL MODE
+        READ ENTITIES OF ZI_RAP_Travel_8001 IN LOCAL MODE
         ENTITY Booking BY \_Travel
           FIELDS ( TravelUUID )
           WITH CORRESPONDING #( keys )
@@ -801,7 +801,7 @@ You will now create and develop the behavior implementation (aka _behavior pool_
           FAILED DATA(read_failed).
 
         " Trigger calculation of the total price
-        MODIFY ENTITIES OF ZI_RAP_Travel_#### IN LOCAL MODE
+        MODIFY ENTITIES OF ZI_RAP_Travel_8001 IN LOCAL MODE
         ENTITY Travel
           EXECUTE recalcTotalPrice
           FROM CORRESPONDING #( travels )
@@ -820,7 +820,7 @@ You will now create and develop the behavior implementation (aka _behavior pool_
 Now you are now going to add authorization control to your business object.  
 For that, you will first have to enhance the base _Behavior Definition_ accordingly.  
     
-1.	In the _Project Explorer_, Open the base _behavior definition_ **`ZI_RAP_Travel_####`** where **`####`** is your chosen suffix.  
+1.	In the _Project Explorer_, Open the base _behavior definition_ **`ZI_RAP_Travel_8001`** where **`8001`** is your chosen suffix.  
      
     ![Define the Authorization Master](images/w3u6_05_01.png)
     
@@ -844,9 +844,9 @@ For that, you will first have to enhance the base _Behavior Definition_ accordin
 4.	Save ![save icon](images/adt_save.png) and activate ![activate icon](images/adt_activate.png) the behavior definition.
     
 ## Step 6. Implement the Authorization master
-You are now going to implement the authorization master in the behavior implementation of the _travel_ entity **`ZI_RAP_Travel_####`**, where **`####`** is your chosen suffix.   
+You are now going to implement the authorization master in the behavior implementation of the _travel_ entity **`ZI_RAP_Travel_8001`**, where **`8001`** is your chosen suffix.   
      
-1.	First, remain in your base BO behavior definition **`ZI_RAP_Travel_####`**.   
+1.	First, remain in your base BO behavior definition **`ZI_RAP_Travel_8001`**.   
     Set the cursor on the **`master`** keyword of the authorization master declaration statement and use the _Quick Fix_ (**Ctrl+1**) to add the new method declaration to the behavior implementation.  
     
     ![Implement the Authorization Master](images/w3u6_06_01.png)
@@ -880,18 +880,18 @@ You are now going to implement the authorization master in the behavior implemen
     
     ![Implement the Authorization Master](images/w3u6_06_03.png)
     
-    You will now go ahead and implement the different methods. The helper classes will perform authority checks using the authority object **` ZOSTAT####`** that was defined in the previous week. **`####`** is your chosen suffix.  
+    You will now go ahead and implement the different methods. The helper classes will perform authority checks using the authority object **` ZOSTAT8001`** that was defined in the previous week. **`8001`** is your chosen suffix.  
     
 4.	First, implement the helper method **`is_create_granted`** which checks if the _create_ operation is allowed. This operation corresponds to the activity **`01`**.   
       
     For testing purposes, we set the result to `true` in all cases. This can of course be adjusted for testing different situations.
 
     For this, insert the code snippet provided below into the method **`is_create_granted`**.   
-    Do not forget to replace the placeholder **`####`** with your chosen suffix.   
+    Do not forget to replace the placeholder **`8001`** with your chosen suffix.   
     
     <pre>
-        AUTHORITY-CHECK OBJECT 'ZOSTAT####'
-          ID 'ZOSTAT####' DUMMY
+        AUTHORITY-CHECK OBJECT 'ZOSTAT8001'
+          ID 'ZOSTAT8001' DUMMY
           ID 'ACTVT' FIELD '01'.
         create_granted = COND #( WHEN sy-subrc = 0 THEN abap_true ELSE abap_false ).
         " Simulate full access - for testing purposes only! Needs to be removed for a productive implementation.
@@ -905,16 +905,16 @@ You are now going to implement the authorization master in the behavior implemen
 5. Now, implement the helper method **`is_update_granted`** which checks if the _update_ operation is allowed. This operation corresponds to the activity **`02`**.   
     
     For this, insert the code snippet provided below into the method **`is_update_granted`**.   
-    Do not forget to replace the placeholder **`####`** with your chosen suffix.   
+    Do not forget to replace the placeholder **`8001`** with your chosen suffix.   
     
     <pre>
         IF has_before_image = abap_true.
-          AUTHORITY-CHECK OBJECT 'ZOSTAT####'
-            ID 'ZOSTAT####' FIELD overall_status
+          AUTHORITY-CHECK OBJECT 'ZOSTAT8001'
+            ID 'ZOSTAT8001' FIELD overall_status
             ID 'ACTVT' FIELD '02'.
         ELSE.
-          AUTHORITY-CHECK OBJECT 'ZOSTAT####'
-            ID 'ZOSTAT####' DUMMY
+          AUTHORITY-CHECK OBJECT 'ZOSTAT8001'
+            ID 'ZOSTAT8001' DUMMY
             ID 'ACTVT' FIELD '02'.
         ENDIF.
         update_granted = COND #( WHEN sy-subrc = 0 THEN abap_true ELSE abap_false ).
@@ -930,16 +930,16 @@ You are now going to implement the authorization master in the behavior implemen
 6.	Now, implement the helper method **`is_delete_granted`** which checks if the _delete_ operation is allowed. This operation corresponds to the activity **`06`**.    
     
     For this, insert the code snippet provided below into the method **`is_delete_granted`**.  
-    Do not forget to replace the placeholder **`####`** with your chosen suffix.  
+    Do not forget to replace the placeholder **`8001`** with your chosen suffix.  
     
     <pre>
         IF has_before_image = abap_true.
-          AUTHORITY-CHECK OBJECT 'ZOSTAT####'
-            ID 'ZOSTAT####' FIELD overall_status
+          AUTHORITY-CHECK OBJECT 'ZOSTAT8001'
+            ID 'ZOSTAT8001' FIELD overall_status
             ID 'ACTVT' FIELD '06'.
         ELSE.
-          AUTHORITY-CHECK OBJECT 'ZOSTAT####'
-            ID 'ZOSTAT####' DUMMY
+          AUTHORITY-CHECK OBJECT 'ZOSTAT8001'
+            ID 'ZOSTAT8001' DUMMY
             ID 'ACTVT' FIELD '06'.
         ENDIF.
         delete_granted = COND #( WHEN sy-subrc = 0 THEN abap_true ELSE abap_false ).
@@ -954,7 +954,7 @@ You are now going to implement the authorization master in the behavior implemen
     It simulates the use case of using an editable field - **`TravelStatus`** in the present case – for controlling the authorization.     Therefore, the implementation reads the before image from the active persistence and uses this value when calling the helper methods.  
         
     For this, insert the code snippet provided below into the method **`get_authorizations`**.  
-    Do not forget to replace the placeholder **`####`** with your chosen suffix.  
+    Do not forget to replace the placeholder **`8001`** with your chosen suffix.  
     
     <pre>
        DATA: has_before_image    TYPE abap_bool,
@@ -966,7 +966,7 @@ You are now going to implement the authorization master in the behavior implemen
       DATA: failed_travel LIKE LINE OF failed-travel.
 
       " Read the existing travels
-        READ ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+        READ ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
           ENTITY Travel
             FIELDS ( TravelStatus ) WITH CORRESPONDING #( keys )
           RESULT DATA(travels)
@@ -976,7 +976,7 @@ You are now going to implement the authorization master in the behavior implemen
 
     *   In this example the authorization is defined based on the Activity + Travel Status
     *   For the Travel Status we need the before-image from the database. We perform this for active (is_draft=00) as well as for drafts (is_draft=01) as we can't distinguish between edit or new drafts
-        SELECT FROM zrap_atrav_####
+        SELECT FROM zrap_atrav_8001
           FIELDS travel_uuid,overall_status
           FOR ALL ENTRIES IN @travels
           WHERE travel_uuid EQ @travels-TravelUUID
@@ -1007,8 +1007,8 @@ You are now going to implement the authorization master in the behavior implemen
               update_granted = is_update_granted( has_before_image = has_before_image  overall_status = travel_before_image-overall_status ).
               IF update_granted = abap_false.
                 APPEND VALUE #( %tky        = travel-%tky
-                                %msg        = NEW zcm_rap_####( severity = if_abap_behv_message=>severity-error
-                                                                textid   = zcm_rap_####=>unauthorized )
+                                %msg        = NEW zcm_rap_8001( severity = if_abap_behv_message=>severity-error
+                                                                textid   = zcm_rap_8001=>unauthorized )
                               ) TO reported-travel.
               ENDIF.
               " Creation of a new record -> check create authorization
@@ -1016,8 +1016,8 @@ You are now going to implement the authorization master in the behavior implemen
               update_granted = is_create_granted( ).
               IF update_granted = abap_false.
                 APPEND VALUE #( %tky        = travel-%tky
-                                %msg        = NEW zcm_rap_####( severity = if_abap_behv_message=>severity-error
-                                                                textid   = zcm_rap_####=>unauthorized )
+                                %msg        = NEW zcm_rap_8001( severity = if_abap_behv_message=>severity-error
+                                                                textid   = zcm_rap_8001=>unauthorized )
                               ) TO reported-travel.
               ENDIF.
             ENDIF.
@@ -1027,8 +1027,8 @@ You are now going to implement the authorization master in the behavior implemen
             delete_granted = is_delete_granted( has_before_image = has_before_image  overall_status = travel_before_image-overall_status ).
             IF delete_granted = abap_false.
               APPEND VALUE #( %tky        = travel-%tky
-                              %msg        = NEW zcm_rap_####( severity = if_abap_behv_message=>severity-error
-                                                              textid   = zcm_rap_####=>unauthorized )
+                              %msg        = NEW zcm_rap_8001( severity = if_abap_behv_message=>severity-error
+                                                              textid   = zcm_rap_8001=>unauthorized )
                             ) TO reported-travel.
             ENDIF.
           ENDIF.
@@ -1059,7 +1059,7 @@ You are now going to implement the authorization master in the behavior implemen
 ## Step 7. Preview the enhanced Travel app & Play around
 You are now done with the behavior implementations and can run and check the enhanced SAP Fiori elements Travel App.    
     
-1.	Start the _Travel app_ in your service binding **`ZUI_RAP_TRAVEL_O2_####`** – where **`####`** is your chosen suffix – or refresh (**`F5`**) it in the browser.   
+1.	Start the _Travel app_ in your service binding **`ZUI_RAP_TRAVEL_O2_8001`** – where **`8001`** is your chosen suffix – or refresh (**`F5`**) it in the browser.   
     Provide your ABAP user credentials if requested.   
     
     First you see the two new actions _Accept Travel_ and _Reject Travel_ beside the create, update and delete operations. Both actions are toggled based on the _status_ of the selected travel instance.  
@@ -1093,13 +1093,13 @@ In this unit, you have learned
     
 ## Solution
 Find the source code of the created message class, exception class, behavior implementation classes (aka _behavior pools_)  and the enhanced CDS behavior definition in the **[/week3/sources](/week3/sources)** folder:  
-- [W3U6_MSAG_ZRAP_MSG_####](/week3/sources/W3U6_MSAG_ZRAP_MSG.txt)
-- [W3U6_CLAS_ZCM_RAP_####](/week3/sources/W3U6_CLAS_ZCM_RAP.txt)
-- [W3U6_CLAS_ZBP_I_RAP_TRAVEL_####](/week3/sources/W3U6_CLAS_ZBP_I_RAP_TRAVEL.txt)    
-- [W3U6_CLAS_ZBP_I_RAP_BOOKING_####](/week3/sources/W3U6_CLAS_ZBP_I_RAP_BOOKING.txt)    
-- [W3U6_BDEF_ZI_RAP_TRAVEL_####](/week3/sources/W3U6_BDEF_ZI_RAP_TRAVEL.txt) 
+- [W3U6_MSAG_ZRAP_MSG_8001](/week3/sources/W3U6_MSAG_ZRAP_MSG.txt)
+- [W3U6_CLAS_ZCM_RAP_8001](/week3/sources/W3U6_CLAS_ZCM_RAP.txt)
+- [W3U6_CLAS_ZBP_I_RAP_TRAVEL_8001](/week3/sources/W3U6_CLAS_ZBP_I_RAP_TRAVEL.txt)    
+- [W3U6_CLAS_ZBP_I_RAP_BOOKING_8001](/week3/sources/W3U6_CLAS_ZBP_I_RAP_BOOKING.txt)    
+- [W3U6_BDEF_ZI_RAP_TRAVEL_8001](/week3/sources/W3U6_BDEF_ZI_RAP_TRAVEL.txt) 
 
-Do not forget to replace all the occurrences of `####` in the copied source code with your chosen suffix.  
+Do not forget to replace all the occurrences of `8001` in the copied source code with your chosen suffix.  
 
 ## Next exercise
 [Week 3 Unit 7: Enabling the Draft Handling](unit7.md)

@@ -1,7 +1,7 @@
 unmanaged;
 
-define behavior for ZI_RAP_Travel_U_#### alias Travel
-implementation in class zbp_i_rap_travel_u_#### unique
+define behavior for ZI_RAP_Travel_U_8001 alias Travel
+implementation in class zbp_i_rap_travel_u_8001 unique
 lock master
 etag master Lastchangedat
 {
@@ -13,7 +13,7 @@ etag master Lastchangedat
   field ( read only ) TravelID;
   field ( mandatory ) AgencyID, CustomerID, BeginDate, EndDate;
 
-  mapping for /DMO/TRAVEL control zsrap_travel_x_####
+  mapping for /DMO/TRAVEL control zsrap_travel_x_8001
   {
     TravelId = travel_id;
     AgencyId = AGENCY_ID;
@@ -32,8 +32,8 @@ etag master Lastchangedat
   }
 }
 
-define behavior for ZI_RAP_Booking_U_#### alias Booking
-implementation in class zbp_i_rap_booking_u_#### unique
+define behavior for ZI_RAP_Booking_U_8001 alias Booking
+implementation in class zbp_i_rap_booking_u_8001 unique
 lock dependent by _Travel
 etag dependent by _Travel
 {
@@ -44,7 +44,7 @@ etag dependent by _Travel
   field ( read only ) TravelID, BookingID;
   field ( mandatory ) BookingDate, CustomerID, CarrierId, ConnectionID, FlightDate;
 
-  mapping for /DMO/BOOKING control zsrap_booking_x_####
+  mapping for /DMO/BOOKING control zsrap_booking_x_8001
   {
     TravelId = TRAVEL_ID;
     BookingId = BOOKING_ID;

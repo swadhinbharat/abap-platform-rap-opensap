@@ -14,7 +14,7 @@ You can watch [week 3 unit 5: Enhancing the Business Object Behavior with App-Sp
 >
 > A great overview of ADT shortcuts can be found here: [Useful ADT Shortcuts](https://blogs.sap.com/2013/11/21/useful-keyboard-shortcuts-for-abap-in-eclipse/)
 >
-> Please note that the placeholder **`####`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
+> Please note that the placeholder **`8001`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
 > The screenshots in this document have been taken with the suffix `1234` and system `D20`. Your system id will be `TRL`.
 
 > Please note that the ADT dialogs and views may change in the future due to software updates.
@@ -23,7 +23,7 @@ Follow the instructions below.
 
 ## Step 1. Enhance the behavior definition of the _Travel_ entity
 Begin with enhancing the behavior definition of the _Travel_ entity.  
-1.	Open the base behavior definition **`ZI_RAP_Travel_####`** - where **`####`** is your chosen suffix – of your business object by either double-clicking on it in the _Project Explorer_ or using the shortcut **Ctrl+Shift+A** (_Open ABAP Development Object_).  
+1.	Open the base behavior definition **`ZI_RAP_Travel_8001`** - where **`8001`** is your chosen suffix – of your business object by either double-clicking on it in the _Project Explorer_ or using the shortcut **Ctrl+Shift+A** (_Open ABAP Development Object_).  
         
     ![Enhance the Behavior Definition – Travel Entity](images/w3u5_01_01.png)
         
@@ -33,10 +33,10 @@ Begin with enhancing the behavior definition of the _Travel_ entity.
     Move the generated, commented out statement **`implementation in class…`** specified after the **`managed`** keyword from the header section to the _travel_ entity after the **`define behavior for…`** statement as shown on the screenshot below. Remove the semi-colon at the end of the statement.  
           
     You can use the code snippet provided below for that.   
-    Do not forget to replace the placeholder **`####`** with your chosen suffix.  
+    Do not forget to replace the placeholder **`8001`** with your chosen suffix.  
         
     <pre>
-     implementation in class zbp_i_rap_travel_#### unique
+     implementation in class zbp_i_rap_travel_8001 unique
     </pre> 
 
     The source code should look as follows:  
@@ -133,10 +133,10 @@ Now go ahead and enhance the behavior definition of the _Booking_ entity.
 1.	Specify the behavior implementation class (aka behavior pool) of the _Booking_ entity.
 
     For that, copy and insert the code snippet provided below in the _Booking_ behavior definition as shown on the screenshot.  
-    Do not forget to replace the placeholder **`####`** with your chosen suffix.
+    Do not forget to replace the placeholder **`8001`** with your chosen suffix.
 
     <pre>
-    implementation in class zbp_i_rap_booking_#### unique
+    implementation in class zbp_i_rap_booking_8001 unique
     </pre>
 
     The source code should look as follows:
@@ -182,7 +182,7 @@ Now go ahead and enhance the behavior definition of the _Booking_ entity.
 >Determinations and validations are automatically triggered by the RAP application infrastructure at runtime. Therefore, there is no need to project them. But this is not the case for actions. Therefore, they always need to be explicitly exposed in the business object behavior projection if they are required in the given scenario.  
 In order to later access the new defined actions **`acceptTravel`** and **`rejectTravel`**  in your _Travel_ app, you will now expose them in the business object behavior projection. 
 
-1. Open the _behavior definition_ of your business object **`ZC_RAP_Travel_####`**, where **`####`** is your chosen suffix by either double-clicking on it in the _Project Explorer_ or using the shortcut **Ctrl+Shift+A** (_Open ABAP Development Object_).
+1. Open the _behavior definition_ of your business object **`ZC_RAP_Travel_8001`**, where **`8001`** is your chosen suffix by either double-clicking on it in the _Project Explorer_ or using the shortcut **Ctrl+Shift+A** (_Open ABAP Development Object_).
     
 ![Enhance Behavior Projection](images/w3u5_03_01.png)
     
@@ -207,7 +207,7 @@ You have now enhanced the behavior of your composition model by declaring new, b
 ## Step 4. Enhance the CDS metadata extension of the _Travel_ entity
 You will now add appropriate UI annotations in the CDS metadata extension for the _Travel_ entity to add the newly defined actions **`acceptTravel`** and **`rejectTravel`**  to the SAP Fiori elements-based UI of your _Travel_ app. 
     
-1.	Open the CDS Metadata Extension **`ZC_RAP_TRAVEL_####`** of the _travel_ entity, where **`####`** is your chosen suffix.   
+1.	Open the CDS Metadata Extension **`ZC_RAP_TRAVEL_8001`** of the _travel_ entity, where **`8001`** is your chosen suffix.   
 
     You can either double-click on it in the _Project Explorer_ or use the shortcut **Ctrl+Shift+A** (_Open ABAP Development Object_).
     
@@ -243,11 +243,11 @@ In this unit, you have learned
     
 ## Solution
 Find the source code of the CDS behavior definitions (base and projection), and the enhanced CDS metadata extension for the _Travel_ entity in the **[sources](/week3/sources)** folder:    
-- [W3U5_BDEF_ZI_RAP_TRAVEL_####](/week3/sources/W3U5_BDEF_ZI_RAP_TRAVEL.txt)    
-- [W3U5_BDEF_ZC_RAP_TRAVEL_####](/week3/sources/W3U5_BDEF_ZC_RAP_TRAVEL.txt)    
-- [W3U5_DDLX_ZC_RAP_TRAVEL_####](/week3/sources/W3U5_DDLX_ZC_RAP_TRAVEL.txt) 
+- [W3U5_BDEF_ZI_RAP_TRAVEL_8001](/week3/sources/W3U5_BDEF_ZI_RAP_TRAVEL.txt)    
+- [W3U5_BDEF_ZC_RAP_TRAVEL_8001](/week3/sources/W3U5_BDEF_ZC_RAP_TRAVEL.txt)    
+- [W3U5_DDLX_ZC_RAP_TRAVEL_8001](/week3/sources/W3U5_DDLX_ZC_RAP_TRAVEL.txt) 
     
-Do not forget to replace all the occurrences of `####` in the copied source code with your chosen suffix.
+Do not forget to replace all the occurrences of `8001` in the copied source code with your chosen suffix.
 
 ## Next exercise
 [Week 3 Unit 6: Implementing the Business Object Behavior](unit6.md)

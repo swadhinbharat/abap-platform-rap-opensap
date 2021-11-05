@@ -22,7 +22,7 @@ You can watch [unit 3 of week 5: Defining the Custom CDS Entity](https://open.sa
 >
 > A great overview on ADT shortcuts can be found here: [Useful ADT Shortcuts](https://blogs.sap.com/2013/11/21/useful-keyboard-shortcuts-for-abap-in-eclipse/)
 >
-> Please note that the placeholder **`####`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
+> Please note that the placeholder **`8001`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
 > The screenshots in this document have been taken with the suffix `1234` and system `D20`. Your system id will be `TRL`.
 
 > Please note that the ADT dialogs and views may change in the future due to software updates - i.e. new and/or optimized feature
@@ -36,10 +36,10 @@ Follow the instructions below.
 ![New data definition 1](images/w5u3_01_01.png)
 
 
-1. Let’s start with creating a new data definition `ZCE_RAP_AGENCY_####` using the template for a **Custom Entity**. 
+1. Let’s start with creating a new data definition `ZCE_RAP_AGENCY_8001` using the template for a **Custom Entity**. 
 
 2. The **New Data Defintion** dialogue opens
-   - Name: `ZCE_RAP_AGENCY_####`
+   - Name: `ZCE_RAP_AGENCY_8001`
    - Description: `Custom entity for agencies from ES5`
    
    Press **Next**
@@ -71,7 +71,7 @@ Follow the instructions below.
        
    ![New data definition 2](images/w5u3_01_04.png)
 
-5. Edit the source code of the **custom entity** `ZCE_RAP_AGENCY_####`  
+5. Edit the source code of the **custom entity** `ZCE_RAP_AGENCY_8001`  
 
    - Remove the statement <pre>with parameters parameter_name : parameter_type</pre>
 
@@ -79,7 +79,7 @@ Follow the instructions below.
 
 6. Now, open the **abstract entity** you created in unit 2 in the source code editor
 
-   - Navigate to the **abstract entity** `ZRAP_####Z_TRAVEL_AGENCY_ES5`  in the *Project Explorer*
+   - Navigate to the **abstract entity** `ZRAP_8001Z_TRAVEL_AGENCY_ES5`  in the *Project Explorer*
    - Double click on it to open the source code editor
    
      ![Open abtract entity](images/w5u3_01_06.png)
@@ -96,7 +96,7 @@ Follow the instructions below.
 
 8. Add the annotation @ObjectModel.Query.ImplementedBy to the DDL source code
 
-    <pre>@ObjectModel.query.implementedBy: 'ABAP:ZCL_CE_RAP_AGENCY_####'</pre>
+    <pre>@ObjectModel.query.implementedBy: 'ABAP:ZCL_CE_RAP_AGENCY_8001'</pre>
 
     This way we will reuse the class that we have created in unit 2.  
     
@@ -115,9 +115,9 @@ In this unit you have created a custom entity based on the abstract entity that 
 Find the source code for the custom entity that we have created in the week5/sources folder:
 [Sources](sources) or use the following link.
 
-- [W5U3_DDLS_zce_rap_agency_####.txt](/week5/sources/W5U3_DDLS_zce_rap_agency_%23%23%23%23.txt)
+- [W5U3_DDLS_zce_rap_agency_8001.txt](/week5/sources/W5U3_DDLS_zce_rap_agency_%23%23%23%23.txt)
 
-Do not forget to replace all the occurrences of #### with your chosen suffix in the copied source code.
+Do not forget to replace all the occurrences of 8001 with your chosen suffix in the copied source code.
 
 
 ## Next exercise

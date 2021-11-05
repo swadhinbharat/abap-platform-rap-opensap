@@ -1,7 +1,7 @@
 @EndUserText.label: 'Travel data'
-define service ZUI_RAP_Travel_U_#### {
-  expose ZC_RAP_Travel_U_#### as Travel;
-  expose ZC_RAP_Booking_U_#### as Booking;
+define service ZUI_RAP_Travel_U_8001 {
+  expose ZC_RAP_Travel_U_8001 as Travel;
+  expose ZC_RAP_Booking_U_8001 as Booking;
   expose /DMO/I_Customer as Passenger;
   expose /DMO/I_Agency as TravelAgency;
   expose /DMO/I_Carrier as Airline;

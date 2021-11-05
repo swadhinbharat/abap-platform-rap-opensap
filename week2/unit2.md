@@ -12,7 +12,7 @@ You can watch [week 2 unit 2: Creating the Database Tables](https://open.sap.com
 >
 > A great overview of ADT shortcuts can be found here: [Useful ADT Shortcuts](https://blogs.sap.com/2013/11/21/useful-keyboard-shortcuts-for-abap-in-eclipse/)
 >
-> Please note that the placeholder **`####`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
+> Please note that the placeholder **`8001`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
 > The screenshots in this document have been taken with the suffix `1234` and system `D20`. Your system id will be `TRL`.
 
 > Please note that the ADT dialogs and views may change in the future due to software updates.
@@ -20,16 +20,16 @@ You can watch [week 2 unit 2: Creating the Database Tables](https://open.sap.com
 Follow the instructions below.
 
 ## Step 1. Create the ABAP Package
-First create the new ABAP package **`ZRAP_TRAVEL_####`** (where `####` is your chosen suffix) to group the various development artefacts that you’re going to create during the greenfield implementation of our Travel App. It will be a sub-package of package **`ZRAP_####`** (where `####` is your chosen suffix) created in week 1 unit 6.  
+First create the new ABAP package **`ZRAP_TRAVEL_8001`** (where `8001` is your chosen suffix) to group the various development artefacts that you’re going to create during the greenfield implementation of our Travel App. It will be a sub-package of package **`ZRAP_8001`** (where `8001` is your chosen suffix) created in week 1 unit 6.  
   
-1. Go to the Project explorer, right-click on your package **`ZRAP_####`** (where `####` is your chosen suffix) you created in week 1 unit 6 and choose the context menu entry **_New > ABAP Package_**.  
+1. Go to the Project explorer, right-click on your package **`ZRAP_8001`** (where `8001` is your chosen suffix) you created in week 1 unit 6 and choose the context menu entry **_New > ABAP Package_**.  
    
     ![Create ABAP Package](images/w2u2_01_01.png)
   
-2. Maintain **`ZRAP_TRAVEL_####`** as name (where `####` is your chosen suffix) and a meaningful description (e.g. _**Greenfield Implementation - Travel List Report App**_) and choose **Next** to continue.  
+2. Maintain **`ZRAP_TRAVEL_8001`** as name (where `8001` is your chosen suffix) and a meaningful description (e.g. _**Greenfield Implementation - Travel List Report App**_) and choose **Next** to continue.  
 The Project and the Superpackage fields are automatically assigned.
 
-> Note: In some instances the Superpackage field is not automatically assigned. You then have to browse and search for the package or enter the name of the superpackage manually. It is the package **`ZRAP_####`** (where `####` is your chosen suffix) created in week 1 unit 6.  
+> Note: In some instances the Superpackage field is not automatically assigned. You then have to browse and search for the package or enter the name of the superpackage manually. It is the package **`ZRAP_8001`** (where `8001` is your chosen suffix) created in week 1 unit 6.  
    
 
    ![Create ABAP Package](images/w2u2_01_02.png)
@@ -53,9 +53,9 @@ The Project and the Superpackage fields are automatically assigned.
     
   
 ## Step 2. Create the Travel Database Table  
-You will now create the database table **`ZRAP_ATRAV_####`** (where `####` is your chosen suffix),  to store the travel data.  
+You will now create the database table **`ZRAP_ATRAV_8001`** (where `8001` is your chosen suffix),  to store the travel data.  
 A Travel entity defines general travel data, such as the agency ID or customer ID, the status of the travel booking, and the price of travel.   
-1. Right click on your package **`ZRAP_TRAVEL_####`**, choose **_New > Other ABAP Repository Object_** from the context menu.   
+1. Right click on your package **`ZRAP_TRAVEL_8001`**, choose **_New > Other ABAP Repository Object_** from the context menu.   
    
 
     ![Create Database Table](images/w2u2_02_01.png)
@@ -65,7 +65,7 @@ A Travel entity defines general travel data, such as the agency ID or customer I
 
     ![Create Database Table](images/w2u2_02_02.png)
 
-3. Maintain **`ZRAP_ATRAV_####`** as name and a meaningful description (e.g. _**Travel data**_) in the appearing dialog and choose **Next**.  
+3. Maintain **`ZRAP_ATRAV_8001`** as name and a meaningful description (e.g. _**Travel data**_) in the appearing dialog and choose **Next**.  
    
 
     ![Create Database Table](images/w2u2_02_03.png)
@@ -81,7 +81,7 @@ A Travel entity defines general travel data, such as the agency ID or customer I
 
     ![Create Database Table](images/w2u2_02_05.png)  
 
-5. Replace the default source code with the code snippet provided below and replace all occurrences of  `####` with your chosen suffix.  
+5. Replace the default source code with the code snippet provided below and replace all occurrences of  `8001` with your chosen suffix.  
     You can make use of the Replace All feature (**Ctrl+F**) in ADT for the purpose.   
   
     <pre>
@@ -90,7 +90,7 @@ A Travel entity defines general travel data, such as the agency ID or customer I
     @AbapCatalog.tableCategory : #TRANSPARENT
     @AbapCatalog.deliveryClass : #A
     @AbapCatalog.dataMaintenance : #RESTRICTED
-    define table zrap_atrav_#### {
+    define table zrap_atrav_8001 {
       key client            : mandt not null;
       key travel_uuid       : sysuuid_x16 not null;
       travel_id             : /dmo/travel_id;
@@ -98,9 +98,9 @@ A Travel entity defines general travel data, such as the agency ID or customer I
       customer_id           : /dmo/customer_id;
       begin_date            : /dmo/begin_date;
       end_date              : /dmo/end_date;
-      @Semantics.amount.currencyCode : 'zrap_atrav_####.currency_code'
+      @Semantics.amount.currencyCode : 'zrap_atrav_8001.currency_code'
       booking_fee           : /dmo/booking_fee;
-      @Semantics.amount.currencyCode : 'zrap_atrav_####.currency_code'
+      @Semantics.amount.currencyCode : 'zrap_atrav_8001.currency_code'
       total_price           : /dmo/total_price;
       currency_code         : /dmo/currency_code;
       description           : /dmo/description;
@@ -133,14 +133,14 @@ A Travel entity defines general travel data, such as the agency ID or customer I
     ![Create Database Table](images/w2u2_02_07.png)
 
 ## Step 3. Create the Booking Database Table
-You will now create the database table **`ZRAP_ABOOK_####`** (where `####` is your chosen suffix),  to store the booking data.   
+You will now create the database table **`ZRAP_ABOOK_8001`** (where `8001` is your chosen suffix),  to store the booking data.   
 A Booking entity comprises general flight and booking data, the customer ID for whom the flight is booked as well as the travel ID to which the booking belongs – and some admin fields.  
   
 1. Right click on the **Database Tables** folder, choose **New Database Table** from the context menu.  
 
     ![Create Database Table](images/w2u2_03_01.png)
   
-3. Maintain **`ZRAP_ABOOK_####`** as name and a meaningful description (e.g. _**Booking data**_) in the appearing dialog and choose **Next**. 
+3. Maintain **`ZRAP_ABOOK_8001`** as name and a meaningful description (e.g. _**Booking data**_) in the appearing dialog and choose **Next**. 
 
     ![Create Database Table](images/w2u2_03_02.png)
   
@@ -153,7 +153,7 @@ A Booking entity comprises general flight and booking data, the customer ID for 
 
     ![Create Database Table](images/w2u2_03_04.png)
   
-5. Replace the default source code with the code snippet provided below and replace all occurrences of  `####` with your chosen suffix.   
+5. Replace the default source code with the code snippet provided below and replace all occurrences of  `8001` with your chosen suffix.   
     You can make use of the Replace All feature (shortcut **Ctrl+F**) in ADT for the purpose.  
   
     <pre> 
@@ -162,7 +162,7 @@ A Booking entity comprises general flight and booking data, the customer ID for 
     @AbapCatalog.tableCategory : #TRANSPARENT
     @AbapCatalog.deliveryClass : #A
     @AbapCatalog.dataMaintenance : #RESTRICTED
-    define table zrap_abook_#### {
+    define table zrap_abook_8001 {
       key client            : mandt not null;
       key booking_uuid      : sysuuid_x16 not null;
       travel_uuid           : sysuuid_x16 not null;
@@ -172,7 +172,7 @@ A Booking entity comprises general flight and booking data, the customer ID for 
       carrier_id            : /dmo/carrier_id;
       connection_id         : /dmo/connection_id;
       flight_date           : /dmo/flight_date;
-      @Semantics.amount.currencyCode : 'zrap_abook_####.currency_code'
+      @Semantics.amount.currencyCode : 'zrap_abook_8001.currency_code'
       flight_price          : /dmo/flight_price;
       currency_code         : /dmo/currency_code;
       created_by            : syuname;
@@ -201,11 +201,11 @@ A Booking entity comprises general flight and booking data, the customer ID for 
 ## Step 4. Fill in the Database Tables with Demo Data
 You will now fill in the created travel and booking database tables with some demo data to ease the test. Demo data provided by the ABAP Flight Reference Scenario (main package: `/DMO/FLIGHT`) will be used for the purpose.   
   
-1. Right click on your package **_ZRAP_TRAVEL_####** and choose **_New > ABAP Class_** from the context menu.      
+1. Right click on your package **_ZRAP_TRAVEL_8001** and choose **_New > ABAP Class_** from the context menu.      
 
     ![Generate Demo Data](images/w2u2_04_01.png)
 
-2. Maintain **`ZCL_GENERATE_DEMO_DATA_####`** as name and a meaningful description (e.g. _**Generate Travel and Booking demo data**_) in the creation wizard for the new ABAP class.  
+2. Maintain **`ZCL_GENERATE_DEMO_DATA_8001`** as name and a meaningful description (e.g. _**Generate Travel and Booking demo data**_) in the creation wizard for the new ABAP class.  
     Add the ABAP interface **`IF_OO_ADT_CLASSRUN`** which needs to be implemented to write outputs to the ABAP Console and continue with **Next**.  
 
     ![Generate Demo Data](images/w2u2_04_02.png)
@@ -216,18 +216,18 @@ You will now fill in the created travel and booking database tables with some de
 
     The ABAP class is created and opened in the source-based class editor area, ready for you to implement.  
   
-4. Insert the implementation of method **`if_oo_adt_classrun~main`**  with the code snippet provided below (after **CLASS zcl_generate_demo_data_#### IMPLEMENTATION.** and before **ENDCLASS.**) as shown on the screenshot below, and replace all occurrences of  `####` with your chosen suffix.   
+4. Insert the implementation of method **`if_oo_adt_classrun~main`**  with the code snippet provided below (after **CLASS zcl_generate_demo_data_8001 IMPLEMENTATION.** and before **ENDCLASS.**) as shown on the screenshot below, and replace all occurrences of  `8001` with your chosen suffix.   
 You can make use of the Replace All feature (**Ctrl+F**) in ADT for the purpose.  
   
     <pre> 
     METHOD if_oo_adt_classrun~main.
 
     " delete existing entries in the database table
-    DELETE FROM zrap_atrav_####.
-    DELETE FROM zrap_abook_####.
+    DELETE FROM zrap_atrav_8001.
+    DELETE FROM zrap_abook_8001.
 
     " insert travel demo data
-    INSERT zrap_atrav_#### FROM (
+    INSERT zrap_atrav_8001 FROM (
         SELECT
           FROM /dmo/travel
           FIELDS
@@ -256,10 +256,10 @@ You can make use of the Replace All feature (**Ctrl+F**) in ADT for the purpose.
     COMMIT WORK.
 
     " insert booking demo data
-    INSERT zrap_abook_#### FROM (
+    INSERT zrap_abook_8001 FROM (
         SELECT
           FROM   /dmo/booking    AS booking
-            JOIN zrap_atrav_#### AS z
+            JOIN zrap_atrav_8001 AS z
             ON   booking~travel_id = z~travel_id
           FIELDS
             uuid( )                 AS booking_uuid          ,
@@ -286,7 +286,7 @@ You can make use of the Replace All feature (**Ctrl+F**) in ADT for the purpose.
 
     **Short explanations:**  
     - First, any existing entries in both database tables are deleted.  
-    - Then the data is selected from the tables `/DMO/TRAVEL` and `/DMO/BOOKING` and inserted into your tables `ZRAP_ATRAV_####` and `ZRAP_ABOOK_####` respectively.  
+    - Then the data is selected from the tables `/DMO/TRAVEL` and `/DMO/BOOKING` and inserted into your tables `ZRAP_ATRAV_8001` and `ZRAP_ABOOK_8001` respectively.  
     - The SQL function `UUID( )` is used to set the value of the key fields `TRAVEL_UUID` and `BOOKING_UUID`.   
     - The `COMMIT WORK` statement is then executed to persist the data. The data selection has been limited to up to 200 travel records, but you can change this if desired.  
     - A success message is written to the Console at the end.  
@@ -298,7 +298,7 @@ You can make use of the Replace All feature (**Ctrl+F**) in ADT for the purpose.
     ![Generate Demo Data](images/w2u2_04_05.png)
   
 7. Now you can preview the data from the Travel and Booking database tables.  
-    Choose the relevant database table (`ZRAP_ATRAV_####` or `ZRAP_ABOOK_####` where #### is your chosen suffix) in the Project Explorer and press **F8**.  
+    Choose the relevant database table (`ZRAP_ATRAV_8001` or `ZRAP_ABOOK_8001` where 8001 is your chosen suffix) in the Project Explorer and press **F8**.  
         
     The Data Preview will open in the editor area.  
     You can play around with the data preview - e.g. choose the **Number of Entries** or **SQL Console**, or filter the entries with **Add filter**.
@@ -311,11 +311,11 @@ In this unit, you have learned how to use the ABAP Development Tools (ADT) to cr
 
 ## Solution
 Find the source code for the created database tables and class in the **[/week2/sources](/week2/sources)** folder:
-- [W2U2_TABL_ZRAP_ATRAV_####](/week2/sources/W2U2_TABL_ZRAP_ATRAV.txt) 
--	[W2U2_TABL_ZRAP_ABOOK_####](/week2/sources/W2U2_TABL_ZRAP_ABOOK.txt) 
-- [W2U2_CLAS_ZCL_GENERATE_DEMO_DATA_####](/week2/sources/W2U2_CLAS_ZCL_GENERATE_DEMO_DATA.txt) 
+- [W2U2_TABL_ZRAP_ATRAV_8001](/week2/sources/W2U2_TABL_ZRAP_ATRAV.txt) 
+-	[W2U2_TABL_ZRAP_ABOOK_8001](/week2/sources/W2U2_TABL_ZRAP_ABOOK.txt) 
+- [W2U2_CLAS_ZCL_GENERATE_DEMO_DATA_8001](/week2/sources/W2U2_CLAS_ZCL_GENERATE_DEMO_DATA.txt) 
       
-Do not forget to replace all the occurrences of `####` with your chosen suffix in the copied source code.
+Do not forget to replace all the occurrences of `8001` with your chosen suffix in the copied source code.
     
 ## Next exercise
 [Week 2 Unit 3: Creating the Core Data Services (CDS) Data Model](unit3.md)

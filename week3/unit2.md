@@ -14,7 +14,7 @@ You can watch [week 3 unit 2: Defining the Basic Business Object Behavior]( http
 >
 > A great overview of ADT shortcuts can be found here: [Useful ADT Shortcuts](https://blogs.sap.com/2013/11/21/useful-keyboard-shortcuts-for-abap-in-eclipse/)
 >
-> Please note that the placeholder **`####`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
+> Please note that the placeholder **`8001`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
 > The screenshots in this document have been taken with the suffix `1234` and system `D20`. Your system id will be `TRL`.
 
 > Please note that the ADT dialogs and views may change in the future due to software updates.
@@ -22,9 +22,9 @@ You can watch [week 3 unit 2: Defining the Basic Business Object Behavior]( http
 Follow the instructions below.
 
 ## Step 1. Create the Behavior Definition
-Behavior definitions for the BO entities of given composition model are created for the root CDS view and define the behavior for all contained entities. Therefore, you will create the behavior definition for the Travel BO view  **`ZI_RAP_TRAVEL_####`** (where **`####`** is your chosen suffix).
+Behavior definitions for the BO entities of given composition model are created for the root CDS view and define the behavior for all contained entities. Therefore, you will create the behavior definition for the Travel BO view  **`ZI_RAP_TRAVEL_8001`** (where **`8001`** is your chosen suffix).
 
-1.	Right-click on the CDS view  **`ZI_RAP_TRAVEL_####`** in the Project Explorer and choose **New Behavior Definition**.
+1.	Right-click on the CDS view  **`ZI_RAP_TRAVEL_8001`** in the Project Explorer and choose **New Behavior Definition**.
  
        ![Create Behavior Definition](images/w3u2_01_01.png)
 
@@ -40,7 +40,7 @@ Behavior definitions for the BO entities of given composition model are created 
     ![Create Behavior Definition](images/w3u2_01_03.png)
     
         
-    A skeleton for the behavior definition for all entities – i.e. the Travel entity **`ZI_RAP_Travel_####`** and the Booking entity **`ZI_RAP_Booking_####`**  in the present scenario – is generated based on the chosen implementation type and displayed in the appropriate editor.   
+    A skeleton for the behavior definition for all entities – i.e. the Travel entity **`ZI_RAP_Travel_8001`** and the Booking entity **`ZI_RAP_Booking_8001`**  in the present scenario – is generated based on the chosen implementation type and displayed in the appropriate editor.   
 
     ![Create Behavior Definition](images/w3u2_01_04.png)
     
@@ -53,15 +53,15 @@ Behavior definitions for the BO entities of given composition model are created 
     You will adjust the behavior definition in the next steps.
 
 ## Step 2. Adjust the Behavior Definition of the Travel Entity
-First adjust the behavior definition for the Travel entity **`ZI_RAP_Travel_####`**
+First adjust the behavior definition for the Travel entity **`ZI_RAP_Travel_8001`**
 1.	Maintain **`Travel`** as alias in the **`define behavior for`** statement.      
     The alias will be used to easily access the entity via ABAP code.  
 
     <pre> alias Travel </pre>
     
-2.	Specify the travel database table **`ZRAP_ATRAV_####`** as persistency by uncommenting the comment line **`persistent table <???>`** and enhancing it as follows:
+2.	Specify the travel database table **`ZRAP_ATRAV_8001`** as persistency by uncommenting the comment line **`persistent table <???>`** and enhancing it as follows:
 
-    <pre> persistent table zrap_atrav_#### </pre>
+    <pre> persistent table zrap_atrav_8001 </pre>
 
 3.	Enable the lock handling for the Travel entity which is the root node of the composition.  
     >**Please note:** The lock is handled generically by the RAP framework in the managed scenario.  
@@ -86,7 +86,7 @@ First adjust the behavior definition for the Travel entity **`ZI_RAP_Travel_####
     Add the code snippet below to the behavior definition of the travel entity as shown on the screenshot below (_see recap_).    
     
     <pre>
-      mapping for zrap_atrav_####
+      mapping for zrap_atrav_8001
       {
         TravelUUID         = travel_uuid;
         TravelID           = travel_id;
@@ -114,8 +114,8 @@ First adjust the behavior definition for the Travel entity **`ZI_RAP_Travel_####
        ![Adjust Behavior Definition](images/w3u2_02_01.png)
 
     <pre>
-    define behavior for ZI_RAP_Travel_#### alias Travel
-    persistent table zrap_atrav_####
+    define behavior for ZI_RAP_Travel_8001 alias Travel
+    persistent table zrap_atrav_8001
     lock master
     //authorization master ( instance )
     etag master LocalLastChangedAt
@@ -127,7 +127,7 @@ First adjust the behavior definition for the Travel entity **`ZI_RAP_Travel_####
 
       field ( numbering : managed, readonly ) TravelUUID;
 
-      mapping for zrap_atrav_####
+      mapping for zrap_atrav_8001
       {
         TravelUUID         = travel_uuid;
         TravelID           = travel_id;
@@ -152,15 +152,15 @@ First adjust the behavior definition for the Travel entity **`ZI_RAP_Travel_####
 8.	Save but **DO NOT** yet activate the changes.  
     
 ## Step 3. Adjust the Behavior Definition of the Booking Entity  
-Now, adjust the behavior definition for the Booking entity **`ZI_RAP_Booking_####`**.  
+Now, adjust the behavior definition for the Booking entity **`ZI_RAP_Booking_8001`**.  
 
 1.	Maintain **`Booking`** as alias in the **`define behavior for`** statement.  
     The alias will be used to easily access the entity via ABAP code.   
     
     <pre> alias Booking </pre>
     
-2.	Specify the booking database table **`ZRAP_ABOOK_####`** as persistency by uncommenting the comment line **`persistent table <???>`** and enhancing it as follows:  
-    <pre> persistent table zrap_abook_#### </pre>
+2.	Specify the booking database table **`ZRAP_ABOOK_8001`** as persistency by uncommenting the comment line **`persistent table <???>`** and enhancing it as follows:  
+    <pre> persistent table zrap_abook_8001 </pre>
 
 3.	Enable the lock handling for the Booking entity which is a child node in the composition model – Travel being the lock master as the root entity. For this reason, the booking entity is lock dependent and makes use of the **`_Travel`** association defined in the appropriate CDS view.  
     For that, uncomment  the statement line **` lock dependent by`** and replace the entry **`<association>`** with **`_Travel`**.  
@@ -198,7 +198,7 @@ Now, adjust the behavior definition for the Booking entity **`ZI_RAP_Booking_###
     Add the code snippet below to the behavior definition of the booking entity as shown on the screenshot below (_see recap_).  
 
     <pre>
-      mapping for zrap_abook_####
+      mapping for zrap_abook_8001
       {
         BookingUUID        = booking_uuid;
         TravelUUID         = travel_uuid;
@@ -222,8 +222,8 @@ Now, adjust the behavior definition for the Booking entity **`ZI_RAP_Booking_###
     ![Adjust Behavior Definition](images/w3u2_03_01.png)
 
     <pre>
-    define behavior for ZI_RAP_Booking_#### alias Booking
-    persistent table zrap_abook_####
+    define behavior for ZI_RAP_Booking_8001 alias Booking
+    persistent table zrap_abook_8001
     lock dependent by _Travel
     //authorization dependent by <association>
     etag master LocalLastChangedAt
@@ -236,7 +236,7 @@ Now, adjust the behavior definition for the Booking entity **`ZI_RAP_Booking_###
       field ( numbering : managed, readonly ) BookingUUID;
       field ( readonly ) TravelUUID;
 
-      mapping for zrap_abook_####
+      mapping for zrap_abook_8001
       {
         BookingUUID        = booking_uuid;
         TravelUUID         = travel_uuid;
@@ -260,7 +260,7 @@ Now, adjust the behavior definition for the Booking entity **`ZI_RAP_Booking_###
 
 ## Step 4. Preview the Travel App
 Now, you can check the impact of this changes to your app.  
-1.	Open your service binding **`ZUI_RAP_TRAVEL_O2_####`** (where `####` is your chosen suffix).  
+1.	Open your service binding **`ZUI_RAP_TRAVEL_O2_8001`** (where `8001` is your chosen suffix).  
     You can use the ADT shortcut **Ctrl+Shift+A** to open a development object.
 
 2.	Start your application by choosing the **`Travel`** node in _**Entities Set and Association**_ area and right-click on it and choose _**Open Fiori elements App preview**_ from the context menu or simply double-click on it – or choose the **Preview** button.  
@@ -283,9 +283,9 @@ In this unit, you have learned how to
 
 ## Solution
 Find the source code of the created CDS behavior definition **[sources](/week3/sources)** folder:
-   - [W3U2_BDEF_ZI_RAP_TRAVEL_####](/week3/sources/W3U2_BDEF_ZRAP_I_TRAVEL_.txt)    
+   - [W3U2_BDEF_ZI_RAP_TRAVEL_8001](/week3/sources/W3U2_BDEF_ZRAP_I_TRAVEL_.txt)    
     
-Do not forget to replace all the occurrences of `####` with your chosen suffix in the copied source code.
+Do not forget to replace all the occurrences of `8001` with your chosen suffix in the copied source code.
  
 ## Next exercise
 [Week 3 Unit 3: Creating the Business Object Behavior Projection](unit3.md)

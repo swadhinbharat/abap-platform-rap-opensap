@@ -1,6 +1,6 @@
 projection;
 
-define behavior for ZC_RAP_Travel_#### alias Travel
+define behavior for ZC_RAP_Travel_8001 alias Travel
 use etag
 {
   use create;
@@ -13,7 +13,7 @@ use etag
   use action rejectTravel;
 }
 
-define behavior for ZC_RAP_Booking_#### alias Booking
+define behavior for ZC_RAP_Booking_8001 alias Booking
 use etag
 {
   use update;

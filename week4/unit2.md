@@ -11,7 +11,7 @@ You can watch [unit 2 of week 4: Creating the Core Data Services (CDS) Data Mode
 >
 > A great overview on ADT shortcuts can be found here: [Useful ADT Shortcuts](https://blogs.sap.com/2013/11/21/useful-keyboard-shortcuts-for-abap-in-eclipse/)
 >
-> Please note that the placeholder **`####`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
+> Please note that the placeholder **`8001`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
 > The screenshots in this document have been taken with the suffix `1234` and system `D20`. Your system id will be `TRL`.
 
 > Please note that the ADT dialogs and views may change in the future due to software updates - i.e. new and/or optimized feature
@@ -19,16 +19,16 @@ You can watch [unit 2 of week 4: Creating the Core Data Services (CDS) Data Mode
 Follow the instructions below.
 
 ## Step 1. Create the package
-First create a new package to group the various development artefacts that you’re going to create during the brownfield implementation of our Travel App. It will be a sub-package of package **`ZRAP_####`** (where `####` is your chosen suffix) created in week 1 unit 6.  
+First create a new package to group the various development artefacts that you’re going to create during the brownfield implementation of our Travel App. It will be a sub-package of package **`ZRAP_8001`** (where `8001` is your chosen suffix) created in week 1 unit 6.  
   
-1. Go to the Project explorer, right-click on your package **`ZRAP_####`** (where `####` is your chosen suffix) you created in week 1 unit 6 and choose the context menu entry **_New > ABAP Package_**.  
+1. Go to the Project explorer, right-click on your package **`ZRAP_8001`** (where `8001` is your chosen suffix) you created in week 1 unit 6 and choose the context menu entry **_New > ABAP Package_**.  
    
     ![Create ABAP Package](images/w4u2_01_01.png)
   
-2. Maintain **`ZRAP_TRAVEL_U_####`** as name (where `####` is your chosen suffix and where `_U` indicates that this is an unmanged scenario) and a meaningful description (e.g. Brownfield Implementation - Travel List Report App) and choose **Next** to continue.  
+2. Maintain **`ZRAP_TRAVEL_U_8001`** as name (where `8001` is your chosen suffix and where `_U` indicates that this is an unmanged scenario) and a meaningful description (e.g. Brownfield Implementation - Travel List Report App) and choose **Next** to continue.  
 The Project and the Superpackage fields are automatically assigned.
 
->Note: In some instances the Superpackage field is not automatically assigned. You then have to browse and search for the package or enter the name of the superpackage manually. It is the package ZRAP_#### (where #### is your chosen suffix) created in week 1 unit 6.
+>Note: In some instances the Superpackage field is not automatically assigned. You then have to browse and search for the package or enter the name of the superpackage manually. It is the package ZRAP_8001 (where 8001 is your chosen suffix) created in week 1 unit 6.
    
 
    ![Create ABAP Package](images/w4u2_01_02.png)
@@ -63,7 +63,7 @@ The Project and the Superpackage fields are automatically assigned.
 
 ## Step 3: Create root view entity – Travel
 
-Let’s start with the creation of our root interface view for the travel data. We will use the package **`ZRAP_TRAVEL_U_####`** that you have created beforehand.
+Let’s start with the creation of our root interface view for the travel data. We will use the package **`ZRAP_TRAVEL_U_8001`** that you have created beforehand.
 
 For creating a data definition of a CDS view there is a new wizard available that allows you to create a new data definition from within the context menu of a table or a CDS view. In order to leverage this new wizard, do the following:
 
@@ -77,15 +77,15 @@ For creating a data definition of a CDS view there is a new wizard available tha
 
 3. This will launch the new wizard in ADT that lets you conveniently create a CDS view based on a table or another CDS view. Here you should enter the following values
 
-* Package Name: 	**`ZRAP_TRAVEL_U_####`**
-* Name: 			**`ZI_RAP_TRAVEL_U_####`**
+* Package Name: 	**`ZRAP_TRAVEL_U_8001`**
+* Name: 			**`ZI_RAP_TRAVEL_U_8001`**
 * Description:	    **`Travel data`**
 
 The name of the referenced object will be **`/DMO/Travel`**. Press **Next**.
 
 > **Hint:**
 
-> When you are editing the name of the CDS view you will get the error message **Package and object must have the same namespace.** . This error message will vanish once you have replaced the package name **/DMO/FLIGHT_LEGACY** with the name of your package **ZRAP_TRAVEL_U_####**.
+> When you are editing the name of the CDS view you will get the error message **Package and object must have the same namespace.** . This error message will vanish once you have replaced the package name **/DMO/FLIGHT_LEGACY** with the name of your package **ZRAP_TRAVEL_U_8001**.
 
 ![New Data Definition_2](images/w4u2_03_03.png)
 
@@ -103,7 +103,7 @@ The name of the referenced object will be **`/DMO/Travel`**. Press **Next**.
 
 > Since you have created a (public) interface view, it is prefixed with **`<namespace>I_`** in accordance with the VDM (virtual data  model) naming convention used in SAP S/4 HANA. 
 > In addition, we add the suffix **`_U`** to the view name to indicate that it is specific for our unmanaged implementation type scenario. This way we also avoid name clashes with the repository objects that have been created for our managed scenario in week 2 and 3.
-> Together with your four-digit group number **`####`** that is used as an additional suffix, your root entity will get the following name **`ZI_RAP_TRAVEL_U_####`**
+> Together with your four-digit group number **`8001`** that is used as an additional suffix, your root entity will get the following name **`ZI_RAP_TRAVEL_U_8001`**
 
 > **Please note:**
 > In SAP S/4 HANA 1909 you must choose the template **`Define View`** (instead of  **`Define View Entity`**) since view entities are only  supported in SAP S/4HANA as of the release 2020.
@@ -115,7 +115,7 @@ The name of the referenced object will be **`/DMO/Travel`**. Press **Next**.
   We start editing the template by first adding the **`root`** key word.
 
 <pre>
-define <b>root</b> view entity ZI_RAP_Travel_U_#### as select from /DMO/TRAVEL {
+define <b>root</b> view entity ZI_RAP_Travel_U_8001 as select from /DMO/TRAVEL {
     ///DMO/TRAVEL
     key travel_id,
 ....
@@ -140,7 +140,7 @@ association [0..1] to I_Currency      as _Currency on $projection.CurrencyCode =
   </pre>
 
 7. To speed up the development we have prepared a code snippet for the DDL source code of the root and the child entity for you. This source code template also contains certain annotations. 
-Replace the code of the travel data definition in the editor with the code snippet provided below and replace all occurrences of  `####` with your chosen suffix. 
+Replace the code of the travel data definition in the editor with the code snippet provided below and replace all occurrences of  `8001` with your chosen suffix. 
 
    You can make use of the Replace All feature (**Ctrl+F**) in ADT for the purpose.  
 
@@ -149,7 +149,7 @@ Replace the code of the travel data definition in the editor with the code snipp
 <pre>
 @EndUserText.label: 'Travel data'
 
-define root view entity ZI_RAP_Travel_U_####
+define root view entity ZI_RAP_Travel_U_8001
   as select from /dmo/travel as Travel
 
   association [0..1] to /DMO/I_Agency         as _Agency   on $projection.AgencyID = _Agency.AgencyID
@@ -218,8 +218,8 @@ As done before with the travel database table we will create a view entity for t
 
 2. This will launch the new wizard in ADT that lets you conveniently create a CDS view based on a table or another CDS view. Here you should enter the following values
 
-  - Package Name: 	**`ZRAP_TRAVEL_U_####`**
-  - Name: 			**`ZI_RAP_BOOKING_U_####`**
+  - Package Name: 	**`ZRAP_TRAVEL_U_8001`**
+  - Name: 			**`ZI_RAP_BOOKING_U_8001`**
   - Description:	    **`Booking data`**
 
   The name of the referenced object will be **`/DMO/Booking`**. Press **Next**.
@@ -232,7 +232,7 @@ As done before with the travel database table we will create a view entity for t
 > - The prefix **`RAP_`** we just use for this course  
 > - **`Booking`** is the name of the entity 
 > - The suffix **`_U`** indicates that we are using an unmanaged implementation 
-> - The suffix **`_####`** we just use for this course to indicate your group number. 
+> - The suffix **`_8001`** we just use for this course to indicate your group number. 
 
 4. Select an existing transport request or create a new one and then choose **Next**.  
 
@@ -263,7 +263,7 @@ We start to edit the template by adding the following associations
   Then we edit the DDL source code between the curly brackets so that all fields get nice aliases and the field flight_price gets in addition  the annotation **`@Semantics.amount.currencyCode: 'CurrencyCode'`** that points to the field **`CurrencyCode`** that contains the currency code information.
 
 7. To speed up the development we have prepared a code snippet for the DDL source code of the child entity for you. This source code template also contains certain annotations. 
-Replace the code of the travel data definition in the editor with the code snippet provided below and replace all occurrences of  `####` with your chosen suffix. 
+Replace the code of the travel data definition in the editor with the code snippet provided below and replace all occurrences of  `8001` with your chosen suffix. 
 
    You can make use of the Replace All feature (**Ctrl+F**) in ADT for the purpose.  
 
@@ -273,7 +273,7 @@ Replace the code of the travel data definition in the editor with the code snipp
 @EndUserText.label: 'Booking data'
 @Metadata.ignorePropagatedAnnotations: true
 
-define view entity ZI_RAP_Booking_U_####
+define view entity ZI_RAP_Booking_U_8001
   as select from /dmo/booking
   
  
@@ -328,7 +328,7 @@ After we have successfully activated both CDS interface views we will add the co
 In the Travel CDS interface view we add a one-to-many [0..] cardinality since there can be many bookings for one travel entity.
 
 <pre>
-  <b>composition [0..*] of ZI_RAP_Booking_U_####  as _Booking</b>
+  <b>composition [0..*] of ZI_RAP_Booking_U_8001  as _Booking</b>
   association [0..1] to /DMO/I_Agency         as _Agency   on $projection.AgencyID = _Agency.AgencyID
   association [0..1] to /DMO/I_Customer       as _Customer on $projection.CustomerID = _Customer.CustomerID
   association [0..1] to I_Currency            as _Currency on $projection.CurrencyCode = _Currency.Currency
@@ -349,7 +349,7 @@ This new associations must also be published by adding them to the field list
 In the Booking CDS interface view we add an association that points back to the parent entity.
 
 <pre>
-  <b>association        to parent ZI_RAP_Travel_U_#### as _Travel     on  $projection.TravelID = _Travel.TravelID</b>
+  <b>association        to parent ZI_RAP_Travel_U_8001 as _Travel     on  $projection.TravelID = _Travel.TravelID</b>
   association [1..1] to /DMO/I_Carrier    as _Carrier    on  $projection.CarrierID = _Carrier.AirlineID
   association [1..1] to /DMO/I_Customer   as _Customer   on  $projection.CustomerID = _Customer.CustomerID
   association [1..1] to /DMO/I_Connection as _Connection on  $projection.CarrierID    = _Connection.AirlineID
@@ -379,7 +379,7 @@ The DDL source code should now look like as follows:
 
 ![Data Preview](images/w4u2_07_02.png)
 
-You will notice error messages such as Child entity *ZI_RAP_Booking_U_#### does not have a to-parent association with ZI_RAP_Travel_U_####* and *The passed entity ZI_RAP_Travel_U_#### does not have a composition definition for ZI_RAP_Booking_U_####*
+You will notice error messages such as Child entity *ZI_RAP_Booking_U_8001 does not have a to-parent association with ZI_RAP_Travel_U_8001* and *The passed entity ZI_RAP_Travel_U_8001 does not have a composition definition for ZI_RAP_Booking_U_8001*
 
 You **must** now select **both CDS views** in the project Explorer and select **Activate**.
 
@@ -395,10 +395,10 @@ In this unit, you have learned
 ## Solution
 Find the source code of the created CDS data definitions in the **[/sources/](/week4/sources)** folder:
 
--	[W4U2_DDLS_ZI_RAP_Travel_U_####.txt](/week4/sources/W4U2_DDLS_ZI_RAP_Travel_U_%23%23%23%23.txt)
-- [W4U2_DDLS_ZI_RAP_Booking_U_####.txt](/week4/sources/W4U2_DDLS_ZI_RAP_Booking_U_%23%23%23%23.txt)
+-	[W4U2_DDLS_ZI_RAP_Travel_U_8001.txt](/week4/sources/W4U2_DDLS_ZI_RAP_Travel_U_%23%23%23%23.txt)
+- [W4U2_DDLS_ZI_RAP_Booking_U_8001.txt](/week4/sources/W4U2_DDLS_ZI_RAP_Booking_U_%23%23%23%23.txt)
       
-Do not forget to replace all the occurrences of `####` with your chosen suffix in the copied source code.
+Do not forget to replace all the occurrences of `8001` with your chosen suffix in the copied source code.
        
 ## Next exercise
 [Week 4 Unit 3: Defining and Implementing the Business Object Behavior](unit3.md)

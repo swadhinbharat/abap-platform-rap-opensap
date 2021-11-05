@@ -1,4 +1,4 @@
-CLASS zcl_generate_week4_#### DEFINITION
+CLASS zcl_generate_week4_8001 DEFINITION
     PUBLIC
   INHERITING FROM cl_xco_cp_adt_simple_classrun
   FINAL
@@ -15,8 +15,8 @@ CLASS zcl_generate_week4_#### DEFINITION
 
     METHODS get_json_string RETURNING VALUE(json_string) TYPE string.
 
-    DATA package_name  TYPE sxco_package VALUE  'ZRAP_TRAVEL_####'.
-    DATA unique_number TYPE string VALUE '####'.
+    DATA package_name  TYPE sxco_package VALUE  'ZRAP_TRAVEL_8001'.
+    DATA unique_number TYPE string VALUE '8001'.
     DATA dev_system_environment TYPE REF TO if_xco_cp_gen_env_dev_system.
     DATA transport TYPE    sxco_transport .
 
@@ -33,7 +33,7 @@ CLASS zcl_generate_week4_#### DEFINITION
 
 
 
-CLASS zcl_generate_week4_#### IMPLEMENTATION.
+CLASS zcl_generate_week4_8001 IMPLEMENTATION.
 
   METHOD main.
 

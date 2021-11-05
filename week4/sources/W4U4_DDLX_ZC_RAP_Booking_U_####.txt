@@ -10,7 +10,7 @@
     }
   }
 }
-annotate view ZC_RAP_Booking_U_#### with
+annotate view ZC_RAP_Booking_U_8001 with
 {
   @UI.facet: [ { id:            'Booking',
                  purpose:       #STANDARD,

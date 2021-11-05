@@ -16,7 +16,7 @@ Based on the service definition a service binding will be created that binds our
 >
 > A great overview on ADT shortcuts can be found here: [Useful ADT Shortcuts](https://blogs.sap.com/2013/11/21/useful-keyboard-shortcuts-for-abap-in-eclipse/)
 >
-> Please note that the placeholder **`####`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
+> Please note that the placeholder **`8001`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
 > The screenshots in this document have been taken with the suffix `1234` and system `D20`. Your system id will be `TRL`.
 
 > Please note that the ADT dialogs and views may change in the future due to software updates - i.e. new and/or optimized feature
@@ -25,7 +25,7 @@ Follow the instructions below.
 
 ## Step 1. Create a service definition
 
-1. Right click on the projection view for travel data `ZC_RAP_TRAVEL_U_####` and select **New Service Definition**
+1. Right click on the projection view for travel data `ZC_RAP_TRAVEL_U_8001` and select **New Service Definition**
 
 
   ![Create service definition](images/w4u5_01_01.png)
@@ -33,14 +33,14 @@ Follow the instructions below.
 
 2. Enter the following data
 
-   - Name: `ZUI_RAP_Travel_U_####`
+   - Name: `ZUI_RAP_Travel_U_8001`
    - Description: `Travel data`
    
    and press **Next**
    
 > The abbreviation `UI` shall denote that this service definition is used for UI based consumption. For a Web API we would have used **API** instead of **UI**. 
 > Please note that it is also possible to add the OData protocol version to the name of the service definition and the service binding. The name of the service definition 
-> would than read `ZUI_RAP_Travel_U_####_O2`.
+> would than read `ZUI_RAP_Travel_U_8001_O2`.
 
    ![Create root projection view](images/w4u5_01_02.png)
 
@@ -58,13 +58,13 @@ Follow the instructions below.
    ![Create root projection view](images/w4u5_01_04.png)
    
 5. As discussed we add - in addition to the CDS views that are part of the composition tree - all CDS views that are used as value helps in our service.
-   The code of your service definition `ZUI_RAP_Travel_U_####` should now look like follows:
+   The code of your service definition `ZUI_RAP_Travel_U_8001` should now look like follows:
 
 <pre>
 @EndUserText.label: 'Travel data'
-define service ZUI_RAP_Travel_U_#### {
-  expose ZC_RAP_Travel_U_#### as Travel;
-  expose ZC_RAP_Booking_U_#### as Booking;
+define service ZUI_RAP_Travel_U_8001 {
+  expose ZC_RAP_Travel_U_8001 as Travel;
+  expose ZC_RAP_Booking_U_8001 as Booking;
   expose /DMO/I_Customer as Passenger;
   expose /DMO/I_Agency as TravelAgency;
   expose /DMO/I_Carrier as Airline;
@@ -79,13 +79,13 @@ define service ZUI_RAP_Travel_U_#### {
 
 ## Step 2. Create Service Binding
 
-1. We right click on the service definition `ZUI_RAP_Travel_U_####` an choose **New Service Binding**.
+1. We right click on the service definition `ZUI_RAP_Travel_U_8001` an choose **New Service Binding**.
 
    ![Create root projection view](images/w4u5_02_01.png)
    
 2. In the *New Service Binding* dialogue we enter the following values
    
-   - Name: `ZUI_RAP_TRAVEL_U_O2_####`
+   - Name: `ZUI_RAP_TRAVEL_U_O2_8001`
    - Description: `Travel`
    
    Leave the Binding Type `OData V2 - UI` unchanged.
@@ -146,7 +146,7 @@ In this unit we have the service binding and have published our service by creat
 ## Solution
 Find the source code of the created entities in the **[sources](/week4/sources)** folder.      
     
-Do not forget to replace all the occurrences of `####` with your chosen suffix in the copied source code.  
+Do not forget to replace all the occurrences of `8001` with your chosen suffix in the copied source code.  
 
 ## Next exercise
 [Week 5: Service consumption and Web APIs](/week5/README.md)

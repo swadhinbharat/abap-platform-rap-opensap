@@ -20,7 +20,7 @@ You can watch [unit 2 of week 5: Creating the Service Consumption Model](https:/
 >
 > A great overview on ADT shortcuts can be found here: [Useful ADT Shortcuts](https://blogs.sap.com/2013/11/21/useful-keyboard-shortcuts-for-abap-in-eclipse/)
 >
-> Please note that the placeholder **`####`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
+> Please note that the placeholder **`8001`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
 > The screenshots in this document have been taken with the suffix `1234` and system `D20`. Your system id will be `TRL`.
 
 > Please note that the ADT dialogs and views may change in the future due to software updates - i.e. new and/or optimized feature
@@ -28,13 +28,13 @@ You can watch [unit 2 of week 5: Creating the Service Consumption Model](https:/
 Follow the instructions below.
 
 ## Step 1. Create the package
-First create a new package to group the various development artefacts that you’re going to create to extend our managed Travel App. It will be a sub-package of package **`ZRAP_####`** (where `####` is your chosen suffix) created in week 1 unit 6.  
+First create a new package to group the various development artefacts that you’re going to create to extend our managed Travel App. It will be a sub-package of package **`ZRAP_8001`** (where `8001` is your chosen suffix) created in week 1 unit 6.  
   
-1. Go to the Project explorer, right-click on your package **`ZRAP_####`** (where `####` is your chosen suffix) you created in week 1 unit 6 and choose the context menu entry **_New > ABAP Package_**.  
+1. Go to the Project explorer, right-click on your package **`ZRAP_8001`** (where `8001` is your chosen suffix) you created in week 1 unit 6 and choose the context menu entry **_New > ABAP Package_**.  
    
     ![Create ABAP Package](images/w5u2_01_01.png)
   
-2. Maintain **`ZRAP_TRAVEL_E_####`** as name (where `####` is your chosen suffix and where `_E` indicates that this is an extension scenario) and a meaningful description (e.g. Extension scenario - Travel List Report App) and choose **Next** to continue.  
+2. Maintain **`ZRAP_TRAVEL_E_8001`** as name (where `8001` is your chosen suffix and where `_E` indicates that this is an extension scenario) and a meaningful description (e.g. Extension scenario - Travel List Report App) and choose **Next** to continue.  
 The Project and the Superpackage fields are automatically assigned.
    
 
@@ -77,7 +77,7 @@ Using these objects you will be able to write ABAP code that lets you consume re
  
 We start by creating a service consumption model for an OData service that provides a list of travel agencies. This service resides on the public SAP Gateway System ES5 and does not require any authentication.  
 
-1. Switch to ADT and right click on your package **ZRAP_TRAVEL_E_####**.  Select **New > Other ABAP Repository Object**.
+1. Switch to ADT and right click on your package **ZRAP_TRAVEL_E_8001**.  Select **New > Other ABAP Repository Object**.
 
     ![New ABAP Repository Object 1](images/w5u2_03_01.png)
 
@@ -93,7 +93,7 @@ We start by creating a service consumption model for an OData service that provi
     
 4. The **New Service Consumption Model** dialogue opens. Here enter the following data:
 
-    - Name: **`ZSC_RAP_AGENCY_#### `**
+    - Name: **`ZSC_RAP_AGENCY_8001 `**
     - Description: **`Agencies from ES5`**
     - Remote Consumption Model: **`OData`** (to be selected from the drop down box)
         
@@ -109,7 +109,7 @@ We start by creating a service consumption model for an OData service that provi
 5. The $metadata file of the OData service that we want to consume must be uploaded in file format. If you have not yet downloaded the $metadata file you have to do this now.
 
     - Click **Browse** to select the $metadata file that you have downloaded earlier in this exercise
-    - Prefix: Enter **`RAP_####`**
+    - Prefix: Enter **`RAP_8001`**
     - Click **Next**  
       
       
@@ -123,7 +123,7 @@ We start by creating a service consumption model for an OData service that provi
 
 6. Check the **`ABAP Artifact Name`**.  
 
-    You will notice that the name of the ABAP artifact has been set to **`ZRAP_####Z_TRAVEL_AGENCY_ES5`** since we have provided the prefix **`RAP_####`** and since the name of the entity itself is **`Z_TRAVEL_AGENCY_ES5`**.  
+    You will notice that the name of the ABAP artifact has been set to **`ZRAP_8001Z_TRAVEL_AGENCY_ES5`** since we have provided the prefix **`RAP_8001`** and since the name of the entity itself is **`Z_TRAVEL_AGENCY_ES5`**.  
 
     Press **Next**.
         
@@ -132,8 +132,8 @@ We start by creating a service consumption model for an OData service that provi
 
 7. The wizard will now list the repository objects that will be generated, namely a service definition and an abstract entity in addition to the service consumption model.  
 
-    - Service Definition: **ZSC_RAP_AGENCY_####**
-    - Abstract Entity: **ZRAP_####Z_TRAVEL_AGENCY_ES5** 
+    - Service Definition: **ZSC_RAP_AGENCY_8001**
+    - Abstract Entity: **ZRAP_8001Z_TRAVEL_AGENCY_ES5** 
        
     Click **Next**.
     
@@ -154,11 +154,11 @@ We start by creating a service consumption model for an OData service that provi
 
 ## Step 4. Create a console application to test the OData service
 
-We can now test the service consumption model by creating a small console application **ZCL_CE_RAP_AGENCY_####** that implements the interface **if_oo_adt_classrun**.  
+We can now test the service consumption model by creating a small console application **ZCL_CE_RAP_AGENCY_8001** that implements the interface **if_oo_adt_classrun**.  
 This is a useful additional step since this way it is easier to check whether the OData consumption works and debugging a console application is much easier than trying out your coding in the full fledged RAP business object.  
 
 > **Please note**  
-> We will use this class at a later stage also as an implementation for our custom query and we hence choose a name **ZCL_CE_RAP_AGENCY_####** that already contains the name of the to be created custom entity. **CE** denotes that this class will act as a query implementation for a *Custom Entity*.  
+> We will use this class at a later stage also as an implementation for our custom query and we hence choose a name **ZCL_CE_RAP_AGENCY_8001** that already contains the name of the to be created custom entity. **CE** denotes that this class will act as a query implementation for a *Custom Entity*.  
 
 1. Right click on the folder **Source Code Library** and select **New > ABAP Class**.
    
@@ -166,7 +166,7 @@ This is a useful additional step since this way it is easier to check whether th
 
 2. The **New ABAP class** dialogue opens. Here you have to enter the following:
 
-    - Name: **`ZCL_CE_RAP_AGENCY_####`**
+    - Name: **`ZCL_CE_RAP_AGENCY_8001`**
     - Description: **`Query implementation custom entity`** 
     - Click **Add**
    
@@ -190,7 +190,7 @@ This is a useful additional step since this way it is easier to check whether th
 
 <pre>
 
-CLASS zcl_ce_rap_agency_#### DEFINITION
+CLASS zcl_ce_rap_agency_8001 DEFINITION
   PUBLIC
   FINAL
   CREATE PUBLIC .
@@ -198,8 +198,8 @@ CLASS zcl_ce_rap_agency_#### DEFINITION
   PUBLIC SECTION.
     INTERFACES if_oo_adt_classrun.    
 
-    TYPES t_agency_range TYPE RANGE OF zrap_####z_travel_agency_es5-agencyid.
-    TYPES t_business_data TYPE TABLE OF zrap_####z_travel_agency_es5.
+    TYPES t_agency_range TYPE RANGE OF zrap_8001z_travel_agency_es5-agencyid.
+    TYPES t_business_data TYPE TABLE OF zrap_8001z_travel_agency_es5.
 
     METHODS get_agencies
       IMPORTING
@@ -224,7 +224,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_ce_rap_agency_#### IMPLEMENTATION.
+CLASS zcl_ce_rap_agency_8001 IMPLEMENTATION.
 
   METHOD if_oo_adt_classrun~main.    
     
@@ -272,7 +272,7 @@ CLASS zcl_ce_rap_agency_#### IMPLEMENTATION.
     DATA(http_destination) = cl_http_destination_provider=>create_by_url( i_url = 'https://sapes5.sapdevcenter.com' ).
     http_client = cl_web_http_client_manager=>create_by_http_destination( i_destination = http_destination ).
 
-    service_consumption_name = to_upper( 'ZSC_RAP_AGENCY_####' ).
+    service_consumption_name = to_upper( 'ZSC_RAP_AGENCY_8001' ).
 
     <b>odata_client_proxy</b> = cl_web_odata_client_factory=>create_v2_remote_proxy(
       EXPORTING
@@ -340,10 +340,10 @@ ENDCLASS.
 
     **t_agency_range** is used to provide filter conditions for Agenciess in form of SELECT-OPTIONS to the method **get_agencies( )**. The second type **t_business_data** is used to retrieve the business data returned by our remote OData service.  
 
-    Both types are based on the abstract entity **ZRAP_####Z_TRAVEL_AGENCY_ES5** that has been generated when you have generated the service consumption model.  
+    Both types are based on the abstract entity **ZRAP_8001Z_TRAVEL_AGENCY_ES5** that has been generated when you have generated the service consumption model.  
 
     > **Please note**   
-    > When you have not used the prefix `RAP_####` the name of the abstract entity might be different. In this case you have to replace all occurences of **ZRAP_####Z_TRAVEL_AGENCY_ES5** with the name of the abstract entity that has been generated in your package ***ZRAP_TRAVEL_E_####**.  
+    > When you have not used the prefix `RAP_8001` the name of the abstract entity might be different. In this case you have to replace all occurences of **ZRAP_8001Z_TRAVEL_AGENCY_ES5** with the name of the abstract entity that has been generated in your package ***ZRAP_TRAVEL_E_8001**.  
     >
     > ![Abstract entity](images/w5u2_03_13a.png)
 
@@ -377,9 +377,9 @@ In this unit, you have learned how to create the service consumption model to ac
 Find the source code for the class that we have created in the week5/sources folder:
 [Sources](sources) or use the link below.
 
-- [W5U2_CLAS_zcl_ce_rap_agency_####.txt](/week5/sources/W5U2_CLAS_zcl_ce_rap_agency_%23%23%23%23.txt)
+- [W5U2_CLAS_zcl_ce_rap_agency_8001.txt](/week5/sources/W5U2_CLAS_zcl_ce_rap_agency_%23%23%23%23.txt)
 
-Do not forget to replace all the occurrences of #### with your chosen suffix in the copied source code.
+Do not forget to replace all the occurrences of 8001 with your chosen suffix in the copied source code.
 
 ## Next exercise
 [Week 5 Unit 3: Defining the Custom CDS Entity](unit3.md)

@@ -16,7 +16,7 @@ You can watch [week 2 unit 5: Enriching the Projected Data Model with UI Metadat
 >
 > A great overview of ADT shortcuts can be found here: [Useful ADT Shortcuts](https://blogs.sap.com/2013/11/21/useful-keyboard-shortcuts-for-abap-in-eclipse/)
 >
-> Please note that the placeholder **`####`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).  
+> Please note that the placeholder **`8001`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).  
 > The screenshots in this document have been taken with the suffix `1234` and system `D20`. Your system id will be `TRL`.
 
 > Please note that the ADT dialogs and views may change in the future due to software updates.
@@ -24,16 +24,16 @@ You can watch [week 2 unit 5: Enriching the Projected Data Model with UI Metadat
 Follow the instructions below.
 
 ## Step 1. Annotate the Travel Projection View
-First, create the CDS metadata extensions **`ZC_RAP_Travel_####`** (where `####` is your chosen suffix)  to enrich the Travel BO projection view with UI semantics.
+First, create the CDS metadata extensions **`ZC_RAP_Travel_8001`** (where `8001` is your chosen suffix)  to enrich the Travel BO projection view with UI semantics.
 
-1.	Right-click on your Travel BO projection view **`ZC_RAP_Travel_####`** in the Project Explorer and select **New Metadata Extension** from the context menu.
+1.	Right-click on your Travel BO projection view **`ZC_RAP_Travel_8001`** in the Project Explorer and select **New Metadata Extension** from the context menu.
  
 
 ![Create Travel MDE](images/w2u5_01_01.png)
 
 
 
-2.	Maintain **`ZC_RAP_Travel_####`** as name and a meaningful description (e.g. _**UI Annotations for `ZC_RAP_Travel_####`**_) and choose _**Next >**_ to continue.    
+2.	Maintain **`ZC_RAP_Travel_8001`** as name and a meaningful description (e.g. _**UI Annotations for `ZC_RAP_Travel_8001`**_) and choose _**Next >**_ to continue.    
 Project, Package and Extended Entity are automatically assigned in the creation wizard.  
  
     ![Create Travel MDE](images/w2u5_01_02.png)
@@ -71,7 +71,7 @@ The **`@Metadata.layer`** annotation is specified at the top. The name of the BO
     ![Create Travel MDE](images/w2u5_01_07.png)
 
 7.	Now, you can specify the UI annotations for the remaining elements.   
-    For that, replace the code in the editor with the code snippet provided below and replace all occurrences of  `####` with your chosen suffix.   
+    For that, replace the code in the editor with the code snippet provided below and replace all occurrences of  `8001` with your chosen suffix.   
         
     You can make use of the _Replace All_ feature (**Ctrl+F**) in ADT for the purpose and also of the _Source Code Formatter_ (**SHIFT+F1**) to format the source code.  
 
@@ -83,7 +83,7 @@ The **`@Metadata.layer`** annotation is specified at the top. The name of the BO
                     title: { type: #STANDARD, label: 'Travel', value: 'TravelID' } },
       presentationVariant: [{ sortOrder: [{ by: 'TravelID', direction:  #DESC }] }] }
 
-    annotate view ZC_RAP_Travel_#### with
+    annotate view ZC_RAP_Travel_8001 with
     {
       @UI.facet: [ { id:              'Travel',
                      purpose:         #STANDARD,
@@ -177,13 +177,13 @@ The **`@Metadata.layer`** annotation is specified at the top. The name of the BO
 
 
 ## Step 2. Annotate the Booking Projection View
-Now, you will create the CDS metadata extensions **`ZC_RAP_Booking_####`** (where `####` is your chosen suffix)  to enrich the Booking BO projection view with UI semantics.  
+Now, you will create the CDS metadata extensions **`ZC_RAP_Booking_8001`** (where `8001` is your chosen suffix)  to enrich the Booking BO projection view with UI semantics.  
 
-1.	Right-click on your Booking BO projection view **`ZC_RAP_Booking_####`** in the Project Explorer and choose **New Metadata Extension** from the context menu.  
+1.	Right-click on your Booking BO projection view **`ZC_RAP_Booking_8001`** in the Project Explorer and choose **New Metadata Extension** from the context menu.  
  
     ![Create Booking MDE](images/w2u5_02_01.png)
 
-2.	Maintain **`ZC_RAP_Booking_####`** as name and a meaningful description (e.g. _UI Annotations for ZC_RAP_Booking_####_)  and choose **Next >** to continue.  
+2.	Maintain **`ZC_RAP_Booking_8001`** as name and a meaningful description (e.g. _UI Annotations for ZC_RAP_Booking_8001_)  and choose **Next >** to continue.  
     Project, Package and Extended Entity are automatically assigned in the creation wizard.  
  
     ![Create Booking MDE](images/w2u5_02_02.png)
@@ -214,7 +214,7 @@ Remove the dummy entry **`element_name;`** and insert all view elements between 
     ![Create Booking MDE](images/w2u5_02_07.png)
 
 7.	Now, you can specify the UI annotations for the remaining elements.  
-    For that, replace the code in the editor with the code snippet provided below and replace all occurrences of  `####` with your chosen suffix. 
+    For that, replace the code in the editor with the code snippet provided below and replace all occurrences of  `8001` with your chosen suffix. 
     
     You can make use of the _Replace All_ feature (**Ctrl+F**) in ADT for the purpose and also of the _Source Code Formatter_ (**SHIFT+F1**) to format the source code.  
 
@@ -225,7 +225,7 @@ Remove the dummy entry **`element_name;`** and insert all view elements between 
                     typeNamePlural: 'Bookings',
                     title: { type: #STANDARD, value: 'BookingID' } } }
 
-    annotate view ZC_RAP_Booking_####
+    annotate view ZC_RAP_Booking_8001
         with 
     {
       @UI.facet: [ { id:            'Booking',
@@ -290,10 +290,10 @@ In this unit, you have learned how to create and use CDS metadata extensions to 
 
 ## Solution
 Find the source code for the created CDS metadata extensions in the **[/week2/sources](/week2/sources)** folder:
-- [W2U5_DDLX_ZC_RAP_TRAVEL_####](/week2/sources/W2U5_DDLX_ZC_RAP_TRAVEL.txt) 
-- [W2U5_DDLX_ZC_RAP_BOOKING_####](/week2/sources/W2U5_DDLX_ZC_RAP_BOOKING.txt)
+- [W2U5_DDLX_ZC_RAP_TRAVEL_8001](/week2/sources/W2U5_DDLX_ZC_RAP_TRAVEL.txt) 
+- [W2U5_DDLX_ZC_RAP_BOOKING_8001](/week2/sources/W2U5_DDLX_ZC_RAP_BOOKING.txt)
    
-Do not forget to replace all the occurrences of `####` with your chosen suffix in the copied source code.
+Do not forget to replace all the occurrences of `8001` with your chosen suffix in the copied source code.
 
 ## Next exercise
 [Week 2 Unit 6: Creating and Previewing the OData UI Service](unit6.md)

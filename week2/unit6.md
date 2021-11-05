@@ -14,7 +14,7 @@ You can watch [week 6 unit 6: Creating and Previewing the OData UI Service](http
 >
 > A great overview of ADT shortcuts can be found here: [Useful ADT Shortcuts](https://blogs.sap.com/2013/11/21/useful-keyboard-shortcuts-for-abap-in-eclipse/)
 >
-> Please note that the placeholder **`####`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
+> Please note that the placeholder **`8001`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
 > The screenshots in this document have been taken with the suffix `1234` and system `D20`. Your system id will be `TRL`.
 
 > Please note that the ADT dialogs and views may change in the future due to software updates.
@@ -23,14 +23,14 @@ Follow the instructions below.
 
 
 ## Step 1. Create the Service Definition
-First, create the service definition **`ZUI_RAP_Travel_####`** (where `####` is your chosen suffix) to specify the service scope, i.e. the relevant entity sets to be exposed in the service.
+First, create the service definition **`ZUI_RAP_Travel_8001`** (where `8001` is your chosen suffix) to specify the service scope, i.e. the relevant entity sets to be exposed in the service.
 
-1.	In the Project Explorer, right-click on the Travel BO projection view **`ZC_RAP_TRAVEL_####`** and select **New Service Definition** from the context menu.
+1.	In the Project Explorer, right-click on the Travel BO projection view **`ZC_RAP_TRAVEL_8001`** and select **New Service Definition** from the context menu.
 
 ![Create Service Definition](images/w2u6_01_01.png)
 
 
-2.	Maintain **`ZUI_RAP_Travel_####`** as name and a meaningful description (e.g. _**`Serv Definition for Travel App`**_) in the creation wizard and choose **Next >** to continue.     
+2.	Maintain **`ZUI_RAP_Travel_8001`** as name and a meaningful description (e.g. _**`Serv Definition for Travel App`**_) in the creation wizard and choose **Next >** to continue.     
     Package and Project have been assigned automatically.  
 
  
@@ -53,13 +53,13 @@ First, create the service definition **`ZUI_RAP_Travel_####`** (where `####` is 
 5.	Now, define the service scope by specifying the CDS view names of the relevant BO entities and associations – e.g. Travel and Booking entities and value help providers for the Agency, Customer, Flight, Carrier entities and the Currency code – and specify a local alias for each of them using the keyword **`as`**. Aliases are optional but ease the service consumption.   
   
     For that, replace the code in the editor with the code snippet provided below. 
-    Do not forget to replace all the occurrences of `####` with your chosen suffix. You can make use of the Replace All feature (**Ctrl+F**) in ADT for the purpose.
+    Do not forget to replace all the occurrences of `8001` with your chosen suffix. You can make use of the Replace All feature (**Ctrl+F**) in ADT for the purpose.
 
     <pre>
     @EndUserText.label: 'Serv Definition for Travel App'
-    define service ZUI_RAP_TRAVEL_#### {
-      expose ZC_RAP_Travel_#### as Travel;
-      expose ZC_RAP_Booking_#### as Booking;
+    define service ZUI_RAP_TRAVEL_8001 {
+      expose ZC_RAP_Travel_8001 as Travel;
+      expose ZC_RAP_Booking_8001 as Booking;
       expose /DMO/I_Agency as Agency;
       expose /DMO/I_Customer as Customer;
       expose /DMO/I_Flight as Flight;
@@ -79,15 +79,15 @@ First, create the service definition **`ZUI_RAP_Travel_####`** (where `####` is 
 
     
 ## Step 2. Create the Service Binding
-Now, create the service binding **`ZUI_RAP_TRAVEL_O2_####`** (where `####` is your chosen suffix)  to bind your service definition to the OData protocol.  
+Now, create the service binding **`ZUI_RAP_TRAVEL_O2_8001`** (where `8001` is your chosen suffix)  to bind your service definition to the OData protocol.  
 
-1.	Right-click on the just created service definition **`ZUI_RAP_TRAVEL_####`** in the project Explorer and choose **New Service Binding** from the context menu.   
+1.	Right-click on the just created service definition **`ZUI_RAP_TRAVEL_8001`** in the project Explorer and choose **New Service Binding** from the context menu.   
         
     The project, the package and the service definition are automatically assigned in the creation wizard.
 
     ![Create Service Binding](images/w2u6_02_01.png)
 
-2.	Maintain **`ZUI_RAP_TRAVEL_O2_####`**  as name and a meaningful description (e.g. _`OData V2 UI service for SAP Fiori Travel App`_).     Select **`OData V2 - UI`** as Binding Type and choose **Next >** to continue.  
+2.	Maintain **`ZUI_RAP_TRAVEL_O2_8001`**  as name and a meaningful description (e.g. _`OData V2 UI service for SAP Fiori Travel App`_).     Select **`OData V2 - UI`** as Binding Type and choose **Next >** to continue.  
      
     >Note: At the creation time of this document, only OData V2 was supported. However, OData V4 is planned in the near future.
     >For more information, check out the [ABAP platform road map](https://roadmaps.sap.com/board?range=CURRENT-LAST&PRODUCT=6EAE8B28C5D91EDA9FF40F3CC2DBE0E6&PRODUCT=73555000100800001164).  
@@ -152,9 +152,9 @@ In this unit, you have learned
 
 ## Solution
 Find the source code for the created service definition in the **[sources](/week2/sources)** folder:
--	[W2U6_SRVD_ZUI_RAP_TRAVEL_####](/week2/sources/W2U6_SRVD_ZUI_RAP_TRAVEL.txt)
+-	[W2U6_SRVD_ZUI_RAP_TRAVEL_8001](/week2/sources/W2U6_SRVD_ZUI_RAP_TRAVEL.txt)
     
-Do not forget to replace all the occurrences of ‘####’ with your chosen suffix in the copied source code.
+Do not forget to replace all the occurrences of ‘8001’ with your chosen suffix in the copied source code.
   
 ## Next exercise
 [Week 2 Unit 7: Implementing Basic Authorizations](unit7.md)

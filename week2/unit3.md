@@ -14,7 +14,7 @@ You can watch [week 2 unit 3: Creating the Core Data Services (CDS) Data Model](
 >
 > A great overview of ADT shortcuts can be found here: [Useful ADT Shortcuts](https://blogs.sap.com/2013/11/21/useful-keyboard-shortcuts-for-abap-in-eclipse/)
 >
-> Please note that the placeholder **`####`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
+> Please note that the placeholder **`8001`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
 > The screenshots in this document have been taken with the suffix `1234` and system `D20`. Your system id will be `TRL`.
 
 > Please note that the ADT dialogs and views may change in the future due to software updates.
@@ -22,13 +22,13 @@ You can watch [week 2 unit 3: Creating the Core Data Services (CDS) Data Model](
 Follow the instructions below.
     
 ## Step 1.	Create the Interface CDS View for the Travel Entity
-First, create the Interface CDS view **`ZI_RAP_Travel_####`** (where `####` is your chosen suffix)  for the Travel entity. 
-1. Right-click on your travel table **`ZRAP_ATRAV_####`** and choose **New Data Definition** from the context menu.
+First, create the Interface CDS view **`ZI_RAP_Travel_8001`** (where `8001` is your chosen suffix)  for the Travel entity. 
+1. Right-click on your travel table **`ZRAP_ATRAV_8001`** and choose **New Data Definition** from the context menu.
 
  
 ![Create Travel BO view](images/w2u3_01_01.png)
 
-2.  Maintain **` ZI_RAP_Travel_####`** as name and a meaningful description (e.g. _**Travel BO view**_) in the creation wizard and choose **Next** to continue.  
+2.  Maintain **` ZI_RAP_Travel_8001`** as name and a meaningful description (e.g. _**Travel BO view**_) in the creation wizard and choose **Next** to continue.  
 The project, the package and the referenced object have been automatically assigned.
     >**Please note**    
     >In this course, we will follow the naming convention of the Virtual Data Model (VDM) of the SAP S/4HANA where the name of interface or BO views begins with _`<namespace>I`_ (e.g _`ZI_`_) and the name of consumption or projection views begins with the namespace followed by _`<namespace>C`_ (e.g. _`ZC_`_).
@@ -53,7 +53,7 @@ The project, the package and the referenced object have been automatically assig
     **Short Explanation:**    
     The travel table `ZRAP_ATRAV_1234` is used as data source and the table fields have been automatically inserted in the projection list between the curly brackets `{}` – except the client field which is handled implicitly by the platform because the view is client specific. The view key element is specified with the keyword **`key`**.
 
-5. Replace the code of the travel data definition in the editor with the code snippet provided below and replace all occurrences of  `####` with your chosen suffix. 
+5. Replace the code of the travel data definition in the editor with the code snippet provided below and replace all occurrences of  `8001` with your chosen suffix. 
    You can make use of the _Replace All_ feature (**Ctrl+F**) in ADT for the purpose.  
 
    Save ![save icon](images/adt_save.png) the changes, but **DO NOT** activate the travel interface view yet.
@@ -61,10 +61,10 @@ The project, the package and the referenced object have been automatically assig
     <pre>
     @AccessControl.authorizationCheck: #CHECK
     @EndUserText.label: 'Travel BO view'
-    define view entity ZI_RAP_Travel_####
-      as select from zrap_atrav_#### as Travel
+    define view entity ZI_RAP_Travel_8001
+      as select from zrap_atrav_8001 as Travel
 
-      association [0..*] to ZI_RAP_Booking_#### as _Booking on $projection.TravelUUID = _Booking.TravelUUID
+      association [0..*] to ZI_RAP_Booking_8001 as _Booking on $projection.TravelUUID = _Booking.TravelUUID
       
       association [0..1] to /DMO/I_Agency       as _Agency   on $projection.AgencyID = _Agency.AgencyID
       association [0..1] to /DMO/I_Customer     as _Customer on $projection.CustomerID = _Customer.CustomerID
@@ -119,7 +119,7 @@ The project, the package and the referenced object have been automatically assig
         </pre>             
     - The alias **`Travel`**  is now specified for the data source using the keyword **`as`**.
     - Associations are defined for the entities Booking (**`_Booking`**), Agency (**`_Agency`**), Customer (**`_Customer`**) and Currency (**`_Currency`**) – and exposed in the projection list.
-    An error is currently displayed by the association **`_Booking`**, because the specified Booking BO view **`ZI_RAP_Booking_####`** does not yet exist. You will create it in the next step.
+    An error is currently displayed by the association **`_Booking`**, because the specified Booking BO view **`ZI_RAP_Booking_8001`** does not yet exist. You will create it in the next step.
     - A CamelCase alias has been specified for each view elements using the keyword **`as`**.    
       PS: The alias **`TravelStatus`**  is used for the view element **`Overall_Status`**.
     - To ensure uniform data processing on the consumer side, **`@Semantics`** annotations are used to enrich some of the fields – i.e. the currency fields and the administrative fields in the present scenario.   
@@ -129,12 +129,12 @@ The project, the package and the referenced object have been automatically assig
 >**Note:** DO NOT yet activate the CDS data definition as you are not yet done with the definition of the Travel interface view. The BO structure is not yet defined. **This will be done in step 4**.
 
 ## Step 2.	Create the Interface CDS View for the Booking entity
-Now, you will create the Interface CDS view **`ZI_RAP_Booking_####`** (where #### is your chosen suffix) for the Booking entity.
-1. Right-click on your booking table **`ZRAP_ABOOK_####`** and choose **New Data Definition** from the context menu.
+Now, you will create the Interface CDS view **`ZI_RAP_Booking_8001`** (where 8001 is your chosen suffix) for the Booking entity.
+1. Right-click on your booking table **`ZRAP_ABOOK_8001`** and choose **New Data Definition** from the context menu.
 
     ![Create Booking BO view](images/w2u3_02_01.png)
 
-2.  Maintain **`ZI_RAP_Booking_####`** as name and a meaningful description (e.g. _**Booking BO view**_) in the creation wizard and choose **Next** to continue.  
+2.  Maintain **`ZI_RAP_Booking_8001`** as name and a meaningful description (e.g. _**Booking BO view**_) in the creation wizard and choose **Next** to continue.  
    The project, the package and the referenced object have been automatically assigned.  
  
     ![Create Booking BO view](images/w2u3_02_02.png)
@@ -152,17 +152,17 @@ The new data definition appears in the editor. You can make use of the Source Co
  
     ![Create Booking BO view](images/w2u3_02_05.png)
 
-5. Replace the booking data definition in the editor with the code snippet provided below and replace all occurrences of  `####` with your chosen suffix. You can make use of the _Replace All_ feature (**Ctrl+F**) in ADT for the purpose.  
+5. Replace the booking data definition in the editor with the code snippet provided below and replace all occurrences of  `8001` with your chosen suffix. You can make use of the _Replace All_ feature (**Ctrl+F**) in ADT for the purpose.  
     
     Save the changes, but **DO NOT** activate the booking interface view yet. 
 
     <pre>
     @AccessControl.authorizationCheck: #CHECK
     @EndUserText.label: 'Booking BO view'
-    define view entity ZI_RAP_Booking_####
-      as select from zrap_abook_#### as Booking
+    define view entity ZI_RAP_Booking_8001
+      as select from zrap_abook_8001 as Booking
 
-      association [1..1] to ZI_RAP_Travel_####        as _Travel     on  $projection.TravelUUID = _Travel.TravelUUID
+      association [1..1] to ZI_RAP_Travel_8001        as _Travel     on  $projection.TravelUUID = _Travel.TravelUUID
       
       association [1..1] to /DMO/I_Customer           as _Customer   on  $projection.CustomerID   = _Customer.CustomerID
       association [1..1] to /DMO/I_Carrier            as _Carrier    on  $projection.CarrierID    = _Carrier.AirlineID
@@ -215,7 +215,7 @@ The new data definition appears in the editor. You can make use of the Source Co
 To avoid an error during the activation, both new CDS views – i.e. the Travel interface view and the Booking interface view – must be activated together for the first time.  
 
 1.	Choose **Activate All** ![activate all icon](images/adt_activate_all.png) or use the shortcut **Ctrl+Shift+F3**.    
-    Select both CDS views **`ZI_RAP_TRAVEL_####`** and **`ZI_RAP_BOOKING_####`** on the appearing dialog, and choose **Activate**.
+    Select both CDS views **`ZI_RAP_TRAVEL_8001`** and **`ZI_RAP_BOOKING_8001`** on the appearing dialog, and choose **Activate**.
  
     ![Activate CDS Data Model](images/w2u3_03_01.png)
 
@@ -223,7 +223,7 @@ To avoid an error during the activation, both new CDS views – i.e. the Travel 
  
      ![Activate CDS Data Model](images/w2u3_03_02.png)
 
-2.	To run the Data Preview, choose the relevant CDS data definition – i.e. **`ZI_RAP_TRAVEL_####`** or **`ZI_RAP_BOOKING_####`** where `####`is your chosen suffix – in the Project Explorer (or open it in the editor) and press **F8**.  
+2.	To run the Data Preview, choose the relevant CDS data definition – i.e. **`ZI_RAP_TRAVEL_8001`** or **`ZI_RAP_BOOKING_8001`** where `8001`is your chosen suffix – in the Project Explorer (or open it in the editor) and press **F8**.  
   
      The Data Preview will open in the editor area.  
  
@@ -235,15 +235,15 @@ Finally, you will now enhance the CDS data model to specify the business object 
 As already mentioned in the introduction of this unit, this step is not mandatory when building read-only application. It is only a preparation for the hands-on exercises of week 3 where you’re are going to enable the transactional behavior of your Travel App. Nevertheless, this is a typical step when defining your CDS data model since read-only and transactional apps can be built on top of the same data model.  
 Our composition model consists of two nodes: The root node travel and its child node booking.
 
-1.	Open the CDS data definition **`ZI_RAP_TRAVEL_####`** (where `####` is your chosen suffix) and add the keyword **`root`**  in the **`define view entity`** statement to change it as follows:
+1.	Open the CDS data definition **`ZI_RAP_TRAVEL_8001`** (where `8001` is your chosen suffix) and add the keyword **`root`**  in the **`define view entity`** statement to change it as follows:
     <pre>
-      define root view entity ZI_RAP_Travel_####
+      define root view entity ZI_RAP_Travel_8001
     </pre>
 
 2.	Adjust the definition of the **`_Booking`** association to a composition which is needed to define the relationship from a parent node (travel) to a child node (booking). 
 For that, replace the definition of the association **`_Booking`** with the following composition definition:  
     <pre>
-       composition [0..*] of ZI_RAP_Booking_#### as _Booking 
+       composition [0..*] of ZI_RAP_Booking_8001 as _Booking 
     </pre>
 
 3.	Save ![save icon](images/adt_save.png) the changes, but **DO NOT** yet activate the changes. 
@@ -251,10 +251,10 @@ For that, replace the definition of the association **`_Booking`** with the foll
  
     ![Define BO Structure](images/w2u3_04_01.png)
 
-4.	Now open the CDS data definition **`ZI_RAP_BOOKING_####`** and replace the definition of the association **`_Travel`** with the definition provided below to specify the relationship from the child node (_booking_) to its parent node (_travel_). 
+4.	Now open the CDS data definition **`ZI_RAP_BOOKING_8001`** and replace the definition of the association **`_Travel`** with the definition provided below to specify the relationship from the child node (_booking_) to its parent node (_travel_). 
 
     <pre>
-      association to parent ZI_RAP_Travel_####        as _Travel     on  $projection.TravelUUID = _Travel.TravelUUID
+      association to parent ZI_RAP_Travel_8001        as _Travel     on  $projection.TravelUUID = _Travel.TravelUUID
     </pre>
 
     ![Define BO Structure](images/w2u3_03_02.png)
@@ -273,10 +273,10 @@ In this unit, you have learned
    
 ## Solution
 Find the source code of the created CDS data definitions (interface views) in the **[/week2/sources](/week2/sources)** folder:
--	[W2U3_DDLS_ZI_RAP_TRAVEL_####](/week2/sources/W2U3_DDLS_ZI_RAP_TRAVEL.txt) 
-- [W2U3_DDLS_ZI_RAP_BOOKING_####](/week2/sources/W2U3_DDLS_ZI_RAP_BOOKING.txt)
+-	[W2U3_DDLS_ZI_RAP_TRAVEL_8001](/week2/sources/W2U3_DDLS_ZI_RAP_TRAVEL.txt) 
+- [W2U3_DDLS_ZI_RAP_BOOKING_8001](/week2/sources/W2U3_DDLS_ZI_RAP_BOOKING.txt)
       
-Do not forget to replace all the occurrences of `####` with your chosen suffix in the copied source code.
+Do not forget to replace all the occurrences of `8001` with your chosen suffix in the copied source code.
        
 ## Next exercise
 [Week 2 Unit 4: Defining the CDS Data Model Projection](unit4.md)

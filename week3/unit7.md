@@ -14,7 +14,7 @@ You can watch [week 3 unit 7: Enabling the Draft Handling]( https://open.sap.com
 >
 > A great overview of ADT shortcuts can be found here: [Useful ADT Shortcuts](https://blogs.sap.com/2013/11/21/useful-keyboard-shortcuts-for-abap-in-eclipse/)
 >
-> Please note that the placeholder **`####`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
+> Please note that the placeholder **`8001`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
 > The screenshots in this document have been taken with the suffix `1234` and system `D20`. Your system id will be `TRL`.
 
 > Please note that the ADT dialogs and views may change in the future due to software updates.
@@ -24,7 +24,7 @@ Follow the instructions below.
 ## Step 1. Enable the draft handling in the base business object
 You will now enable the draft handling for the managed based business object (BO) with a few additions in the behavior definition.
     
-1.	In the _Project Explorer_, go to your package and open the base behavior definition **`ZI_RAP_Travel_####`** - where **`####`** is your chosen suffix – of your business object.  
+1.	In the _Project Explorer_, go to your package and open the base behavior definition **`ZI_RAP_Travel_8001`** - where **`8001`** is your chosen suffix – of your business object.  
     You can also use the shortcut **Ctrl+Shift+A** to open ABAP development object.  
     
     ![Enhance base Behavior Definition – Travel Entity](images/w3u7_01_01.png)
@@ -39,10 +39,10 @@ You will now enable the draft handling for the managed based business object (BO
     > Draft tables are fully managed by the RAP framework at runtime
     
     For this, insert the code snippet provided below as shown on the screenshot.  
-    Do not forget to replace the placeholder **`####`** with your chosen suffix.  
+    Do not forget to replace the placeholder **`8001`** with your chosen suffix.  
     
     <pre>
-    draft table zrap_dtrav_####
+    draft table zrap_dtrav_8001
     </pre>
     
     ![Enhance base Behavior Definition – Travel Entity](images/w3u7_01_03.png)
@@ -50,13 +50,13 @@ You will now enable the draft handling for the managed based business object (BO
 4. Do the same for the _booking_ entity – i.e. define the draft table where the draft _booking_ data will be persisted.
     
     For this, insert the code snippet provided below in the _booking_ behavior definition as shown on the screenshot.  
-    Do not forget to replace the placeholder **`####`** with your chosen suffix.  
+    Do not forget to replace the placeholder **`8001`** with your chosen suffix.  
     
-    <pre>draft table zrap_dbook_####</pre>  
+    <pre>draft table zrap_dbook_8001</pre>  
     
     ![Enhance base Behavior Definition – Travel Entity](images/w3u7_01_04.png)
     
-5.	Now, you will create the draft table **`zrap_dtrav_####`**, where **`####`** is your chosen suffix, to store the draft data for the _travel_ entity.    
+5.	Now, you will create the draft table **`zrap_dtrav_8001`**, where **`8001`** is your chosen suffix, to store the draft data for the _travel_ entity.    
     The ADT _Quick Fix_ feature can be used to generate the draft table.  
        
     For this, set the cursor on the table name, and press **Ctrl+1**  to star the _Quick Fix_ dialog.   
@@ -80,7 +80,7 @@ You will now enable the draft handling for the managed based business object (BO
     
 8.	Save ![save icon](images/adt_save.png), activate ![activate icon](images/adt_activate.png) and close the table.   
     
-9.	Now also create the draft table for the _booking_ entity **`zrap_dbook_####`** using the ADT _Quick Fix_ (**Ctrl+1**).  
+9.	Now also create the draft table for the _booking_ entity **`zrap_dbook_8001`** using the ADT _Quick Fix_ (**Ctrl+1**).  
     
     ![Enhance base Behavior Definition – Travel Entity](images/w3u7_01_09.png)
     
@@ -146,7 +146,7 @@ You will now enable the draft handling for the managed based business object (BO
 ## Step 2. Enable the draft handling in the projected business object
 In order to enable the draft handling in your Travel app, you have to expose the functionality in the business object projection layer - i.e in the behavior definition projection.
 
-1.	Open the _behavior definition projection_ **`ZC_RAP_Travel_####`** (where **`####`** is your chosen suffix) of your business object by either double-clicking on it in the _Project Explorer_ or using the shortcut **Ctrl+Shift+A** (_Open ABAP Development Object_). 
+1.	Open the _behavior definition projection_ **`ZC_RAP_Travel_8001`** (where **`8001`** is your chosen suffix) of your business object by either double-clicking on it in the _Project Explorer_ or using the shortcut **Ctrl+Shift+A** (_Open ABAP Development Object_). 
     
     ![Enhance the Behavior Definition Projection](images/w3u7_02_01.png)
     
@@ -186,7 +186,7 @@ In order to enable the draft handling in your Travel app, you have to expose the
 ## Step 3. Adjust the business object behavior implementation
 You will now perform some adjustment in the behavior implementation of you travel behavior to enable the consideration of the draft instances.
 
-1.	Open the behavior implementation class **`ZBP_I_RAP_TRAVEL_####`** of the travel entity in the _Project Explorer_, where **`####`** is your chosen suffix.  
+1.	Open the behavior implementation class **`ZBP_I_RAP_TRAVEL_8001`** of the travel entity in the _Project Explorer_, where **`8001`** is your chosen suffix.  
     
     ![Adjust the Behavior Implementation](images/w3u7_03_01.png)  
     
@@ -214,7 +214,7 @@ You will now perform some adjustment in the behavior implementation of you trave
 ## Step 4. Preview the enhanced Travel app & Play around
 You are now done with the behavior implementations and can run and check the enhanced SAP Fiori elements Travel App.  
 
-1.	Launch the _Travel app_ in your service binding **` ZUI_RAP_TRAVEL_O2_####`** – where **`####`** is your chosen suffix – or refresh (`F5`) it in the browser. Provide your ABAP user credentials if requested.  
+1.	Launch the _Travel app_ in your service binding **` ZUI_RAP_TRAVEL_O2_8001`** – where **`8001`** is your chosen suffix – or refresh (`F5`) it in the browser. Provide your ABAP user credentials if requested.  
     
     Press **Go** on the UI to load the back-end data.  
     
@@ -257,11 +257,11 @@ In this unit, you have learned how to enable the draft handling in our travel bu
     
 ## Solution
 Find the source code of the enhanced CDS behavior definitions (base and projection) and the adjusted behavior implementation class in  **[sources](/week3/sources)** folder:
-- [W3U7_BDEF_ZI_RAP_TRAVEL_####](/week3/sources/W3U7_BDEF_ZI_RAP_TRAVEL.txt) 
-- [W3U7_BDEF_ZC_RAP_TRAVEL_####](/week3/sources/W3U7_BDEF_ZC_RAP_TRAVEL.txt) 
-- [W3U7_CLAS_ZBP_I_RAP_TRAVEL_####](/week3/sources/W3U7_CLAS_ZBP_I_RAP_TRAVEL.txt) 
+- [W3U7_BDEF_ZI_RAP_TRAVEL_8001](/week3/sources/W3U7_BDEF_ZI_RAP_TRAVEL.txt) 
+- [W3U7_BDEF_ZC_RAP_TRAVEL_8001](/week3/sources/W3U7_BDEF_ZC_RAP_TRAVEL.txt) 
+- [W3U7_CLAS_ZBP_I_RAP_TRAVEL_8001](/week3/sources/W3U7_CLAS_ZBP_I_RAP_TRAVEL.txt) 
 
-Do not forget to replace all the occurrences of `####` in the copied source code with your chosen suffix.
+Do not forget to replace all the occurrences of `8001` in the copied source code with your chosen suffix.
 
 ## Next exercise
 [Week 4: Dealing with Existing Code](/week4/README.md)

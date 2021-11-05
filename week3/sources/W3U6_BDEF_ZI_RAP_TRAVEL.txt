@@ -1,8 +1,8 @@
 managed;
 
-define behavior for ZI_RAP_Travel_#### alias Travel
-implementation in class zbp_i_rap_travel_#### unique
-persistent table zrap_atrav_####
+define behavior for ZI_RAP_Travel_8001 alias Travel
+implementation in class zbp_i_rap_travel_8001 unique
+persistent table zrap_atrav_8001
 lock master
 authorization master ( instance )
 etag master LocalLastChangedAt
@@ -29,7 +29,7 @@ etag master LocalLastChangedAt
   validation validateCustomer on save { field CustomerID; create; }
   validation validateDates    on save { field BeginDate, EndDate; create; }
 
-  mapping for zrap_atrav_####
+  mapping for zrap_atrav_8001
   {
     TravelUUID         = travel_uuid;
     TravelID           = travel_id;
@@ -50,9 +50,9 @@ etag master LocalLastChangedAt
   }
 }
 
-define behavior for ZI_RAP_Booking_#### alias Booking
-implementation in class zbp_i_rap_booking_#### unique
-persistent table zrap_abook_####
+define behavior for ZI_RAP_Booking_8001 alias Booking
+implementation in class zbp_i_rap_booking_8001 unique
+persistent table zrap_abook_8001
 lock dependent by _Travel
 authorization dependent by _Travel
 etag master LocalLastChangedAt
@@ -69,7 +69,7 @@ etag master LocalLastChangedAt
   determination calculateBookingID  on modify { create; }
   determination calculateTotalPrice on modify { field FlightPrice, CurrencyCode; }
 
-  mapping for zrap_abook_####
+  mapping for zrap_abook_8001
   {
     BookingUUID        = booking_uuid;
     TravelUUID         = travel_uuid;

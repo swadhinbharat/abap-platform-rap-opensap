@@ -12,7 +12,7 @@ In this hands-on exercise, you will create a very simple _Hello World_ ABAP cons
 >
 > A great overview on ADT shortcuts can be foung here: [Useful ADT Shortcuts](https://blogs.sap.com/2013/11/21/useful-keyboard-shortcuts-for-abap-in-eclipse/)
 >
-> Please note that the placeholder **`####`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
+> Please note that the placeholder **`8001`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
 > The screenshots in this document have been taken with the suffix `1234` and system `D20`. Your system id will be `TRL`.
 >
 > Please note that the ADT dialogs and views may change in the future due to software updates - i.e. new and/or optimized features.
@@ -27,7 +27,7 @@ First, create a new ABAP package to group the various development objects that y
     ![create ABAP package 01](images/w1u5_01_01.png)
 
 
-2. Maintain **`ZRAP_####`** as **name** (where `####` is your chosen suffix) and a meaningful **description** (e.g. _`RAP Exercises`_).  
+2. Maintain **`ZRAP_8001`** as **name** (where `8001` is your chosen suffix) and a meaningful **description** (e.g. _`RAP Exercises`_).  
     The _Project_ and the _Package_ have already been assigned. The _Superpackage_ should be set to **`ZLOCAL`** as well. 
     
     Choose **Next** to continue.  
@@ -58,7 +58,7 @@ You can now go ahead and create and implement your _Hello World_ console app.
     ![create Hello World 01](images/w1u5_01_05.png)
 
 
-2. Maintain **`ZCL_HELLO_WORLD_####`** as **name** (where `####` is your chosen suffix) and a meaningful **description** (e.g. _`Hello world`_) for the ABAP class. 
+2. Maintain **`ZCL_HELLO_WORLD_8001`** as **name** (where `8001` is your chosen suffix) and a meaningful **description** (e.g. _`Hello world`_) for the ABAP class. 
     Add the ABAP interface **`IF_OO_ADT_CLASSRUN`** which needs to be implemented in order to write outputs to the ABAP Console and choose **Next**.  
       
     ![create Hello World 02](images/w1u5_01_06.png)
@@ -131,8 +131,8 @@ In this unit, you have learned
 
 ## Solution
 Find the source code for the created class in the **[/week1/sources](/week1/sources)** folder:
-- [W1U6_CLAS_ZCL_HELLO_WORLD_####](/week1/sources/W1U6_CLAS_ZCL_HELLO_WORLD.txt)
+- [W1U6_CLAS_ZCL_HELLO_WORLD_8001](/week1/sources/W1U6_CLAS_ZCL_HELLO_WORLD.txt)
       
-Do not forget to replace all the occurrences of `####` with your chosen suffix in the copied source code.
+Do not forget to replace all the occurrences of `8001` with your chosen suffix in the copied source code.
 ## Next excercise
 [Week 2: Developing a Read-Only List Report App](/week2/README.md)

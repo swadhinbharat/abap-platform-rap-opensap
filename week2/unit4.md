@@ -15,7 +15,7 @@ You can watch [week 2 unit 4: Creating the CDS Data Model Projection](https://op
 >
 > A great overview of ADT shortcuts can be found here: [Useful ADT Shortcuts](https://blogs.sap.com/2013/11/21/useful-keyboard-shortcuts-for-abap-in-eclipse/)
 >
-> Please note that the placeholder **`####`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
+> Please note that the placeholder **`8001`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
 > The screenshots in this document have been taken with the suffix `1234` and system `D20`. Your system id will be `TRL`.
 
 > Please note that the ADT dialogs and views may change in the future due to software updates.
@@ -24,13 +24,13 @@ Follow the instructions below.
 
 ## Step 1. Create the Travel Projection View
 
-First, create the Travel BO projection view (aka consumption view) **`ZC_RAP_Travel_####`** (where `####` is your chosen suffix)  for the Travel entity.
+First, create the Travel BO projection view (aka consumption view) **`ZC_RAP_Travel_8001`** (where `8001` is your chosen suffix)  for the Travel entity.
 
-1. Right-click on your travel BO view (aka interface view) **`ZI_RAP_Travel_####`** and choose **New Data Definition** from the context menu.
+1. Right-click on your travel BO view (aka interface view) **`ZI_RAP_Travel_8001`** and choose **New Data Definition** from the context menu.
  
     ![Create Travel BO projection view](images/w2u4_01_01.png)
 
-2.  Maintain **`ZC_RAP_Travel_####`** as name and a meaningful description (e.g. _**Travel BO projection view**_) in the creation wizard and choose **Next >** to continue.   
+2.  Maintain **`ZC_RAP_Travel_8001`** as name and a meaningful description (e.g. _**Travel BO projection view**_) in the creation wizard and choose **Next >** to continue.   
 The project, the package and the referenced object have been automatically assigned in the creation wizard. 
 
 
@@ -58,7 +58,7 @@ The project, the package and the referenced object have been automatically assig
     **Short Explanation:**    
     The travel BO view is specified as projection view and all view elements have been automatically inserted in the projection list between the curly brackets.
 
-5. Replace the travel data definition in the editor with the code snippet provided below and replace all occurrences of **`####`** with your chosen suffix. You can make use of the _Replace All_ feature (**Ctrl+F**) in ADT for the purpose.
+5. Replace the travel data definition in the editor with the code snippet provided below and replace all occurrences of **`8001`** with your chosen suffix. You can make use of the _Replace All_ feature (**Ctrl+F**) in ADT for the purpose.
 
     Save ![save icon](images/adt_save.png) the changes, but **DO NOT** yet activate the travel BO projection view.
 
@@ -69,8 +69,8 @@ The project, the package and the referenced object have been automatically assig
     @Search.searchable: true
     @Metadata.allowExtensions: true
 
-    define root view entity ZC_RAP_Travel_####
-      as projection on ZI_RAP_Travel_#### as Travel
+    define root view entity ZC_RAP_Travel_8001
+      as projection on ZI_RAP_Travel_8001 as Travel
     {
       key TravelUUID,
           @Search.defaultSearchElement: true
@@ -100,7 +100,7 @@ The project, the package and the referenced object have been automatically assig
 
           /* Associations */
           _Agency,
-          _Booking : redirected to composition child ZC_RAP_Booking_####,
+          _Booking : redirected to composition child ZC_RAP_Booking_8001,
           _Currency,
           _Customer   
     }
@@ -125,16 +125,16 @@ The project, the package and the referenced object have been automatically assig
     - associations have been exposed in the projection list
     - association to the booking BO child node (**`_Booking`**) has been redirected to the appropriate Booking BO projection view using the **`redirected to composition child`**  statement.    
          
-    An error is currently displayed for this statement, because the specified Booking BO projection view **`ZC_RAP_Booking_####`** does not yet exist. 
+    An error is currently displayed for this statement, because the specified Booking BO projection view **`ZC_RAP_Booking_8001`** does not yet exist. 
     
 ## Step 2. Create the Booking Projection View
-Now, you will create the missing Booking BO projection view (aka consumption view) **`ZC_RAP_BOOKING_####`** for the Booking entity - where **`####`** is your chosen suffix.
+Now, you will create the missing Booking BO projection view (aka consumption view) **`ZC_RAP_BOOKING_8001`** for the Booking entity - where **`8001`** is your chosen suffix.
 
-1. Right-click on your Booking BO view (aka interface view) **`ZI_RAP_BOOKING_####`** and choose **New Data Definition** from the context menu.
+1. Right-click on your Booking BO view (aka interface view) **`ZI_RAP_BOOKING_8001`** and choose **New Data Definition** from the context menu.
  
     ![Create Booking BO projection view](images/w2u4_02_01.png)
 
-2.  Maintain **`ZC_RAP_BOOKING_####`** as name and a meaningful description (e.g. _**Booking BO projection view**_) in the creation wizard and choose **Next >** to continue.  
+2.  Maintain **`ZC_RAP_BOOKING_8001`** as name and a meaningful description (e.g. _**Booking BO projection view**_) in the creation wizard and choose **Next >** to continue.  
     The project, the package and the referenced object have been automatically assigned in the creation wizard.  
  
     ![Create Booking BO projection view](images/w2u4_02_02.png)
@@ -154,7 +154,7 @@ Now, you will create the missing Booking BO projection view (aka consumption vie
     **Short Explanation:**
     The booking BO view is specified as projection view and all view elements have been automatically inserted in the projection list between the curly brackets.
 
-5. Replace the booking data definition in the editor with the code snippet provided below and replace all occurrences of **`####`** with your chosen suffix. You can make use of the _Replace All_ feature (**Ctrl+F**) in ADT for the purpose.
+5. Replace the booking data definition in the editor with the code snippet provided below and replace all occurrences of **`8001`** with your chosen suffix. You can make use of the _Replace All_ feature (**Ctrl+F**) in ADT for the purpose.
 
     Save ![save icon](images/adt_save.png) the changes, but **DO NOT** yet activate the booking BO projection view.
 
@@ -166,8 +166,8 @@ Now, you will create the missing Booking BO projection view (aka consumption vie
     @Search.searchable: true
     @Metadata.allowExtensions: true
 
-    define view entity ZC_RAP_Booking_####
-      as projection on ZI_RAP_Booking_#### as Booking
+    define view entity ZC_RAP_Booking_8001
+      as projection on ZI_RAP_Booking_8001 as Booking
     {
       key BookingUUID,
           TravelUUID,
@@ -197,7 +197,7 @@ Now, you will create the missing Booking BO projection view (aka consumption vie
           LocalLastChangedAt,
 
           /* associations */
-          _Travel : redirected to parent ZC_RAP_Travel_####,
+          _Travel : redirected to parent ZC_RAP_Travel_8001,
           _Customer,
           _Carrier,
           _Connection,
@@ -227,7 +227,7 @@ Now, you will create the missing Booking BO projection view (aka consumption vie
 To avoid error during the activation, both new CDS interface views – i.e. Travel view and Booking view – must be activated together for the first time.  
 
 1.	Choose **`Activate All`** ![activate all icon](images/adt_activate_all.png) or use the shortcut **Ctrl+Shift+F3**.    
-    Select both CDS views **`ZC_RAP_TRAVEL_####`** and **`ZC_RAP_BOOKING_####`** on the appearing dialog, and choose **Activate**.
+    Select both CDS views **`ZC_RAP_TRAVEL_8001`** and **`ZC_RAP_BOOKING_8001`** on the appearing dialog, and choose **Activate**.
  
     ![Activate CDS Data Model Projection](images/w2u4_03_01.png)
 
@@ -238,7 +238,7 @@ To avoid error during the activation, both new CDS interface views – i.e. Trav
  
     ![Activate CDS Data Model Projection](images/w2u4_03_02.png)
 
-2.	To run the Data Preview, choose one of the CDS views - i.e. **`ZC_RAP_TRAVEL_####`** or **`ZC_RAP_BOOKING_####`** - in the Project Explorer or open it in the editor, and press **F8**.   
+2.	To run the Data Preview, choose one of the CDS views - i.e. **`ZC_RAP_TRAVEL_8001`** or **`ZC_RAP_BOOKING_8001`** - in the Project Explorer or open it in the editor, and press **F8**.   
        
     The data preview will open in the editor area.    
  
@@ -252,8 +252,8 @@ In this unit, you have learned how to define a CDS data model projection for bus
 
 ## Solution
 Find the source code of the created CDS data definitions (consumption views) in the **[/week2/sources](/week2/sources)** folder:
-- [W2U4_DDLS_ZC_RAP_TRAVEL_####](/week2/sources/W2U4_DDLS_ZC_RAP_TRAVEL.txt) 
-- [W2U4_DDLS_ZC_RAP_BOOKING_####](/week2/sources/W2U4_DDLS_ZC_RAP_BOOKING.txt)
+- [W2U4_DDLS_ZC_RAP_TRAVEL_8001](/week2/sources/W2U4_DDLS_ZC_RAP_TRAVEL.txt) 
+- [W2U4_DDLS_ZC_RAP_BOOKING_8001](/week2/sources/W2U4_DDLS_ZC_RAP_BOOKING.txt)
   
 ## Next exercise
 [Week 2 Unit 5: Enriching the Projected Data Model with UI Metadata](unit5.md)

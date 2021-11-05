@@ -3,10 +3,10 @@
 @Search.searchable: true
 @Metadata.allowExtensions: true
 
-define view entity ZC_RAP_Booking_U_####
-  as projection on ZI_RAP_Booking_U_####
+define view entity ZC_RAP_Booking_U_8001
+  as projection on ZI_RAP_Booking_U_8001
 {
-      //ZI_RAP_BOOKING_U_####
+      //ZI_RAP_BOOKING_U_8001
       @Search.defaultSearchElement: true
   key TravelID,
       @Search.defaultSearchElement: true
@@ -43,5 +43,5 @@ define view entity ZC_RAP_Booking_U_####
       /* Associations */   
       _Carrier,
       _Customer,
-      _Travel : redirected to parent ZC_RAP_Travel_U_####
+      _Travel : redirected to parent ZC_RAP_Travel_U_8001
 }

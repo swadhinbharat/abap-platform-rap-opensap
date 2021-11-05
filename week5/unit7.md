@@ -13,7 +13,7 @@ You can watch [unit 7 of week 5: Creating and Previewing the OData Web API](http
 > Speed up the typing by making use of the Code Completion feature (shortcut **Ctrl+Space**) and the prepared code snippets provided. 
 > You can easily open an object with the shortcut **Ctrl+Shift+A**, format your source code using the Pretty Printer feature Ctrl+1 and toggle the fullscreen of the editor using the shortcut **Ctrl+M**.   
 >
-> Please note that the placeholder **`####`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters). Numbers and letters are allowed.  
+> Please note that the placeholder **`8001`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters). Numbers and letters are allowed.  
 > The screenshots in this document have been taken with the suffix 1234.
 > Please note that the ADT dialogs and views may change in the future due to software updates - i.e. new and/or optimized features.
 
@@ -21,11 +21,11 @@ Follow the instructions below.
 
 ## Create a new package
 
-1. We go to the Project explorer, right-click on our package **`ZRAP_####`** (where `####` is your chosen suffix) you created in week 1 unit 6 and choose the context menu entry **_New > ABAP Package_**.  
+1. We go to the Project explorer, right-click on our package **`ZRAP_8001`** (where `8001` is your chosen suffix) you created in week 1 unit 6 and choose the context menu entry **_New > ABAP Package_**.  
    
     ![Create ABAP Package](images/w5u7_01_01.png)
   
-2. Maintain **`ZRAP_TRAVEL_API_####`** as name (where `####` is your chosen suffix and where `_API` indicates that this is a Web API scenario) and a meaningful description (e.g. **Travel API scenario**) and choose **Next** to continue.  
+2. Maintain **`ZRAP_TRAVEL_API_8001`** as name (where `8001` is your chosen suffix and where `_API` indicates that this is a Web API scenario) and a meaningful description (e.g. **Travel API scenario**) and choose **Next** to continue.  
 The Project and the Superpackage fields are automatically assigned.
    
 
@@ -62,7 +62,7 @@ Let’s get started.
 
 2. Enter the following values
    
-   - Name: `ZAPI_RAP_Travel_####`
+   - Name: `ZAPI_RAP_Travel_8001`
    - Description : `Travel API`
    
    Press **Next**
@@ -86,8 +86,8 @@ Let’s get started.
 
 <pre>
 @EndUserText.label: 'API scenario'
-define service ZAPI_RAP_Travel_#### {
-    expose ZC_RAP_Travel_#### as Travel; 
+define service ZAPI_RAP_Travel_8001 {
+    expose ZC_RAP_Travel_8001 as Travel; 
     
 }
 </pre>
@@ -96,10 +96,10 @@ define service ZAPI_RAP_Travel_#### {
 
 ## Create service binding
 
-We will now create a service binding for our Web API which will be named ZAPI_RAP_TRAVEL_####.
+We will now create a service binding for our Web API which will be named ZAPI_RAP_TRAVEL_8001.
 Be sure to have “ODATA V2 – Web API” selected for the Binding Type.
 The service definition that is used here is
-ZAPI_RAP_TRAVEL_U_####
+ZAPI_RAP_TRAVEL_U_8001
 
 Please note that when we use the consumption view also the value helps are published.
 What will not be published though is the additional metadata for value helps that you would need in case you want to consume the service using Fiori Elements.
@@ -122,10 +122,10 @@ If you want to suppress that value helps are published, you would have to specif
    ![Create Service Definition](images/w5u7_05_02.png)
 
 2. Enter the Following values
-   - Name `ZAPI_RAP_TRAVEL_####`
+   - Name `ZAPI_RAP_TRAVEL_8001`
    - Description: `API scenario`
    - Binding Type: `OData V2 - Web API`
-   - Service Defintion: `ZAPI_RAP_TRAVEL_####`
+   - Service Defintion: `ZAPI_RAP_TRAVEL_8001`
    
    and press **Next**    
       

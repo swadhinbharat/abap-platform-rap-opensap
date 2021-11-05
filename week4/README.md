@@ -17,7 +17,7 @@ In addition, we will use function modules such as **`/DMO/FLIGHT_TRAVEL_CREATE`*
 > Speed up the typing by making use of the Code Completion feature (shortcut Ctrl+Space) and the prepared code snippets provided. 
 > You can easily open an object with the shortcut *Ctrl+Shift+A*, format your source code using the Pretty Printer feature *Shift+F1* and toggle the fullscreen of the editor using the shortcut *Ctrl+M*.   
 >
-> Please note that the placeholder **`####`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters). Numbers and letters are allowed.  
+> Please note that the placeholder **`8001`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters). Numbers and letters are allowed.  
 > The screenshots in this document have been taken with the suffix **`1234`**.
 > Please note that the ADT dialogs and views may change in the future due to software updates - i.e. new and/or optimized features.
 

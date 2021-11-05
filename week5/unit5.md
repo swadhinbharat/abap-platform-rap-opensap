@@ -2,7 +2,7 @@
 
 ## Introduction  
 
-In this unit we will enhance the Flight Model of our Managed Application with External Data that is provided by our custom entity **zce_rap_agency_####** . 
+In this unit we will enhance the Flight Model of our Managed Application with External Data that is provided by our custom entity **zce_rap_agency_8001** . 
 For this we have to perform some changes in the following objects
 -	Travel interface view
 -	Travel projection view
@@ -17,7 +17,7 @@ You can watch [unit 5 of week 5: Enhancing the Flight Model with External Data](
 >
 > A great overview on ADT shortcuts can be found here: [Useful ADT Shortcuts](https://blogs.sap.com/2013/11/21/useful-keyboard-shortcuts-for-abap-in-eclipse/)
 >
-> Please note that the placeholder **`####`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
+> Please note that the placeholder **`8001`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
 > The screenshots in this document have been taken with the suffix `1234` and system `D20`. Your system id will be `TRL`.
 
 > Please note that the ADT dialogs and views may change in the future due to software updates - i.e. new and/or optimized feature
@@ -26,7 +26,7 @@ Follow the instructions below.
     
 ## Check custom entity code 
 
-Let’s first have a look at the coding of our custom entity **zce_rap_agency_####** .
+Let’s first have a look at the coding of our custom entity **zce_rap_agency_8001** .
 
 
 Please note that the key field is called **AgencyId** with a small **d**. 
@@ -34,34 +34,34 @@ Since we cannot create aliases for the field names we have to adapt the conditio
 
 <pre>
 @EndUserText.label: 'agency data from ES5'
-@ObjectModel.query.implementedBy: 'ABAP:ZCL_CE_RAP_AGENCY_####'
-define custom entity zce_rap_agency_#### 
+@ObjectModel.query.implementedBy: 'ABAP:ZCL_CE_RAP_AGENCY_8001'
+define custom entity zce_rap_agency_8001 
  {
  key <b>AgencyId</b> : abap.numc( 6 ) ; 
 </pre>
 
 ## Change the coding of the interface view
 
-1. Open the CDS interface view **`ZI_RAP_Travel_####`** of your managed RAP business objects 
+1. Open the CDS interface view **`ZI_RAP_Travel_8001`** of your managed RAP business objects 
     - Choose Ctrl+Shift+A
-    - Enter the name of the CDS interface view **`ZI_RAP_Travel_####`**
+    - Enter the name of the CDS interface view **`ZI_RAP_Travel_8001`**
     - Press **OK**
      
     ![Open class](images/w5u5_01_01.png)
    
 2. Change the coding of the assocation **`_Agency`**. 
 
-   In this step we change the coding for the association **`_Agency`** so that it does not use anymore the CDS view **`/DMO/I_Agency`** but instead our newly created custom entity **`zce_rap_agency_####`**.
+   In this step we change the coding for the association **`_Agency`** so that it does not use anymore the CDS view **`/DMO/I_Agency`** but instead our newly created custom entity **`zce_rap_agency_8001`**.
 
 <pre>
   //association [0..1] to /DMO/I_Agency       as _Agency   on $projection.AgencyID = _Agency.AgencyID
-  association [0..1] to zce_rap_agency_#### as _Agency   on $projection.AgencyID = _Agency.AgencyId  
+  association [0..1] to zce_rap_agency_8001 as _Agency   on $projection.AgencyID = _Agency.AgencyId  
 </pre>
 
    ![Open class](images/w5u5_01_02.png)
 
    > **Do NOT** activate your coding yet.  
-   > If you try to do so you will get an error message **Association "_AGENCY" of entity "ZCE_RAP_AGENCY_####" cannot be used**. 
+   > If you try to do so you will get an error message **Association "_AGENCY" of entity "ZCE_RAP_AGENCY_8001" cannot be used**. 
    > This is because the association is still used in the projection view for the field **AgencyName** which is read via the association `_Agency.Name       as AgencyName`.   
    > Since custom entities must not be part of a projection we have to remove this field from the projection view which we will do in the following step.  
    >     
@@ -69,9 +69,9 @@ define custom entity zce_rap_agency_####
 
 ## Change the coding of the projection view
 
-1.  Open the CDS interface view **`ZC_RAP_Travel_####`** of your managed RAP business objects 
+1.  Open the CDS interface view **`ZC_RAP_Travel_8001`** of your managed RAP business objects 
     - Choose **Ctrl+Shift+A**
-    - Enter the name of the CDS interface view **`ZC_RAP_Travel_####`**
+    - Enter the name of the CDS interface view **`ZC_RAP_Travel_8001`**
     - Press **OK**
      
      ![Open class](images/w5u5_01_04.png)
@@ -92,7 +92,7 @@ define root view entity ZC_RAP_Travel_1234
       @Search.defaultSearchElement: true
       TravelID,
       <b>//@Consumption.valueHelpDefinition: [{ entity: { name: '/DMO/I_Agency', element: 'AgencyID'} }]
-      @Consumption.valueHelpDefinition: [{ entity : {name: 'zce_rap_agency_####', element: 'AgencyId' } }]</b>
+      @Consumption.valueHelpDefinition: [{ entity : {name: 'zce_rap_agency_8001', element: 'AgencyId' } }]</b>
       <b>//@ObjectModel.text.element: ['AgencyName']</b>
       @Search.defaultSearchElement: true
       AgencyID,
@@ -109,15 +109,15 @@ define root view entity ZC_RAP_Travel_1234
 
 ## Change the behavior implementation class
 
-Open you implementation class **`ZBP_I_RAP_TRAVEL_####`** you created in week 3.
+Open you implementation class **`ZBP_I_RAP_TRAVEL_8001`** you created in week 3.
 
-Instead of reading from the local table **`/dmo/agency`** we are using a remote call to the OData service in ES5 using the public method **`zcl_ce_rap_agency_####( )->get_agencies()`** in our custom query.
+Instead of reading from the local table **`/dmo/agency`** we are using a remote call to the OData service in ES5 using the public method **`zcl_ce_rap_agency_8001( )->get_agencies()`** in our custom query.
 
 
 
  ![Open class](images/w5u5_01_08.png)
 
-Also later in the implementation we replace the check for entries in table **`agency_db`** through a check for entries in the internal table **`business_data`** that is returned by calling the method **`zcl_ce_rap_agency_####( )->get_agencies( )`**.
+Also later in the implementation we replace the check for entries in table **`agency_db`** through a check for entries in the internal table **`business_data`** that is returned by calling the method **`zcl_ce_rap_agency_8001( )->get_agencies( )`**.
 
  ![Open class](images/w5u5_01_09.png)
 
@@ -127,7 +127,7 @@ So your code should look like follows
 
   METHOD validateAgency.
     " Read relevant travel instance data
-    READ ENTITIES OF zi_rap_travel_#### IN LOCAL MODE
+    READ ENTITIES OF zi_rap_travel_8001 IN LOCAL MODE
       ENTITY Travel
         FIELDS ( AgencyID ) WITH CORRESPONDING #( keys )
       RESULT DATA(travels).
@@ -156,7 +156,7 @@ So your code should look like follows
     
     DATA filter_conditions  TYPE if_rap_query_filter=>tt_name_range_pairs .
     DATA ranges_table TYPE if_rap_query_filter=>tt_range_option .
-    DATA business_data TYPE TABLE OF zrap_####z_travel_agency_es5.
+    DATA business_data TYPE TABLE OF zrap_8001z_travel_agency_es5.
 
     IF  agencies IS NOT INITIAL.
 
@@ -223,9 +223,9 @@ So your code should look like follows
 
         APPEND VALUE #( %tky        = travel-%tky
                         %state_area = 'VALIDATE_AGENCY'
-                        %msg        = NEW zcm_rap_####(
+                        %msg        = NEW zcm_rap_8001(
                                           severity = if_abap_behv_message=>severity-error
-                                          textid   = zcm_rap_####=>agency_unknown
+                                          textid   = zcm_rap_8001=>agency_unknown
                                           agencyid = travel-AgencyID )
                         %element-AgencyID = if_abap_behv=>mk-on )
           TO reported-travel.
@@ -250,11 +250,11 @@ As a result you have implemented a side-by-side extension scenario.
 Find the source code for the updated interface view, projection view and the behavior implementation in the week5/sources folder:
 [Sources](sources) or use the following link.
 
-- [W5U5_CLAS_ZBP_I_RAP_TRAVEL_####.txt](/week5/sources/W5U5_CLAS_ZBP_I_RAP_TRAVEL_%23%23%23%23.txt) 
-- [W5U5_DDLS_ZC_RAP_Travel_####.txt](/week5/sources/W5U5_DDLS_ZC_RAP_Travel_%23%23%23%23.txt)
-- [W5U5_DDLS_ZI_RAP_Travel_####.txt](/week5/sources/W5U5_DDLS_ZI_RAP_Travel_%23%23%23%23.txt)
+- [W5U5_CLAS_ZBP_I_RAP_TRAVEL_8001.txt](/week5/sources/W5U5_CLAS_ZBP_I_RAP_TRAVEL_%23%23%23%23.txt) 
+- [W5U5_DDLS_ZC_RAP_Travel_8001.txt](/week5/sources/W5U5_DDLS_ZC_RAP_Travel_%23%23%23%23.txt)
+- [W5U5_DDLS_ZI_RAP_Travel_8001.txt](/week5/sources/W5U5_DDLS_ZI_RAP_Travel_%23%23%23%23.txt)
 
-Do not forget to replace all the occurrences of #### with your chosen suffix in the copied source code.
+Do not forget to replace all the occurrences of 8001 with your chosen suffix in the copied source code.
 
 
 

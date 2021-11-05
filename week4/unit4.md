@@ -18,7 +18,7 @@ You can watch [unit 4 of week 4: Creating the Business Object Projection](https:
 >
 > A great overview on ADT shortcuts can be found here: [Useful ADT Shortcuts](https://blogs.sap.com/2013/11/21/useful-keyboard-shortcuts-for-abap-in-eclipse/)
 >
-> Please note that the placeholder **`####`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
+> Please note that the placeholder **`8001`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
 > The screenshots in this document have been taken with the suffix `1234` and system `D20`. Your system id will be `TRL`.
 
 > Please note that the ADT dialogs and views may change in the future due to software updates - i.e. new and/or optimized feature
@@ -30,18 +30,18 @@ Let’s start with adding a projection layer on our CDS interface views.
 
 1. We can right-click on the CDS interface view for travel and use the new wizard to create projection views that have our interface CDS view for Travel as a data source.
 
-   - Right click on the interface view `ZI_RAP_Travel_U_####` for Travel
+   - Right click on the interface view `ZI_RAP_Travel_U_8001` for Travel
    - Select **New Data Definition**
 
    ![Create root projection view](images/w4u4_01_01.png)
  
 2. In the Data Definition wizard
-   - Name: ZC_RAP_Travel_U_####
+   - Name: ZC_RAP_Travel_U_8001
    - Description: Travel data
 
    and press **Next**
    
-   The CDS interface view ZI_RAP_Travel_U_#### is automatically set as the **Referenced Object**.
+   The CDS interface view ZI_RAP_Travel_U_8001 is automatically set as the **Referenced Object**.
 
    ![Create root projection view](images/w4u4_01_02.png)
 
@@ -67,7 +67,7 @@ Let’s start with adding a projection layer on our CDS interface views.
    ![Create root projection view](images/w4u4_01_05.png)
 
 6. Add the keyword `root` to your coding so that the beginning of the data definition now reads
-     <pre>define <b>root</b> view entity ZC_RAP_Travel_U_#### as projection on ZI_RAP_TRAVEL_U_####</pre>
+     <pre>define <b>root</b> view entity ZC_RAP_Travel_U_8001 as projection on ZI_RAP_TRAVEL_U_8001</pre>
 
    ![Create root projection view](images/w4u4_01_06.png)
 
@@ -90,9 +90,9 @@ Let’s start with adding a projection layer on our CDS interface views.
 
    - add the informaton to the association \_Booking that this assocation is part of a composition tree
    
-    `_Booking : redirected to composition child ZC_RAP_Booking_U_####`
+    `_Booking : redirected to composition child ZC_RAP_Booking_U_8001`
 
-   > Here you get a error *Could not parse DDL source for entity "ZC_RAP_Booking_U_####"* since the projection view for the child entity Booking does not yet exist.
+   > Here you get a error *Could not parse DDL source for entity "ZC_RAP_Booking_U_8001"* since the projection view for the child entity Booking does not yet exist.
 
    ![Create root projection view](images/w4u4_01_09.png)
    
@@ -104,10 +104,10 @@ Your Travel prpjection view should now look as follows:
     @AccessControl.authorizationCheck: #CHECK
     @Search.searchable: true
 
-    define root view entity ZC_RAP_Travel_U_####
-      as projection on ZI_RAP_Travel_U_####
+    define root view entity ZC_RAP_Travel_U_8001
+      as projection on ZI_RAP_Travel_U_8001
     {
-      //ZI_RAP_TRAVEL_U_####
+      //ZI_RAP_TRAVEL_U_8001
       key TravelID,
           @Consumption.valueHelpDefinition: [ { entity: { name: '/DMO/I_Agency', element: 'AgencyID' } } ]
           @Search.defaultSearchElement: true
@@ -131,9 +131,9 @@ Your Travel prpjection view should now look as follows:
           Lastchangedat,
 
           /* Associations */
-          //ZI_RAP_TRAVEL_U_####
+          //ZI_RAP_TRAVEL_U_8001
           _Agency,
-          _Booking : redirected to composition child ZC_RAP_Booking_U_####,
+          _Booking : redirected to composition child ZC_RAP_Booking_U_8001,
           _Currency,
           _Customer
     }
@@ -147,18 +147,18 @@ We now create a projection view for our child entity Booking.
 
 1. We can right-click on the CDS interface view for **Booking** and use the new wizard to create projection views that have our interface CDS view for Booking as a data source.
 
-   - Right click on the CDS interface view `ZI_RAP_Booking_U_####`
+   - Right click on the CDS interface view `ZI_RAP_Booking_U_8001`
    - Select **New Data Definition**
 
    ![Create root projection view](images/w4u4_02_01.png)
  
 2. In the Data Definition wizard
-   - Name: ZC_RAP_BOOKING_U_####
+   - Name: ZC_RAP_BOOKING_U_8001
    - Description: Booking data
 
    and press **Next**
    
-   The CDS interface view ZI_RAP_Booking_U_#### is automatically set as the **Referenced Object**.
+   The CDS interface view ZI_RAP_Booking_U_8001 is automatically set as the **Referenced Object**.
 
    ![Create root projection view](images/w4u4_02_02.png)
 
@@ -229,7 +229,7 @@ We now create a projection view for our child entity Booking.
 
 
 7. We finally have to add information to the association `_Travel` that it is part of a composition tree and that it point to the parent entity Travel.
-   `_Travel : redirected to parent ZC_RAP_Travel_U_####`
+   `_Travel : redirected to parent ZC_RAP_Travel_U_8001`
 
    ![Create root projection view](images/w4u4_02_06.png)
 
@@ -244,10 +244,10 @@ We now create a projection view for our child entity Booking.
     @Search.searchable: true
    
 
-    define view entity ZC_RAP_Booking_U_####
-      as projection on ZI_RAP_Booking_U_####
+    define view entity ZC_RAP_Booking_U_8001
+      as projection on ZI_RAP_Booking_U_8001
     {
-          //ZI_RAP_BOOKING_U_####
+          //ZI_RAP_BOOKING_U_8001
           <b>@Search.defaultSearchElement: true</b>
       key TravelID,
           <b>@Search.defaultSearchElement: true</b>
@@ -285,7 +285,7 @@ We now create a projection view for our child entity Booking.
           /* Associations */   
           _Carrier,
           _Customer,
-          <b>_Travel : redirected to parent ZC_RAP_Travel_U_####</b>
+          <b>_Travel : redirected to parent ZC_RAP_Travel_U_8001</b>
     }
 
 </pre>
@@ -303,12 +303,12 @@ We now create a projection view for our child entity Booking.
 Part of the projection layer, in case you want to implement a service for UI-based consumption, are the metadata extensions. Metadata extensions contain UI specific annotations and they have been invented to separate UI- based annotations from the projection views. 
 They allow in addition a layering, i.e. industries, partners or customers can put their annotations beside the existing annotations.
 
-1. Right-click on our newly created projection view for travel `ZC_RAP_Travel_U_####`, and select **New Metadata Extension**. 
+1. Right-click on our newly created projection view for travel `ZC_RAP_Travel_U_8001`, and select **New Metadata Extension**. 
 
  ![Select root projection view](images/w4u4_03_01.png) 
  
 2. Specify the following values
-   - Name: `ZC_RAP_Travel_U_####`
+   - Name: `ZC_RAP_Travel_U_8001`
    - Description: `Travel data` 
 
    Press **Next**
@@ -355,7 +355,7 @@ They allow in addition a layering, i.e. industries, partners or customers can pu
   presentationVariant: [ { sortOrder: [ { by:         'TravelID',
                                           direction:  #DESC }] }]
 }
-annotate view ZC_RAP_Travel_U_#### with
+annotate view ZC_RAP_Travel_U_8001 with
 {
   @UI.facet: [ { id:            'Travel',
                  purpose:       #STANDARD,
@@ -424,7 +424,7 @@ annotate view ZC_RAP_Travel_U_#### with
   ![Create root projection view](images/w4u4_03_05.png) 
 
 7. Here we can simply press **Ctrl+1** and use the quick fix that will add this annotation to the base view. 
-   - Select the name of the projection view `ZC_RAP_Travel_U_####`
+   - Select the name of the projection view `ZC_RAP_Travel_U_8001`
    - Press **Ctrl+1**
    - Double click on the quick fix `Add annoation 'Metadata.allowextension' to base view`
 
@@ -442,12 +442,12 @@ annotate view ZC_RAP_Travel_U_#### with
 
 We can do now the same for the booking projection view and create a metadata extension view for it.
 
-1. Right-click on our newly created projection view for *Booking* `ZC_RAP_Booking_U_####`, and select **New Metadata Extension**. 
+1. Right-click on our newly created projection view for *Booking* `ZC_RAP_Booking_U_8001`, and select **New Metadata Extension**. 
 
  ![Select root projection view](images/w4u4_03_09.png) 
  
 2. Specify the following values
-   - Name: `ZC_RAP_Booking_U_####`
+   - Name: `ZC_RAP_Booking_U_8001`
    - Description: `Booking data` 
 
    Press **Next**
@@ -491,7 +491,7 @@ We can do now the same for the booking projection view and create a metadata ext
         }
       }
     }
-    annotate view ZC_RAP_Booking_U_#### with
+    annotate view ZC_RAP_Booking_U_8001 with
     {
       @UI.facet: [ { id:            'Booking',
                      purpose:       #STANDARD,
@@ -532,12 +532,12 @@ We can do now the same for the booking projection view and create a metadata ext
     }
 </pre>
    
-6. Again, we see an error that the annoation `@Metadata.allowExtensions` is missing in the projection view `ZC_RAP_Booking_U_####` which is to be annotated. 
+6. Again, we see an error that the annoation `@Metadata.allowExtensions` is missing in the projection view `ZC_RAP_Booking_U_8001` which is to be annotated. 
 
   ![Create root projection view](images/w4u4_03_13.png) 
 
 7. Again we can simply press Ctrl+1 and use the quick fix that will add this annotation to the base view. 
-   - Select the name of the projection view `ZC_RAP_Booking_U_####`
+   - Select the name of the projection view `ZC_RAP_Booking_U_8001`
    - Press **Ctrl+1**
    - Double click on the quick fix `Add annoation 'Metadata.allowextension' to base view`
 
@@ -581,7 +581,7 @@ definition.
     <pre>
     projection;
 
-    define behavior for ZC_RAP_Travel_U_#### alias Travel
+    define behavior for ZC_RAP_Travel_U_8001 alias Travel
     use etag
     {
       use create;
@@ -591,7 +591,7 @@ definition.
       use association _Booking { create; }
     }
 
-    define behavior for ZC_RAP_Booking_U_#### alias Booking
+    define behavior for ZC_RAP_Booking_U_8001 alias Booking
     use etag
     {
       use update;
@@ -612,14 +612,14 @@ And finally, we have created a projection for our behavior definition, and we sp
 ## Solution
 Find the source code of the created entities in the **[sources](/week4/sources)** folder:  
 
-- [W4U4_DDLS_ZC_RAP_Travel_U_####.txt](/week4/sources/W4U4_DDLS_ZC_RAP_Travel_U_%23%23%23%23.txt)
-- [W4U4_DDLS_ZC_RAP_Booking_U_####.txt](/week4/sources/W4U4_DDLS_ZC_RAP_Booking_U_%23%23%23%23.txt)
-- [W4U4_DDLX_ZC_RAP_Travel_U_####.txt](/week4/sources/W4U4_DDLX_ZC_RAP_Travel_U_%23%23%23%23.txt)
-- [W4U4_DDLX_ZC_RAP_Booking_U_####.txt](/week4/sources/W4U4_DDLX_ZC_RAP_Booking_U_%23%23%23%23.txt)
-- [W4U4_BDEF_ZC_RAP_Travel_U_####.txt](/week4/sources/W4U4_BDEF_ZC_RAP_Travel_U_%23%23%23%23.txt)
+- [W4U4_DDLS_ZC_RAP_Travel_U_8001.txt](/week4/sources/W4U4_DDLS_ZC_RAP_Travel_U_%23%23%23%23.txt)
+- [W4U4_DDLS_ZC_RAP_Booking_U_8001.txt](/week4/sources/W4U4_DDLS_ZC_RAP_Booking_U_%23%23%23%23.txt)
+- [W4U4_DDLX_ZC_RAP_Travel_U_8001.txt](/week4/sources/W4U4_DDLX_ZC_RAP_Travel_U_%23%23%23%23.txt)
+- [W4U4_DDLX_ZC_RAP_Booking_U_8001.txt](/week4/sources/W4U4_DDLX_ZC_RAP_Booking_U_%23%23%23%23.txt)
+- [W4U4_BDEF_ZC_RAP_Travel_U_8001.txt](/week4/sources/W4U4_BDEF_ZC_RAP_Travel_U_%23%23%23%23.txt)
      
     
-Do not forget to replace all the occurrences of `####` with your chosen suffix in the copied source code.  
+Do not forget to replace all the occurrences of `8001` with your chosen suffix in the copied source code.  
 
 ## Next exercise
 [Week 4 Unit 5: Building and Previewing the OData UI Service](unit5.md)

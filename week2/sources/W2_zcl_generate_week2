@@ -1,4 +1,4 @@
-CLASS zcl_generate_week2_#### DEFINITION
+CLASS zcl_generate_week2_8001 DEFINITION
   PUBLIC
   INHERITING FROM cl_xco_cp_adt_simple_classrun
   FINAL
@@ -10,8 +10,8 @@ CLASS zcl_generate_week2_#### DEFINITION
     METHODS main REDEFINITION.
   PRIVATE SECTION.
 
-    DATA package_name  TYPE sxco_package VALUE  'ZRAP_TRAVEL_####'.
-    DATA unique_number TYPE string VALUE '####'.
+    DATA package_name  TYPE sxco_package VALUE  'ZRAP_TRAVEL_8001'.
+    DATA unique_number TYPE string VALUE '8001'.
     DATA table_name_travel  TYPE sxco_dbt_object_name.
     DATA table_name_booking TYPE sxco_dbt_object_name.
 
@@ -42,7 +42,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_generate_week2_#### IMPLEMENTATION.
+CLASS zcl_generate_week2_8001 IMPLEMENTATION.
   METHOD main.
 
     package_name = to_upper( package_name ).

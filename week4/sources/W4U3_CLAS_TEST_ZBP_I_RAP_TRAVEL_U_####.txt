@@ -23,7 +23,7 @@ CLASS ltcl_integration_test IMPLEMENTATION.
   METHOD create_travel.
 
     DATA(today) = cl_abap_context_info=>get_system_date( ).
-    DATA travels_in TYPE TABLE FOR CREATE zi_rap_travel_U_####\\travel.
+    DATA travels_in TYPE TABLE FOR CREATE zi_rap_travel_U_8001\\travel.
 
     travels_in = VALUE #(     ( agencyid      = 070001   "Agency 070001 does exist, Agency 1 does not exist
                                 customerid    = 1
@@ -35,7 +35,7 @@ CLASS ltcl_integration_test IMPLEMENTATION.
                                 description   = |Test travel XYZ|
                                ) ).
 
-    MODIFY ENTITIES OF zi_rap_travel_u_####
+    MODIFY ENTITIES OF zi_rap_travel_u_8001
         ENTITY travel
            CREATE FIELDS (    agencyid
                               customerid
@@ -57,7 +57,7 @@ CLASS ltcl_integration_test IMPLEMENTATION.
 
     DATA(new_travel_id) = mapped-travel[ 1 ]-TravelId.
 
-    SELECT * FROM zi_rap_travel_u_#### WHERE TravelId = @new_travel_id INTO TABLE @DATA(lt_travel)  .
+    SELECT * FROM zi_rap_travel_u_8001 WHERE TravelId = @new_travel_id INTO TABLE @DATA(lt_travel)  .
 
     cl_abap_unit_assert=>assert_not_initial( lt_travel ).
 
@@ -72,8 +72,8 @@ CLASS ltcl_integration_test IMPLEMENTATION.
 
   METHOD class_setup.
     cds_test_environment = cl_cds_test_environment=>create_for_multiple_cds(
-        i_for_entities = VALUE #( ( i_for_entity = 'zi_rap_travel_u_####' )
-                                  ( i_for_entity = 'zi_rap_booking_u_####' ) )
+        i_for_entities = VALUE #( ( i_for_entity = 'zi_rap_travel_u_8001' )
+                                  ( i_for_entity = 'zi_rap_booking_u_8001' ) )
                                 ).
   ENDMETHOD.
 

@@ -19,7 +19,7 @@ You can watch [unit 6 of week 5: Creating and Previewing the OData UI Service](h
 > Speed up the typing by making use of the Code Completion feature (shortcut **Ctrl+Space**) and the prepared code snippets provided. 
 > You can easily open an object with the shortcut **Ctrl+Shift+A**, format your source code using the Pretty Printer feature Ctrl+1 and toggle the fullscreen of the editor using the shortcut **Ctrl+M**.   
 >
-> Please note that the placeholder **`####`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters). Numbers and letters are allowed.  
+> Please note that the placeholder **`8001`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters). Numbers and letters are allowed.  
 > The screenshots in this document have been taken with the suffix 1234.
 > Please note that the ADT dialogs and views may change in the future due to software updates - i.e. new and/or optimized features.
 
@@ -27,12 +27,12 @@ Follow the instructions below.
     
 ## Check the service binding
 
-1. Expand your package **ZRAP_TRAVEL_#### > Business Services > Service Bindings**
-    - Open the service binding `ZUI_RAP_TRAVEL_O2_####`
+1. Expand your package **ZRAP_TRAVEL_8001 > Business Services > Service Bindings**
+    - Open the service binding `ZUI_RAP_TRAVEL_O2_8001`
 
    ![Open service binding](images/w5u6_01_01.png)
 
-2. Search the custom entity **zce_rap_agency_####** in the list of entity sets and associations.
+2. Search the custom entity **zce_rap_agency_8001** in the list of entity sets and associations.
 
    ![Open service binding](images/w5u6_01_02.png)
 
@@ -46,8 +46,8 @@ custom entity to the service definition.
 
    ![Open service definition](images/w5u6_01_03.png)
 
-2. Change the expose statement so that no longer the cds view **/DMO/I_Agency** is exposed as Travel but the custom entity **zce_rap_agency_####**.
-   - **Replace** the existing expose statement <pre> expose /DMO/I_Agency as Agency; </pre> with the following expose statement <pre>expose zce_rap_agency_#### as Agency;</pre>
+2. Change the expose statement so that no longer the cds view **/DMO/I_Agency** is exposed as Travel but the custom entity **zce_rap_agency_8001**.
+   - **Replace** the existing expose statement <pre> expose /DMO/I_Agency as Agency; </pre> with the following expose statement <pre>expose zce_rap_agency_8001 as Agency;</pre>
 
    ![Change service definition](images/w5u6_01_04.png)
 
@@ -58,7 +58,7 @@ custom entity to the service definition.
 
 ## Test access to entity Agency 
 
-1. Navigate back to the service binding `ZUI_RAP_TRAVEL_O2_####`
+1. Navigate back to the service binding `ZUI_RAP_TRAVEL_O2_8001`
 
    ![Open service definition](images/w5u6_01_05.png)
 
@@ -114,9 +114,9 @@ In this unit you have learned how to adapt the service definition and that these
 Find the source code for the updated service definition in the week5/sources folder:
 [Sources](sources) or use the following link.
 
-- [W5U6_SRVD_ZUI_RAP_TRAVEL_####.txt](/week5/sources/W5U6_SRVD_ZUI_RAP_TRAVEL_%23%23%23%23.txt)
+- [W5U6_SRVD_ZUI_RAP_TRAVEL_8001.txt](/week5/sources/W5U6_SRVD_ZUI_RAP_TRAVEL_%23%23%23%23.txt)
 
-Do not forget to replace all the occurrences of #### with your chosen suffix in the copied source code.
+Do not forget to replace all the occurrences of 8001 with your chosen suffix in the copied source code.
 
 
 

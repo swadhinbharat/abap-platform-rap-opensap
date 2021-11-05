@@ -3,7 +3,7 @@
 @AbapCatalog.tableCategory : #TRANSPARENT
 @AbapCatalog.deliveryClass : #A
 @AbapCatalog.dataMaintenance : #RESTRICTED
-define table zrap_atrav_#### {
+define table zrap_atrav_8001 {
   key client            : mandt not null;
   key travel_uuid       : sysuuid_x16 not null;
   travel_id             : /dmo/travel_id;
@@ -11,9 +11,9 @@ define table zrap_atrav_#### {
   customer_id           : /dmo/customer_id;
   begin_date            : /dmo/begin_date;
   end_date              : /dmo/end_date;
-  @Semantics.amount.currencyCode : 'zrap_atrav_####.currency_code'
+  @Semantics.amount.currencyCode : 'zrap_atrav_8001.currency_code'
   booking_fee           : /dmo/booking_fee;
-  @Semantics.amount.currencyCode : 'zrap_atrav_####.currency_code'
+  @Semantics.amount.currencyCode : 'zrap_atrav_8001.currency_code'
   total_price           : /dmo/total_price;
   currency_code         : /dmo/currency_code;
   description           : /dmo/description;

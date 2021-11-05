@@ -13,7 +13,7 @@ You can watch [week 3 unit 4: Understanding Entity Manipulation Language (EML)](
 >
 > A great overview of ADT shortcuts can be found here: [Useful ADT Shortcuts](https://blogs.sap.com/2013/11/21/useful-keyboard-shortcuts-for-abap-in-eclipse/)
 >
-> Please note that the placeholder **`####`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
+> Please note that the placeholder **`8001`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
 > The screenshots in this document have been taken with the suffix `1234` and system `D20`. Your system id will be `TRL`.
 
 > Please note that the ADT dialogs and views may change in the future due to software updates.
@@ -21,16 +21,16 @@ You can watch [week 3 unit 4: Understanding Entity Manipulation Language (EML)](
 Follow the instructions below.
 
 ## Step 1. Create the Class
-In this step you will create the class **`ZCL_RAP_EML_####`**, where **`####`** is your chosen suffix, to play around and learn the EML syntax.
+In this step you will create the class **`ZCL_RAP_EML_8001`**, where **`8001`** is your chosen suffix, to play around and learn the EML syntax.
 
-1.	Right-click on your package **`ZRAP_TRAVEL_####`** and choose _**New > ABAP Class**_
+1.	Right-click on your package **`ZRAP_TRAVEL_8001`** and choose _**New > ABAP Class**_
 
  
 ![Create ABAP Class](images/w3u4_01_01.png)
 
 
 
-2.	Maintain **`ZCL_RAP_EML_####`** as _Name_ and a meaningful _Description_ (.e.g. **`EML Playground`**) in the _New ABAP Class_ wizard.        
+2.	Maintain **`ZCL_RAP_EML_8001`** as _Name_ and a meaningful _Description_ (.e.g. **`EML Playground`**) in the _New ABAP Class_ wizard.        
     
     Add the interface **`if_oo_adt_classrun`** to the _Interfaces_ section by choosing the _**Add**_, filtering the entries appropriately, choosing the correct entry from the list and choosing **OK**.    
     
@@ -56,10 +56,10 @@ In this step you will create the class **`ZCL_RAP_EML_####`**, where **`####`** 
 The first EML example performs a READ operation.   
 
 1.	For this insert the code snippet provided below into the **`main`** method.    
-    Do not forget to replace the placeholder **`####`** with your chosen suffix.     
+    Do not forget to replace the placeholder **`8001`** with your chosen suffix.     
     <pre>    
         " step 1 - READ
-        READ ENTITIES OF ZI_RAP_Travel_####
+        READ ENTITIES OF ZI_RAP_Travel_8001
           ENTITY travel
             FROM VALUE #( ( TravelUUID = '&ltyour uuid&gt' ) )
           RESULT DATA(travels).
@@ -80,7 +80,7 @@ The first EML example performs a READ operation.
           
             
 2.	Before you can proceed, you need a travel UUID.   
-    Open the _Data Preview_ of your Travel table **`ZRAP_ATRAV_####`** – where `####` is your chosen suffix – and pick a UUID that you want to use in this example.   
+    Open the _Data Preview_ of your Travel table **`ZRAP_ATRAV_8001`** – where `8001` is your chosen suffix – and pick a UUID that you want to use in this example.   
     Double-click the value of the **`TRAVEL_UUID`** column and copy it.  
          
     Remember the associated **`TRAVEL_ID`**, so that you find the record back, later on.  
@@ -100,11 +100,11 @@ The first EML example performs a READ operation.
     ![EML READ operation](images/w3u4_02_04.png)
     
 5.	Specify that the value of the fields **`AgencyID`** and **`CustomerID`** should be read. For that, comment out the current implementation and insert the code snippet provided below.   
-    Do not forget to replace the placeholders **`####`** and **`<your uuid>`** with your chosen suffix and the copied travel UUID respectively.  
+    Do not forget to replace the placeholders **`8001`** and **`<your uuid>`** with your chosen suffix and the copied travel UUID respectively.  
     
     <pre>
         " step 2 - READ with Fields
-        READ ENTITIES OF ZI_RAP_Travel_####
+        READ ENTITIES OF ZI_RAP_Travel_8001
           ENTITY travel
             FIELDS ( AgencyID CustomerID )
           WITH VALUE #( ( TravelUUID = '&ltyour uuid&gt' ) )
@@ -125,11 +125,11 @@ The first EML example performs a READ operation.
          
 7.	It’s also possible to read all fields of the entity by using the **`ALL FIELDS WITH`** addition.    
     For that, comment out the current implementation and insert the code snippet provided below.      
-    Do not forget to replace the placeholders **`####`** and **`<your uuid>`** with your chosen suffix and the copied travel UUID respectively.   
+    Do not forget to replace the placeholders **`8001`** and **`<your uuid>`** with your chosen suffix and the copied travel UUID respectively.   
      
     <pre>
         " step 3 - READ with All Fields
-        READ ENTITIES OF ZI_RAP_Travel_####
+        READ ENTITIES OF ZI_RAP_Travel_8001
           ENTITY travel
             ALL FIELDS 
           WITH VALUE #( ( TravelUUID = '&ltyour uuid&gt' ) )
@@ -153,11 +153,11 @@ The first EML example performs a READ operation.
          
 9.	Another option is to perform a _read-by-association_, by following the association defined in the behavior definition.  
     For that, comment out the current implementation and insert the code snippet provided below.   
-    Do not forget to replace the placeholders **`####`** and **`<your uuid>`** with your chosen suffix and the copied travel UUID respectively.  
+    Do not forget to replace the placeholders **`8001`** and **`<your uuid>`** with your chosen suffix and the copied travel UUID respectively.  
     
     <pre>
         " step 4 - READ By Association
-        READ ENTITIES OF ZI_RAP_Travel_####
+        READ ENTITIES OF ZI_RAP_Travel_8001
           ENTITY travel BY \_Booking
             ALL FIELDS WITH VALUE #( ( TravelUUID = '&ltyour uuid&gt' ) )
           RESULT DATA(bookings).
@@ -181,11 +181,11 @@ When performing EML read operations, you should not only consider the result tab
 You will now try to read a travel UUID that does not exist.      
         
 1. Comment out the current implementation and insert the code snippet provided below.    
-    Do not forget to replace the placeholder **`####`** with your chosen suffix. Keep the specified **`TRAVELUUID`**.    
+    Do not forget to replace the placeholder **`8001`** with your chosen suffix. Keep the specified **`TRAVELUUID`**.    
     
     <pre>
         " step 5 - Unsuccessful READ
-        READ ENTITIES OF ZI_RAP_Travel_####
+        READ ENTITIES OF ZI_RAP_Travel_8001
           ENTITY travel
             ALL FIELDS WITH VALUE #( ( TravelUUID = '11111111111111111111111111111111' ) )
           RESULT DATA(travels)
@@ -220,11 +220,11 @@ You will now try to read a travel UUID that does not exist.
 Now you will implement and perform some modifying operations.   
     
 1. Perform a **`MODIFY`** operation updating the description of your travel record. For that, comment out the current implementation and insert the code snippet provided below.   
-    Do not forget to replace the placeholders **`####`** and **`<your uuid>`** with your chosen suffix and the copied travel UUID respectively.   
+    Do not forget to replace the placeholders **`8001`** and **`<your uuid>`** with your chosen suffix and the copied travel UUID respectively.   
         
     <pre>
         " step 6 - MODIFY Update
-        MODIFY ENTITIES OF ZI_RAP_Travel_####
+        MODIFY ENTITIES OF ZI_RAP_Travel_8001
           ENTITY travel
             UPDATE
               SET FIELDS WITH VALUE
@@ -244,7 +244,7 @@ Now you will implement and perform some modifying operations.
 2. Save ![save icon](images/adt_save.png), activate ![activate icon](images/adt_activate.png), and run (**`F9`**) the class as a _console application_.   
          
     The **`MODIFY`** operation has been performed.     
-    Check the updated _Description_ either in the _Data Preview_ of your _travel_ table **`ZRAP_ATRAV_####`** (**`F8`**) or in your _Travel_ app. As you can see – **`the description has not changed`**. It’s still the old value. The reason for this is the **`missing commit`** entities statement that we will add now.  
+    Check the updated _Description_ either in the _Data Preview_ of your _travel_ table **`ZRAP_ATRAV_8001`** (**`F8`**) or in your _Travel_ app. As you can see – **`the description has not changed`**. It’s still the old value. The reason for this is the **`missing commit`** entities statement that we will add now.  
     
     _Data Preview_:      
          
@@ -252,12 +252,12 @@ Now you will implement and perform some modifying operations.
 
 3. Add the **`COMMIT ENTITIES`** statement.   
     For that, copy and insert the code snippet provided below after the **`MODIFY`** as shown on the screenshot below.  
-    Do not forget to replace the placeholder *`####`*** with your chosen suffix.  
+    Do not forget to replace the placeholder *`8001`*** with your chosen suffix.  
     
     <pre>
         " step 6b - Commit Entities
         COMMIT ENTITIES
-          RESPONSE OF ZI_RAP_Travel_####
+          RESPONSE OF ZI_RAP_Travel_8001
           FAILED     DATA(failed_commit)
           REPORTED   DATA(reported_commit).
     </pre>
@@ -268,7 +268,7 @@ Now you will implement and perform some modifying operations.
     
 5.	Save ![save icon](images/adt_save.png), activate ![activate icon](images/adt_activate.png), and run (**`F9`**) the class as a _console application_.  
     
-6.	Check the result either in the _Data Preview_ of your _travel_ table **`ZRAP_ATRAV_####`** (**`F8`**) or in your _Travel_ app.   
+6.	Check the result either in the _Data Preview_ of your _travel_ table **`ZRAP_ATRAV_8001`** (**`F8`**) or in your _Travel_ app.   
     You can filter the entries by the _travel_ uuid (**`TRAVEL_UUID`** alias **`TRAVELUUID`**) or the corresponding _travel_ ID (**`TRAVEL_ID`**).   
     
     The _Description_ should have been modified now.   
@@ -281,11 +281,11 @@ Now you will implement and perform some modifying operations.
 The creation of new entities is performed using the **`MODIFY`** statement with the **`CREATE`** clause. For operations that create instances, a **`mapped`** table is returned which maps the created instance to the provided content ID.    
     
 1.	You will now create a new _travel_ instance. For that, comment out the current implementation and insert the code snippet provided below.   
-    Do not forget to replace the placeholder **`####`** with your chosen suffix.  
+    Do not forget to replace the placeholder **`8001`** with your chosen suffix.  
          
     <pre>
         " step 7 - MODIFY Create
-        MODIFY ENTITIES OF ZI_RAP_Travel_####
+        MODIFY ENTITIES OF ZI_RAP_Travel_8001
           ENTITY travel
             CREATE
               SET FIELDS WITH VALUE
@@ -303,7 +303,7 @@ The creation of new entities is performed using the **`MODIFY`** statement with 
         out->write( mapped-travel ).
 
         COMMIT ENTITIES
-          RESPONSE OF ZI_RAP_Travel_####
+          RESPONSE OF ZI_RAP_Travel_8001
           FAILED     DATA(failed_commit)
           REPORTED   DATA(reported_commit).
 
@@ -318,7 +318,7 @@ The creation of new entities is performed using the **`MODIFY`** statement with 
           
     ![EML MODIFY CREATE operation](images/w3u4_05_02.png)
     
-3.	Check the result either in the _Data Preview_ of your _travel_ table **`ZRAP_ATRAV_####`** (**`F8`**) or in your _Travel_ app.  
+3.	Check the result either in the _Data Preview_ of your _travel_ table **`ZRAP_ATRAV_8001`** (**`F8`**) or in your _Travel_ app.  
     You can filter the entries by the _travel_ uuid (**`TRAVEL_UUID`** alias **`TRAVELUUID`**). You can use the _travel_ UUID written in the _console_ for that.  
          
     _Data Preview_:     
@@ -329,11 +329,11 @@ The creation of new entities is performed using the **`MODIFY`** statement with 
 Deletions are performed using the **`MODIFY ENTITIES`** statement with the **`DELETE`** clause.   
     
 1.	You will now delete an existing _travel_ instance. For that, comment out the current implementation and insert the code snippet provided below.   
-    Do not forget to replace the placeholders **`####`** and **`<your uuid>`** respectively with your chosen suffix and a copied travel UUID – e.g. the uuid of the travel instance you just created or from any other.   
+    Do not forget to replace the placeholders **`8001`** and **`<your uuid>`** respectively with your chosen suffix and a copied travel UUID – e.g. the uuid of the travel instance you just created or from any other.   
          
     <pre>
         " step 8 - MODIFY Delete
-        MODIFY ENTITIES OF ZI_RAP_Travel_####
+        MODIFY ENTITIES OF ZI_RAP_Travel_8001
           ENTITY travel
             DELETE FROM
               VALUE
@@ -343,7 +343,7 @@ Deletions are performed using the **`MODIFY ENTITIES`** statement with the **`DE
          REPORTED DATA(reported).
 
         COMMIT ENTITIES
-          RESPONSE OF ZI_RAP_Travel_####
+          RESPONSE OF ZI_RAP_Travel_8001
           FAILED     DATA(failed_commit)
           REPORTED   DATA(reported_commit).
 
@@ -371,9 +371,9 @@ In this unit, you have learned the basic syntax of the entity manipulation langu
     
 ## Solution
 Find the source code of the created ABAP Class **[sources](/week3/sources)** folder:  
--	[W3U4_CLAS_ZCL_RAP_EML_####](/week3/sources/W3U4_CLAS_ZCL_RAP_EML.txt)     
+-	[W3U4_CLAS_ZCL_RAP_EML_8001](/week3/sources/W3U4_CLAS_ZCL_RAP_EML.txt)     
     
-Do not forget to replace all the occurrences of `####` with your chosen suffix in the copied source code.  
+Do not forget to replace all the occurrences of `8001` with your chosen suffix in the copied source code.  
 
 ## Next exercise
 [Week 3 Unit 5: Enhancing the Business Object Behavior with App-Specific Logic](unit5.md)

@@ -1,6 +1,6 @@
 @EndUserText.label: 'agency data from ES5'
-@ObjectModel.query.implementedBy: 'ABAP:ZCL_CE_RAP_AGENCY_####'
-define root custom entity zce_rap_agency_#### 
+@ObjectModel.query.implementedBy: 'ABAP:ZCL_CE_RAP_AGENCY_8001'
+define root custom entity zce_rap_agency_8001 
 {
   key AgencyId : abap.numc( 6 ) ; 
  @OData.property.valueControl: 'Name_vc' 

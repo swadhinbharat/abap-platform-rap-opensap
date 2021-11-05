@@ -3,8 +3,8 @@
 @Search.searchable: true
 @Metadata.allowExtensions: true
 
-define view entity ZC_RAP_Booking_####
-  as projection on ZI_RAP_Booking_#### as Booking
+define view entity ZC_RAP_Booking_8001
+  as projection on ZI_RAP_Booking_8001 as Booking
 {
   key BookingUUID,
       TravelUUID,
@@ -34,7 +34,7 @@ define view entity ZC_RAP_Booking_####
       LocalLastChangedAt,
 
       /* associations */
-      _Travel : redirected to parent ZC_RAP_Travel_####,
+      _Travel : redirected to parent ZC_RAP_Travel_8001,
       _Customer,
       _Carrier,
       _Connection,

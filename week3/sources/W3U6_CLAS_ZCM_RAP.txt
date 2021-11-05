@@ -1,4 +1,4 @@
-CLASS zcm_rap_#### DEFINITION
+CLASS zcm_rap_8001 DEFINITION
   PUBLIC
   INHERITING FROM cx_static_check
   FINAL
@@ -12,7 +12,7 @@ CLASS zcm_rap_#### DEFINITION
 
     CONSTANTS:
       BEGIN OF date_interval,
-        msgid TYPE symsgid VALUE 'ZRAP_MSG_####',
+        msgid TYPE symsgid VALUE 'ZRAP_MSG_8001',
         msgno TYPE symsgno VALUE '001',
         attr1 TYPE scx_attrname VALUE 'BEGINDATE',
         attr2 TYPE scx_attrname VALUE 'ENDDATE',
@@ -21,7 +21,7 @@ CLASS zcm_rap_#### DEFINITION
       END OF date_interval .
     CONSTANTS:
       BEGIN OF begin_date_before_system_date,
-        msgid TYPE symsgid VALUE 'ZRAP_MSG_####',
+        msgid TYPE symsgid VALUE 'ZRAP_MSG_8001',
         msgno TYPE symsgno VALUE '002',
         attr1 TYPE scx_attrname VALUE 'BEGINDATE',
         attr2 TYPE scx_attrname VALUE '',
@@ -30,7 +30,7 @@ CLASS zcm_rap_#### DEFINITION
       END OF begin_date_before_system_date .
     CONSTANTS:
       BEGIN OF customer_unknown,
-        msgid TYPE symsgid VALUE 'ZRAP_MSG_####',
+        msgid TYPE symsgid VALUE 'ZRAP_MSG_8001',
         msgno TYPE symsgno VALUE '003',
         attr1 TYPE scx_attrname VALUE 'CUSTOMERID',
         attr2 TYPE scx_attrname VALUE '',
@@ -39,7 +39,7 @@ CLASS zcm_rap_#### DEFINITION
       END OF customer_unknown .
     CONSTANTS:
       BEGIN OF agency_unknown,
-        msgid TYPE symsgid VALUE 'ZRAP_MSG_####',
+        msgid TYPE symsgid VALUE 'ZRAP_MSG_8001',
         msgno TYPE symsgno VALUE '004',
         attr1 TYPE scx_attrname VALUE 'AGENCYID',
         attr2 TYPE scx_attrname VALUE '',
@@ -48,7 +48,7 @@ CLASS zcm_rap_#### DEFINITION
       END OF agency_unknown .
     CONSTANTS:
       BEGIN OF unauthorized,
-        msgid TYPE symsgid VALUE 'ZRAP_MSG_####',
+        msgid TYPE symsgid VALUE 'ZRAP_MSG_8001',
         msgno TYPE symsgno VALUE '005',
         attr1 TYPE scx_attrname VALUE '',
         attr2 TYPE scx_attrname VALUE '',
@@ -80,7 +80,7 @@ ENDCLASS.
 
 
 
-CLASS zcm_rap_#### IMPLEMENTATION.
+CLASS zcm_rap_8001 IMPLEMENTATION.
 
 
   METHOD constructor ##ADT_SUPPRESS_GENERATION.

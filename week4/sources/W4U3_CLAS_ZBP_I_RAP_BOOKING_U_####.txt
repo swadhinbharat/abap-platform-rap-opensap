@@ -79,7 +79,7 @@ CLASS lhc_Booking IMPLEMENTATION.
       legacy_entity_in = CORRESPONDING #( <entity> MAPPING FROM ENTITY ).
 
       legacy_entity_x-booking_id = <entity>-BookingID.
-      legacy_entity_x-_intx      = CORRESPONDING zsrap_booking_x_####( <entity> MAPPING FROM ENTITY ).
+      legacy_entity_x-_intx      = CORRESPONDING zsrap_booking_x_8001( <entity> MAPPING FROM ENTITY ).
       legacy_entity_x-action_code = /dmo/if_flight_legacy=>action_code-update.
 
       CALL FUNCTION '/DMO/FLIGHT_TRAVEL_UPDATE'

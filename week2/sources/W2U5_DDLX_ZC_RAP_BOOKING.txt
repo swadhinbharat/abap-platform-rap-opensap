@@ -4,7 +4,7 @@
                 typeNamePlural: 'Bookings',
                 title: { type: #STANDARD, value: 'BookingID' } } }
                 
-annotate view ZC_RAP_Booking_####
+annotate view ZC_RAP_Booking_8001
     with 
 {
   @UI.facet: [ { id:            'Booking',

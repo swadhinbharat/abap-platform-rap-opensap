@@ -3,7 +3,7 @@
 ## Introduction  
 In this hands-on exercise, you will define and implement the behavior of our (unmanaged) business object. 
 
-We will add a behavior to our business object **ZI_RAP_Travel_U_####** by creating a Behavior Definition (short BDEF) and a Behavior Implementation class (short BIL).
+We will add a behavior to our business object **ZI_RAP_Travel_U_8001** by creating a Behavior Definition (short BDEF) and a Behavior Implementation class (short BIL).
 
 We will test the implementation of the `create` method by implementing an appropriate unit test that uses the Entity Manipulation Language (EML).
 
@@ -15,22 +15,22 @@ You can watch [unit 3 of week 4: Creating the Core Data Services (CDS) Data Mode
 >
 > A great overview on ADT shortcuts can be found here: [Useful ADT Shortcuts](https://blogs.sap.com/2013/11/21/useful-keyboard-shortcuts-for-abap-in-eclipse/)
 >
-> Please note that the placeholder **`####`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
+> Please note that the placeholder **`8001`** used in object names in the exercise description must be replaced with the suffix of your choice during the exercises. The suffix can contain a maximum of 4 characters (numbers and letters).
 > The screenshots in this document have been taken with the suffix `1234` and system `D20`. Your system id will be `TRL`.
 
 > Please note that the ADT dialogs and views may change in the future due to software updates - i.e. new and/or optimized feature
 Follow the instructions below.
 
-## Step 1. Create Behavior Definition for Interface View ZI_RAP_TRAVEL_####
+## Step 1. Create Behavior Definition for Interface View ZI_RAP_TRAVEL_8001
 
-1. Right click on the root view **`ZI_RAP_Travel_U_####`** of your business object and choose **`New Behavior Definition`** from the context menu.
+1. Right click on the root view **`ZI_RAP_Travel_U_8001`** of your business object and choose **`New Behavior Definition`** from the context menu.
 
   ![Create Behavior Definition_1](images/w4u3_01_01.png)
 
 2. Here we must change the default setting **`Managed**`** for the **Implementation Type** to **`Unmanaged`**.
 The name of the behavior definition cannot be changed. 
 It must be the same as the name of the root view of your business object.
-Leave the suggested values for Package **`ZRAP_TRAVEL_U_####**`** and Description **`Behavior for ZI_RAP_TRAVEL_U_1234`** unchanged and press **Next**.
+Leave the suggested values for Package **`ZRAP_TRAVEL_U_8001**`** and Description **`Behavior for ZI_RAP_TRAVEL_U_1234`** unchanged and press **Next**.
 
   ![Create Behavior Definition_2](images/w4u3_01_02.png)
 
@@ -48,13 +48,13 @@ Leave the suggested values for Package **`ZRAP_TRAVEL_U_####**`** and Descriptio
 
 6. So we start with editing the behavior defintion for the Travel entity. 
 
-  - Instead of using one behavior implementation class for the whole BDEF we will use separate behavior implementation classes for each entity of our business object. So, we move the statement **`implementation in class zbp_i_rap_travel_u_#### unique`** right behind the **`define behavior for`** statement of our Travel entity.
+  - Instead of using one behavior implementation class for the whole BDEF we will use separate behavior implementation classes for each entity of our business object. So, we move the statement **`implementation in class zbp_i_rap_travel_u_8001 unique`** right behind the **`define behavior for`** statement of our Travel entity.
   
   ![Create Behavior Definition_3](images/w4u3_01_06.png)
 
   ![Create Behavior Definition_3](images/w4u3_01_07.png)
   
-  -	We add an alias **`Travel`** in our behaviour definition for the interface view **`ZI_RAP_Travel_U_####`** <pre>  define behavior for ZI_RAP_Travel_U_9999 alias Travel </pre>
+  -	We add an alias **`Travel`** in our behaviour definition for the interface view **`ZI_RAP_Travel_U_8001`** <pre>  define behavior for ZI_RAP_Travel_U_9999 alias Travel </pre>
   
   -	We delete the whole code line that contains the following statement <pre>//late numbering</pre> since we do not want to use late numbering
   -	We uncomment the statement <pre>lock master</pre>
@@ -64,10 +64,10 @@ Leave the suggested values for Package **`ZRAP_TRAVEL_U_####**`** and Descriptio
 
   - We leave the settings for the standard operations **`Create`**, **`Update`** and **`Delete`** and we also leave the setting that the association **`_Booking`** has been marked as create enabled.
 
-6. Now we start editing the code in our behaviour definition for the Booking entity **`ZI_RAP_Booking_U_####`** 
+6. Now we start editing the code in our behaviour definition for the Booking entity **`ZI_RAP_Booking_U_8001`** 
 
   - Here we also add an alias **`Booking`** 
-  - and we add the statement **`implementation in class zbp_i_rap_booking_u_#### unique`** right after the **`define behavior for`** statement for our Booking entity.
+  - and we add the statement **`implementation in class zbp_i_rap_booking_u_8001 unique`** right after the **`define behavior for`** statement for our Booking entity.
 
   - We again remove the statement for late numbering
   - We activate the **`lock dependent by`** statement and select the association **`_Travel`** via code-completion
@@ -76,7 +76,7 @@ Leave the suggested values for Package **`ZRAP_TRAVEL_U_####**`** and Descriptio
   
   - Since we do not use an etag master statement but choose the option that the etag depends on the root entity, we have to define **`etag dependent by _Travel`**
 
-> At this point we will get an error message in the editor that states: "No behavior is defined for the association "_Travel" of entity "ZI_RAP_Booking_U_####".
+> At this point we will get an error message in the editor that states: "No behavior is defined for the association "_Travel" of entity "ZI_RAP_Booking_U_8001".
 
  - So, we now must add the statement **`association _Travel`** in the curly brackets
 
@@ -106,8 +106,8 @@ The coding of our behavior defintion should now look like follows
 <pre>
 unmanaged;
 
-define behavior for ZI_RAP_Travel_U_#### alias Travel
-implementation in class zbp_i_rap_travel_u_#### unique
+define behavior for ZI_RAP_Travel_U_8001 alias Travel
+implementation in class zbp_i_rap_travel_u_8001 unique
 lock master
 etag master Lastchangedat
 {
@@ -121,8 +121,8 @@ etag master Lastchangedat
 
 }
 
-define behavior for ZI_RAP_Booking_U_#### alias Booking
-implementation in class zbp_i_rap_booking_u_#### unique
+define behavior for ZI_RAP_Booking_U_8001 alias Booking
+implementation in class zbp_i_rap_booking_u_8001 unique
 lock dependent by _Travel
 etag dependent by _Travel
 {
@@ -150,7 +150,7 @@ As a final step we can specify the mapping between the CDS view field names and 
 
 <pre>
 
-  mapping for /DMO/TRAVEL control zsrap_travel_x_####
+  mapping for /DMO/TRAVEL control zsrap_travel_x_8001
   {
     TravelId = travel_id;
     AgencyId = AGENCY_ID;
@@ -175,7 +175,7 @@ As a final step we can specify the mapping between the CDS view field names and 
 ![Add mapping to the behavior defintion for Booking](images/w4u3_01_12.png)
 
 <pre>
- mapping for /DMO/BOOKING control zsrap_booking_x_####
+ mapping for /DMO/BOOKING control zsrap_booking_x_8001
   {
     TravelId = TRAVEL_ID;
     BookingId = BOOKING_ID;
@@ -202,7 +202,7 @@ As a final step we can specify the mapping between the CDS view field names and 
 
 ### Create control structures
 
-What is now left is to create two control structures **`zsrap_travel_x_####`**  and **`zsrap_booking_x_####`** needed for the mappings in the Behavior Definition.
+What is now left is to create two control structures **`zsrap_travel_x_8001`**  and **`zsrap_booking_x_8001`** needed for the mappings in the Behavior Definition.
 
 1. Right click on the package and select **New > Other ABAP Repository Object**
 
@@ -218,7 +218,7 @@ What is now left is to create two control structures **`zsrap_travel_x_####`**  
    
 3. Enter the following values
 
-   - Name: `zsrap_travel_x_####`
+   - Name: `zsrap_travel_x_8001`
    - Description: `Control structure travel`
    - and press **Next**
    
@@ -237,7 +237,7 @@ What is now left is to create two control structures **`zsrap_travel_x_####`**  
 <pre>
 @EndUserText.label : 'Control structure for Travel data'
 @AbapCatalog.enhancementCategory : #NOT_EXTENSIBLE
-define structure zsrap_travel_x_#### {
+define structure zsrap_travel_x_8001 {
   agency_id     : xsdboolean;
   customer_id   : xsdboolean;
   begin_date    : xsdboolean;
@@ -264,7 +264,7 @@ define structure zsrap_travel_x_#### {
    
 8. Enter the following values
 
-   - Name: `zsrap_booking_x_####`
+   - Name: `zsrap_booking_x_8001`
    - Description: `control structure booking`
    - and press **Next**
    
@@ -283,7 +283,7 @@ define structure zsrap_travel_x_#### {
 <pre>
 @EndUserText.label : 'control structure for Booking'
 @AbapCatalog.enhancementCategory : #NOT_EXTENSIBLE
-define structure zsrap_booking_x_#### {
+define structure zsrap_booking_x_8001 {
   booking_date  : xsdboolean;
   customer_id   : xsdboolean;
   carrier_id    : xsdboolean;
@@ -381,9 +381,9 @@ Now we create the behavior implementation class, but since the coding for the BD
 1. Activate your behavior definition by pressing the **Activate** button ![Activate](images/adt_activate.png) if you have not already done so. 
 
 2. In order to create the behavior implementation class for the travel entity, we can use a quick fix. We can select the class name in the behavior definition and press CTRL + 1.
-   - Select the name of the behavior implementation class `zbp_i_rap_travel_u_####`
+   - Select the name of the behavior implementation class `zbp_i_rap_travel_u_8001`
    - Press **Ctrl+1**
-   - Double click on the proposal `Create behavior implementation class`**`zbp_i_rap_travel_u_####`**
+   - Double click on the proposal `Create behavior implementation class`**`zbp_i_rap_travel_u_8001`**
 
    ![Create behavior implementation class](images/w4u3_01_22.png)
 
@@ -464,7 +464,7 @@ Now we create the behavior implementation class, but since the coding for the BD
   ENDMETHOD.
 </pre>
 
-7. We then have to navigate from the local handler class `lhc_Travel`, which is responsible for maintaining the data in the buffer, to the local saver class `lsc_ZI_RAP_Travel_U_####`. Here we are implementing the **save** method where we will call the legacy API, the function module `/DMO/FLIGHT_TRAVEL_SAVE`, which is persisting the data from the buffer, which is shared by the legacy function modules, down to the database. 
+7. We then have to navigate from the local handler class `lhc_Travel`, which is responsible for maintaining the data in the buffer, to the local saver class `lsc_ZI_RAP_Travel_U_8001`. Here we are implementing the **save** method where we will call the legacy API, the function module `/DMO/FLIGHT_TRAVEL_SAVE`, which is persisting the data from the buffer, which is shared by the legacy function modules, down to the database. 
 
   - Add the following code to implement that **save** method
   
@@ -517,7 +517,7 @@ We are hence navigating to the tab `test classes`.
      METHOD create_travel.
 
       DATA(today) = cl_abap_context_info=>get_system_date( ).
-      DATA travels_in TYPE TABLE FOR CREATE zi_rap_travel_U_####\\travel.
+      DATA travels_in TYPE TABLE FOR CREATE zi_rap_travel_U_8001\\travel.
 
       travels_in = VALUE #(     ( agencyid      = 070001   "Agency 070001 does exist, Agency 1 does not exist
                                 customerid    = 1
@@ -529,7 +529,7 @@ We are hence navigating to the tab `test classes`.
                                 description   = |Test travel XYZ|
                                ) ).
 
-      MODIFY ENTITIES OF zi_rap_travel_u_####
+      MODIFY ENTITIES OF zi_rap_travel_u_8001
         ENTITY travel
            CREATE FIELDS (    agencyid
                               customerid
@@ -551,7 +551,7 @@ We are hence navigating to the tab `test classes`.
 
       DATA(new_travel_id) = mapped-travel[ 1 ]-TravelId.
 
-      SELECT * FROM zi_rap_travel_u_#### WHERE TravelId = @new_travel_id INTO TABLE @DATA(lt_travel)  .
+      SELECT * FROM zi_rap_travel_u_8001 WHERE TravelId = @new_travel_id INTO TABLE @DATA(lt_travel)  .
 
       cl_abap_unit_assert=>assert_not_initial( lt_travel ).
 
@@ -566,8 +566,8 @@ We are hence navigating to the tab `test classes`.
 
     METHOD class_setup.
       cds_test_environment = cl_cds_test_environment=>create_for_multiple_cds(
-          i_for_entities = VALUE #( ( i_for_entity = 'zi_rap_travel_u_####' )
-                                  ( i_for_entity = 'zi_rap_booking_u_####' ) )
+          i_for_entities = VALUE #( ( i_for_entity = 'zi_rap_travel_u_8001' )
+                                  ( i_for_entity = 'zi_rap_booking_u_8001' ) )
                                 ).
     ENDMETHOD.
 
@@ -589,7 +589,7 @@ ENDCLASS.
 
    ![Implementation of test class](images/w4u3_01_31.png)
 
-   - Replace the placeholder `####` with your group number using the **Find/Replace** dialog.
+   - Replace the placeholder `8001` with your group number using the **Find/Replace** dialog.
 
    ![Implementation of test class](images/w4u3_01_32.png)
 
@@ -597,7 +597,7 @@ ENDCLASS.
 
 > What does this coding do? We are using the CDS test double framework and we are creating data for a single travel in `travels_in`. For this we are using **EML**, the *Entity Manipulation Language* and use the statement 
 <pre>
-MODIFY ENTITIES OF zi_rap_travel_u_####
+MODIFY ENTITIES OF zi_rap_travel_u_8001
       ENTITY travel 
       CREATE FIELDS (    agencyid
                               customerid
@@ -630,8 +630,8 @@ Further down we see the coding of the method `class_setup`, this method creates 
 <pre>
   METHOD class_setup.
     cds_test_environment = cl_cds_test_environment=>create_for_multiple_cds(
-        i_for_entities = VALUE #( ( i_for_entity = 'zi_rap_travel_u_####' )
-                                  ( i_for_entity = 'zi_rap_booking_u_####' ) )
+        i_for_entities = VALUE #( ( i_for_entity = 'zi_rap_travel_u_8001' )
+                                  ( i_for_entity = 'zi_rap_booking_u_8001' ) )
                                 ).
   ENDMETHOD.
 </pre>
@@ -715,7 +715,7 @@ We are then able to call the travel update function module `/DMO/FLIGHT_TRAVEL_U
 
       legacy_entity_in = CORRESPONDING #( &ltentity&gt MAPPING FROM ENTITY ).
       legacy_entity_x-travel_id = &ltentity&gt-TravelID.
-      legacy_entity_x-_intx = CORRESPONDING zsrap_travel_x_####( &ltentity&gt MAPPING FROM ENTITY ).
+      legacy_entity_x-_intx = CORRESPONDING zsrap_travel_x_8001( &ltentity&gt MAPPING FROM ENTITY ).
 
       CALL FUNCTION '/DMO/FLIGHT_TRAVEL_UPDATE'
         EXPORTING
@@ -1060,9 +1060,9 @@ Now we create the behavior implementation class for the Booking entity.
 2. In order to create the behavior implementation class for the booking entity, we can also use a quick fix. 
 
 
-   - Select the name of the behavior implementation class `zbp_i_rap_booking_u_####`
+   - Select the name of the behavior implementation class `zbp_i_rap_booking_u_8001`
    - Press **Ctrl+1**
-   - Double click on the proposal `Create behavior implementation class`**`zbp_i_rap_booking_u_####`**
+   - Double click on the proposal `Create behavior implementation class`**`zbp_i_rap_booking_u_8001`**
 
    ![Create behavior implementation class Booking](images/w4u3_06_01.png)
 
@@ -1164,7 +1164,7 @@ The update method gets a table of type FOR UPDATE Booking.
       legacy_entity_in = CORRESPONDING #( &ltentity&gt MAPPING FROM ENTITY ).
 
       legacy_entity_x-booking_id = &ltentity&gt-BookingID.
-      legacy_entity_x-_intx      = CORRESPONDING zsrap_booking_x_####( &ltentity&gt MAPPING FROM ENTITY ).
+      legacy_entity_x-_intx      = CORRESPONDING zsrap_booking_x_8001( &ltentity&gt MAPPING FROM ENTITY ).
       legacy_entity_x-action_code = /dmo/if_flight_legacy=&gtaction_code-update.
 
       CALL FUNCTION '/DMO/FLIGHT_TRAVEL_UPDATE'
@@ -1411,14 +1411,14 @@ That was quite a lot of coding …
 
 Find the source code of the created entities in the **[/sources/](/week4/sources)** folder:
 
-- [W4U3_BDEF_ZI_RAP_TRAVEL_U_####.txt](/week4/sources/W4U3_BDEF_ZI_RAP_TRAVEL_U_%23%23%23%23.txt)
-- [W4U3_TABL_zsrap_travel_x_####.txt](/week4/sources/W4U3_TABL_zsrap_travel_x_%23%23%23%23.txt)
-- [W4U3_TABL_zsrap_booking_x_####.txt](/week4/sources/W4U3_TABL_zsrap_booking_x_%23%23%23%23.txt)
-- [W4U3_CLAS_ZBP_I_RAP_TRAVEL_U_####.txt](/week4/sources/W4U3_CLAS_ZBP_I_RAP_TRAVEL_U_%23%23%23%23.txt)
-- [W4U3_CLAS_TEST_ZBP_I_RAP_TRAVEL_U_####.txt](/week4/sources/W4U3_CLAS_TEST_ZBP_I_RAP_TRAVEL_U_%23%23%23%23.txt)
-- [W4U3_CLAS_ZBP_I_RAP_BOOKING_U_####.txt](/week4/sources/W4U3_CLAS_ZBP_I_RAP_BOOKING_U_%23%23%23%23.txt)
+- [W4U3_BDEF_ZI_RAP_TRAVEL_U_8001.txt](/week4/sources/W4U3_BDEF_ZI_RAP_TRAVEL_U_%23%23%23%23.txt)
+- [W4U3_TABL_zsrap_travel_x_8001.txt](/week4/sources/W4U3_TABL_zsrap_travel_x_%23%23%23%23.txt)
+- [W4U3_TABL_zsrap_booking_x_8001.txt](/week4/sources/W4U3_TABL_zsrap_booking_x_%23%23%23%23.txt)
+- [W4U3_CLAS_ZBP_I_RAP_TRAVEL_U_8001.txt](/week4/sources/W4U3_CLAS_ZBP_I_RAP_TRAVEL_U_%23%23%23%23.txt)
+- [W4U3_CLAS_TEST_ZBP_I_RAP_TRAVEL_U_8001.txt](/week4/sources/W4U3_CLAS_TEST_ZBP_I_RAP_TRAVEL_U_%23%23%23%23.txt)
+- [W4U3_CLAS_ZBP_I_RAP_BOOKING_U_8001.txt](/week4/sources/W4U3_CLAS_ZBP_I_RAP_BOOKING_U_%23%23%23%23.txt)
       
-Do not forget to replace all the occurrences of `####` with your chosen suffix in the copied source code.
+Do not forget to replace all the occurrences of `8001` with your chosen suffix in the copied source code.
        
 ## Next exercise
 [Week 4 Unit 4: Creating the Business Object Projection](unit4.md)

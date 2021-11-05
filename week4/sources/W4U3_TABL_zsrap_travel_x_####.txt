@@ -1,6 +1,6 @@
 @EndUserText.label : 'Mapping control structure'
 @AbapCatalog.enhancementCategory : #NOT_EXTENSIBLE
-define structure zsrap_travel_x_#### {
+define structure zsrap_travel_x_8001 {
   agency_id     : xsdboolean;
   customer_id   : xsdboolean;
   begin_date    : xsdboolean;

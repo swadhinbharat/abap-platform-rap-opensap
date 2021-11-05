@@ -130,7 +130,7 @@ CLASS lhc_Travel IMPLEMENTATION.
 
       legacy_entity_in = CORRESPONDING #( <entity> MAPPING FROM ENTITY ).
       legacy_entity_x-travel_id = <entity>-TravelID.
-      legacy_entity_x-_intx = CORRESPONDING zsrap_travel_x_####( <entity> MAPPING FROM ENTITY ).
+      legacy_entity_x-_intx = CORRESPONDING zsrap_travel_x_8001( <entity> MAPPING FROM ENTITY ).
 
       CALL FUNCTION '/DMO/FLIGHT_TRAVEL_UPDATE'
         EXPORTING
@@ -428,7 +428,7 @@ CLASS lhc_Travel IMPLEMENTATION.
 
 ENDCLASS.
 
-CLASS lsc_ZI_RAP_Travel_U_#### DEFINITION INHERITING FROM cl_abap_behavior_saver.
+CLASS lsc_ZI_RAP_Travel_U_8001 DEFINITION INHERITING FROM cl_abap_behavior_saver.
   PROTECTED SECTION.
 
     METHODS check_before_save REDEFINITION.
@@ -439,7 +439,7 @@ CLASS lsc_ZI_RAP_Travel_U_#### DEFINITION INHERITING FROM cl_abap_behavior_saver
 
 ENDCLASS.
 
-CLASS lsc_ZI_RAP_Travel_U_#### IMPLEMENTATION.
+CLASS lsc_ZI_RAP_Travel_U_8001 IMPLEMENTATION.
 
   METHOD check_before_save.
   ENDMETHOD.

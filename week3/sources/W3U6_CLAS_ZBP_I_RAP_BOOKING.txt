@@ -13,11 +13,11 @@ CLASS lhc_Booking IMPLEMENTATION.
 
   METHOD calculateBookingID.
     DATA max_bookingid TYPE /dmo/booking_id.
-    DATA update TYPE TABLE FOR UPDATE ZI_RAP_Travel_####\\Booking.
+    DATA update TYPE TABLE FOR UPDATE ZI_RAP_Travel_8001\\Booking.
 
     " Read all travels for the requested bookings.
     " If multiple bookings of the same travel are requested, the travel is returned only once.
-    READ ENTITIES OF ZI_RAP_Travel_#### IN LOCAL MODE
+    READ ENTITIES OF ZI_RAP_Travel_8001 IN LOCAL MODE
     ENTITY Booking BY \_Travel
       FIELDS ( TravelUUID )
       WITH CORRESPONDING #( keys )
@@ -25,7 +25,7 @@ CLASS lhc_Booking IMPLEMENTATION.
 
     " Process all affected Travels. Read respective bookings, determine the max-id and update the bookings without ID.
     LOOP AT travels INTO DATA(travel).
-      READ ENTITIES OF ZI_RAP_Travel_#### IN LOCAL MODE
+      READ ENTITIES OF ZI_RAP_Travel_8001 IN LOCAL MODE
         ENTITY Travel BY \_Booking
           FIELDS ( BookingID )
         WITH VALUE #( ( %tky = travel-%tky ) )
@@ -49,7 +49,7 @@ CLASS lhc_Booking IMPLEMENTATION.
     ENDLOOP.
 
     " Update the Booking ID of all relevant bookings
-    MODIFY ENTITIES OF ZI_RAP_Travel_#### IN LOCAL MODE
+    MODIFY ENTITIES OF ZI_RAP_Travel_8001 IN LOCAL MODE
     ENTITY Booking
       UPDATE FIELDS ( BookingID ) WITH update
     REPORTED DATA(update_reported).
@@ -61,7 +61,7 @@ CLASS lhc_Booking IMPLEMENTATION.
 
     " Read all travels for the requested bookings.
     " If multiple bookings of the same travel are requested, the travel is returned only once.
-    READ ENTITIES OF ZI_RAP_Travel_#### IN LOCAL MODE
+    READ ENTITIES OF ZI_RAP_Travel_8001 IN LOCAL MODE
     ENTITY Booking BY \_Travel
       FIELDS ( TravelUUID )
       WITH CORRESPONDING #( keys )
@@ -69,7 +69,7 @@ CLASS lhc_Booking IMPLEMENTATION.
       FAILED DATA(read_failed).
 
     " Trigger calculation of the total price
-    MODIFY ENTITIES OF ZI_RAP_Travel_#### IN LOCAL MODE
+    MODIFY ENTITIES OF ZI_RAP_Travel_8001 IN LOCAL MODE
     ENTITY Travel
       EXECUTE recalcTotalPrice
       FROM CORRESPONDING #( travels )

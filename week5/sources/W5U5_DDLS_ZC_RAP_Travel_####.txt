@@ -3,14 +3,14 @@
 @Search.searchable: true
 @Metadata.allowExtensions: true
 
-define root view entity ZC_RAP_Travel_####
-  as projection on ZI_RAP_Travel_#### as Travel
+define root view entity ZC_RAP_Travel_8001
+  as projection on ZI_RAP_Travel_8001 as Travel
 {
   key TravelUUID,
       @Search.defaultSearchElement: true
       TravelID,
       //@Consumption.valueHelpDefinition: [{ entity : {name: '/DMO/I_Agency', element: 'AgencyID' } }]
-      @Consumption.valueHelpDefinition: [{ entity : {name: 'zrap_ce_agency_####', element: 'AgencyId' } }]
+      @Consumption.valueHelpDefinition: [{ entity : {name: 'zrap_ce_agency_8001', element: 'AgencyId' } }]
       // @ObjectModel.text.element: ['AgencyName']
       @Search.defaultSearchElement: true
       AgencyID,
@@ -37,7 +37,7 @@ define root view entity ZC_RAP_Travel_####
       LocalLastChangedAt,
 
       /* associations */
-      _Booking : redirected to composition child ZC_RAP_Booking_####,
+      _Booking : redirected to composition child ZC_RAP_Booking_8001,
       //_Agency,
       _Customer,
       _Currency
